@@ -18,7 +18,7 @@ class Category extends BaseModel
      *
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = ['parent_id', 'name', 'type', 'page_title', 'meta_keyword', 'meta_description', 'active'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -26,4 +26,14 @@ class Category extends BaseModel
      * @var array
      */
     protected $hidden = [];
+
+    public function parent()
+    {
+        return $this->belongsTo('App\Models\Category', 'parent_id', 'id');
+    }
+
+    public function childs()
+    {
+        return $this->hasMany('App\Models\Category', 'id', 'parent_id');
+    }
 }

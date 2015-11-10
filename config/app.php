@@ -199,4 +199,10 @@ return [
 
     ],
 
+    'category_types' => [
+        1 => 'lau',
+        2 => 'bbq',
+        3 => 'chien',
+    ],
+
 ];
