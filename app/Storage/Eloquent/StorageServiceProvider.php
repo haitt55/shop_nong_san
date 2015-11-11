@@ -16,6 +16,10 @@ class StorageServiceProvider extends ServiceProvider
             'App\Storage\PageRepositoryInterface',
             'App\Storage\Eloquent\PageRepository'
         );
+        $this->app->bind(
+            'App\Storage\ArticleRepositoryInterface',
+            'App\Storage\Eloquent\ArticleRepository'
+        );
     }
 }
 ?>
