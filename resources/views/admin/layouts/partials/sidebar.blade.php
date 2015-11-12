@@ -17,6 +17,9 @@
                 <a href="{{ route('admin.users.index') }}"><i class="fa fa-user fa-fw"></i> Users</a>
             </li>
             <li>
+                <a href="{{ route('admin.categories.index') }}"><i class="fa fa-user fa-fw"></i> Categories</a>
+            </li>
+            <li>
                 <a href="#"><i class="fa fa-wrench fa-fw"></i> Settings<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>

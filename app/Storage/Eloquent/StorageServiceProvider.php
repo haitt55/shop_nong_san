@@ -17,6 +17,9 @@ class StorageServiceProvider extends ServiceProvider
         $this->app->bind('App\Storage\ArticleRepositoryInterface', function() {
             return new \App\Storage\Eloquent\ArticleRepository(new \App\Models\Article);
         });
+        $this->app->bind('App\Storage\CategoryRepositoryInterface', function() {
+            return new \App\Storage\Eloquent\CategoryRepository(new \App\Models\Category);
+        });
     }
 }
 ?>
