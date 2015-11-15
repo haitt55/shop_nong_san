@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CategoryRequest;
 use App\Http\Controllers\Admin\Controller;
 use App\Storage\CategoryRepositoryInterface as CategoryRepository;
+use App\Events\Category\WasCreated as CategoryWasCreated;
+use App\Events\Category\WasUpdated as CategoryWasUpdated;
+use App\Events\Category\WasDeleted as CategoryWasDeleted;
+use App\Events\ExceptionOccurred;
 
 class CategoriesController extends Controller
 {
@@ -49,9 +53,9 @@ class CategoriesController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        $this->categoryRepository->create($request->all());
+        $category = $this->categoryRepository->create($request->all());
 
-        flash()->success('Success!', 'Category successfully created.');
+        event(new CategoryWasCreated($category));
 
         return redirect()->route('admin.categories.index');
     }
@@ -93,9 +97,9 @@ class CategoriesController extends Controller
      */
     public function update(CategoryRequest $request, $id)
     {
-        $this->categoryRepository->update($id, $request->all());
+        $category = $this->categoryRepository->update($id, $request->all());
 
-        flash()->success('Success!', 'Category successfully updated.');
+        event(new CategoryWasUpdated($category));
 
         return redirect()->route('admin.categories.index');
     }
@@ -111,7 +115,7 @@ class CategoriesController extends Controller
         try {
             $this->categoryRepository->delete($id);
         } catch (Exception $ex) {
-            flash()->error('Error!', $ex->getMessage());
+            event(new ExceptionOccurred($ex));
 
             return response()->json([
                 'error' => [
@@ -120,7 +124,7 @@ class CategoriesController extends Controller
             ]);
         }
 
-        flash()->success('Success!', 'Category successfully deleted.');
+        event(new CategoryWasDeleted());
 
         return response()->json();
     }
