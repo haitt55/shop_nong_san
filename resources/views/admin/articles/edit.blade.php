@@ -104,32 +104,8 @@
     </script>
     
     <script type="text/javascript">
-    $(document).ready(function() {
-        $("#btn-delete").click(function() {
-            if (confirm('Do you really want to delete this data?')) {
-                var url = $(this).attr('data-link');
-                $.ajax({
-                    url : url,
-                    type : 'DELETE',
-                    beforeSend: function (xhr) {
-                        var token = $('meta[name="csrf_token"]').attr('content');
-                        if (token) {
-                            return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                        }
-                    },
-                    success: function(data) {
-                        if (data.error) {
-                            window.location.href = '{{ URL::route('admin.articles.edit', $article->id) }}';
-                        } else {
-                            window.location.href = '{{ URL::route('admin.articles.index') }}';
-                        }
-                    },
-                    error: function(data) {
-                        window.location.href = '{{ URL::route('admin.articles.index') }}';
-                    }
-                });
-            }
-        });
-    });
+        var edit_url = '{{ URL::route('admin.articles.edit', $article->id) }}';
+        var index_url = '{{ URL::route('admin.articles.index') }}';
     </script>
+    <script src="/templates/admin/sbadmin2/js/delete.js"></script>
 @endsection
