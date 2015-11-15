@@ -45,8 +45,6 @@
                                         <th>Name</th>
                                         <th>Parent</th>
                                         <th>Type</th>
-                                        <th>Page Title</th>
-                                        <th>Keyword</th>
                                         <th>Status</th>
                                         <th></th>
                                     </tr>
@@ -54,11 +52,9 @@
                                     <tbody>
                                     @foreach ($categories as $category)
                                         <tr>
-                                            <td>{{ $category->name }}</td>
+                                            <td><a href="{{ route('admin.categories.show', $category->id) }}">{{ $category->name }}</a></td>
                                             <td>{{ $category->parent_id ? (!empty($category->parent()) ? $category->parent->name : '') : '' }}</td>
                                             <td>{{ $category->type ? config('app.category_types')[$category->type] : '' }}</td>
-                                            <td>{{ $category->page_title }}</td>
-                                            <td>{{ $category->meta_keyword }}</td>
                                             <td><span class="label {{ $category->active ? 'label-success' : 'label-danger' }}">{{ $category->active ? 'active' : 'unactive' }}</span></td>
                                             <td>
                                                 <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-warning" title="Edit"><i class="fa fa-edit"></i></a>
@@ -94,8 +90,6 @@
             $("#dataTables-categories").DataTable({
                 responsive: true,
                 "aoColumns": [
-                    null,
-                    null,
                     null,
                     null,
                     null,

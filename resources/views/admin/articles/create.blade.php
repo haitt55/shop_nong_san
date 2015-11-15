@@ -41,8 +41,12 @@
                                     <textarea name="content" id="content">{{ old('content') }}</textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label for="author">Page Title</label>
-                                    <input type="text" name="page_title" id="page_title" class="form-control" value="{{ old('page_title') }}">
+                                    <label for="author">Author</label>
+                                    <select name="author_id" id="author_id" class="form-control">
+                                        @foreach ($authorsList as $k => $v)
+                                        <option value="{{ $k }}"{{ (old('author_id') == $k) ? ' selected="selected"' : '' }}>{{ $v }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="page_title">Page Title</label>
@@ -77,9 +81,7 @@
     <!-- /.row -->
 @endsection
 
-@section('javascript')
-    @parent
-
+@section('inline_scripts')
     <script type="text/javascript">
     $(document).ready(function() {
         $('#excerpt').summernote({

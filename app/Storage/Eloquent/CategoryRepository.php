@@ -7,23 +7,6 @@ use DB;
 
 class CategoryRepository extends Repository implements CategoryRepositoryInterface
 {
-    public function create($data)
-    {
-        if (empty($data['active'])) {
-            $data['active'] = false;
-        }
-
-        return $this->model->create($data);
-    }
-
-    public function update($id, $data)
-    {
-        if (empty($data['active'])) {
-            $data['active'] = false;
-        }
-
-        return $this->findOrFail($id)->update($data);
-    }
 
     public function isParent($id)
     {

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class PageRequest extends Request
+class CategoryRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,10 +23,10 @@ class PageRequest extends Request
      */
     public function rules()
     {
-        $this->merge(['published' => $this->input('published', 0)]);
-        
+        $this->merge(['active' => $this->input('active', 0)]);
+
         return [
-            'title' => 'required|max:255',
+            'name' => 'required|max:255',
         ];
     }
 }

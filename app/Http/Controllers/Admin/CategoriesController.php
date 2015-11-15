@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
+use App\Http\Requests\CategoryRequest;
 use App\Http\Controllers\Admin\Controller;
 use App\Storage\CategoryRepositoryInterface as CategoryRepository;
 
@@ -15,6 +15,7 @@ class CategoriesController extends Controller
     {
         $this->categoryRepository = $categoryRepository;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -46,11 +47,11 @@ class CategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
         $this->categoryRepository->create($request->all());
 
-        session()->flash('flash_message', 'Category successfully created.');
+        flash()->success('Success!', 'Category successfully created.');
 
         return redirect()->route('admin.categories.index');
     }
@@ -65,7 +66,7 @@ class CategoriesController extends Controller
     {
         $category = $this->categoryRepository->findOrFail($id);
 
-        return redirect()->route('admin.categories.show', compact('category'));
+        return view('admin.categories.show', compact('category'));
     }
 
     /**
@@ -90,12 +91,11 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
-        dd('sssss');
         $this->categoryRepository->update($id, $request->all());
 
-        session()->flash('flash_message', 'Category successfully edited.');
+        flash()->success('Success!', 'Category successfully updated.');
 
         return redirect()->route('admin.categories.index');
     }
@@ -108,6 +108,20 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $this->categoryRepository->delete($id);
+        } catch (Exception $ex) {
+            flash()->error('Error!', $ex->getMessage());
+
+            return response()->json([
+                'error' => [
+                    'message' => $ex->getMessage(),
+                ]
+            ]);
+        }
+
+        flash()->success('Success!', 'Category successfully deleted.');
+
+        return response()->json();
     }
 }

@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Users')
+@section('title', 'Messages')
 
 @section('css')
     @parent
@@ -15,44 +15,40 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Users</h1>
+            <h1 class="page-header">Messages</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-12">
-            <a href="{{ route('admin.users.create') }}" class="btn btn-success"><i class="fa fa-plus-circle"></i> Add user</a>
-        </div>
-    </div>
-    <br />
-    <div class="row">
-        <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Users
+                    Messages
                 </div>
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="dataTable_wrapper">
-                                <table class="table table-striped table-bordered table-hover" id="dataTables-users">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-messages">
                                     <thead>
                                         <tr>
                                             <th>Name</th>
                                             <th>Email</th>
-                                            <th>Last Modified</th>
+                                            <th>Phone Number</th>
+                                            <th>Date</th>
                                             <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($users as $user)
+                                        @foreach ($messages as $message)
                                         <tr>
-                                            <td><a href="{{ route('admin.users.show', $user->id) }}">{{ $user->name }}</td>
-                                            <td>{{ $user->email }}</td>
-                                            <td>{{ $user->updated_at }}</td>
+                                            <td><a href="{{ route('admin.messages.show', $message->id) }}">{{ $message->name }}</td>
+                                            <td>{{ $message->email }}</td>
+                                            <td>{{ $message->phone_number }}</td>
+                                            <td>{{ $message->updated_at }}</td>
                                             <td>
-                                                <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-info"><i class="fa fa-edit"></i> Edit</a>
+                                                <a href="{{ route('admin.messages.show', $message->id) }}" class="btn btn-info" title="Show"><i class="fa fa-info"></i></a>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -83,12 +79,12 @@
 @section('inline_scripts')
     <script type="text/javascript">
     $(document).ready(function() {
-        $("#dataTables-users").DataTable({
+        $("#dataTables-messages").DataTable({
             responsive: true,
-            "order": [[ 2, "desc" ]],
+            "order": [[ 1, "desc" ]],
             "aoColumns": [
-                null, null, null,
-                { bSortable: false }
+                null, null, null, null,
+                {bSortable: false}
             ]
         });
     });

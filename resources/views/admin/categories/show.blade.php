@@ -1,18 +1,18 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Edit User')
+@section('title', 'Category Details')
 
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Users</h1>
+            <h1 class="page-header">Categories</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-12">
-            <a href="{{ route('admin.users.index') }}" class="btn btn-success"><i class="fa fa-list"></i> List</a>
+            <a href="{{ route('admin.categories.index') }}" class="btn btn-success"><i class="fa fa-list"></i> List</a>
         </div>
     </div>
     <br />
@@ -20,41 +20,46 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Edit User
+                    Category Details
                 </div>
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
-                            <form method="POST" action="{{ route('admin.users.update', $user->id) }}" role="form">
-                                @include('admin.layouts.partials.errors')
-                                {{ csrf_field() }}
-                                {!! method_field('put') !!}
+                            <form role="form">
                                 <div class="form-group">
-                                    <label for="name">Name:</label>
-                                    <input type="text" name="name" id="name" class="form-control" value="{{ old('name', $user->name) }}">
+                                    <label for="name">Name</label>
+                                    <p class="form-control-static">{{ $category->name }}</p>
                                 </div>
                                 <div class="form-group">
-                                    <label for="email">Email:</label>
-                                    <input type="text" name="email" id="email" class="form-control" value="{{ old('email', $user->email) }}">
-                                </div>
-                                <hr>
-                                <div class="form-group">
-                                    <label for="password">Password:</label>
-                                    <input type="password" name="password" id="password" class="form-control">
+                                    <label for="email">Parent</label>
+                                    <p class="form-control-static">{{ $category->parent_id ? (!empty($category->parent()) ? $category->parent->name : '') : '' }}</p>
                                 </div>
                                 <div class="form-group">
-                                    <label for="password_confirmation">Confirm Password:</label>
-                                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
+                                    <label for="phone_number">Type</label>
+                                    <p class="form-control-static">{{ $category->type ? config('app.category_types')[$category->type] : '' }}</p>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Save</button>
+                                    <label for="name">Page title</label>
+                                    <p class="form-control-static">{{ $category->page_title }}</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Key word</label>
+                                    <p class="form-control-static">{{ $category->mete_keyword }}</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Description</label>
+                                    <p class="form-control-static">{{ $category->meta_description }}</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="content">Status</label>
+                                    <p class="form-control-static"><span class="label {{ $category->active ? 'label-success' : 'label-danger' }}">{{ $category->active ? 'active' : 'unactive' }}</span></p>
                                 </div>
                             </form>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
-                            <button class="btn btn-danger" id="btn-delete" data-link="{{ route('admin.users.destroy', $user->id) }}"><i class="fa fa-remove"></i> Delete user</button>
+                            <button class="btn btn-danger" id="btn-delete" data-link="{{ route('admin.categories.destroy', $category->id) }}"><i class="fa fa-remove"></i> Delete category</button>
                         </div>
                     </div>
                 </div>
@@ -84,13 +89,13 @@
                     },
                     success: function(data) {
                         if (data.error) {
-                            window.location.href = '{{ URL::route('admin.users.edit', $user->id) }}';
+                            window.location.href = '{{ URL::route('admin.categories.show', $category->id) }}';
                         } else {
-                            window.location.href = '{{ URL::route('admin.users.index') }}';
+                            window.location.href = '{{ URL::route('admin.categories.index') }}';
                         }
                     },
                     error: function(data) {
-                        window.location.href = '{{ URL::route('admin.users.index') }}';
+                        window.location.href = '{{ URL::route('admin.categories.index') }}';
                     }
                 });
             }

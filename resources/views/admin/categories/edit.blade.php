@@ -25,9 +25,10 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
-                            <form method="PUT" action="{{ route('admin.categories.update', $category->id) }}" role="form">
+                            <form method="POST" action="{{ route('admin.categories.update', $category->id) }}" role="form">
                                 @include('admin.layouts.partials.errors')
                                 {{ csrf_field() }}
+                                {!! method_field('put') !!}
                                 <div class="form-group">
                                     <label for="name">Name</label>
                                     <input type="text" name="name" id="name" class="form-control" value="{{ $category->name }}">
@@ -73,6 +74,11 @@
                             </form>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <button class="btn btn-danger" id="btn-delete" data-link="{{ route('admin.categories.destroy', $category->id) }}"><i class="fa fa-remove"></i> Delete category</button>
+                        </div>
+                    </div>
                 </div>
                 <!-- /.panel-body -->
             </div>
@@ -81,4 +87,36 @@
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
+@endsection
+
+@section('inline_scripts')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#btn-delete").click(function() {
+                if (confirm('Do you really want to delete this data?')) {
+                    var url = $(this).attr('data-link');
+                    $.ajax({
+                        url : url,
+                        type : 'DELETE',
+                        beforeSend: function (xhr) {
+                            var token = $('meta[name="csrf_token"]').attr('content');
+                            if (token) {
+                                return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                            }
+                        },
+                        success: function(data) {
+                            if (data.error) {
+                                window.location.href = '{{ URL::route('admin.categories.edit', $category->id) }}';
+                            } else {
+                                window.location.href = '{{ URL::route('admin.categories.index') }}';
+                            }
+                        },
+                        error: function(data) {
+                            window.location.href = '{{ URL::route('admin.categories.index') }}';
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 @endsection
