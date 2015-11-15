@@ -11,7 +11,7 @@
     </div>
     <!-- /.row -->
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-12 text-right">
             <a href="{{ route('admin.pages.index') }}" class="btn btn-success"><i class="fa fa-list"></i> List</a>
         </div>
     </div>
@@ -54,7 +54,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="checkbox">
-                                        <label><input type="checkbox" name="published" id="published" value="1"{{ old('published') ? ' checked="checked"' : '' }}> Visible</label>
+                                        <label><input type="checkbox" name="published" id="published" value="1"{{ old('published', true) ? ' checked="checked"' : '' }}> Visible</label>
                                     </div>
                                 </div>
                                 <div class="form-group">

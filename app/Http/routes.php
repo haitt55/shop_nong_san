@@ -8,7 +8,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
 
     Route::group(['middleware' => 'auth.admin'], function () {
         Route::get('/', ['uses' => 'HomeController@index', 'as' => 'admin.home.index']);
-        Route::get('dashboard', ['uses' => 'HomeController@index', 'as' => 'admin.home.dashboard']);
+        Route::get('dashboard', ['uses' => 'HomeController@dashboard', 'as' => 'admin.home.dashboard']);
 
         Route::get('profile/edit', ['uses' => 'ProfileController@edit', 'as' => 'admin.profile.edit']);
         Route::put('profile/update', ['uses' => 'ProfileController@update', 'as' => 'admin.profile.update']);
@@ -21,7 +21,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
         Route::resource('categories', 'CategoriesController');
         Route::resource('messages', 'MessagesController', ['only' => ['index', 'show', 'destroy']]);
 
-        Route::get('settings/general', ['uses' => 'SettingsController@general', 'as' => 'admin.settings.general']);
-        Route::put('settings/general', ['uses' => 'SettingsController@updateGeneral', 'as' => 'admin.settings.updateGeneral']);
+        Route::get('appSettings/general', ['uses' => 'AppSettingsController@general', 'as' => 'admin.appSettings.general']);
+        Route::put('appSettings/general', ['uses' => 'AppSettingsController@updateGeneral', 'as' => 'admin.appSettings.updateGeneral']);
     });
 });
+
+// Web
+Route::get('/', ['uses' => 'HomeController@index', 'as' => 'home.index']);
