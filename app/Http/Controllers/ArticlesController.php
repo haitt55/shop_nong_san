@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\Controller;
+use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use App\Storage\ArticleRepositoryInterface as ArticleRepository;
+use App\Events\ExceptionOccurred;
+use Exception;
 
 class ArticlesController extends Controller
 {
@@ -22,9 +23,18 @@ class ArticlesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $articles = $this->articleRepository->all();
+        $page = $request->get('page', 1);
+        $perPage = 10;
+        $pagiData = $this->articleRepository->getByPage($page, $perPage, $request);
+        $articles = new Paginator(
+            $pagiData->items,
+            $pagiData->totalItems,
+            $perPage,
+            $page
+        );
+        $articles->setPath('articles.html');
 
         return view('articles.index', compact('articles'));
     }

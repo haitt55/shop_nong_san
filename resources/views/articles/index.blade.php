@@ -28,6 +28,7 @@
         @endforeach
 
         <div class="col-lg-12 text-center">
+            <div class="pagination"> {!! $articles->render() !!} </div>
             <ul class="pager">
                 <li class="previous"><a href="#">&larr; Older</a>
                 </li>
