@@ -51,12 +51,9 @@ class UserRepository extends Repository implements UserRepositoryInterface
 
     public function delete($id)
     {
-        if ($id == auth()->user()->id) {
+        $user = auth()->user();
+        if ($id == $user->id) {
             throw new Exception('Could not delete yourself.');
-        }
-        $user = $this->findOrFail($id);
-        if ($user->name == 'admin') {
-            throw new Exception('Could not delete user "admin".');
         }
         if ($user->articles()->count() > 0) {
             throw new Exception('Could not delete user has articles.');

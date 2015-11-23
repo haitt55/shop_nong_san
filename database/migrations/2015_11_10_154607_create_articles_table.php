@@ -23,7 +23,6 @@ class CreateArticlesTable extends Migration
             $table->string('meta_keyword')->nullable();
             $table->string('meta_description', 160)->nullable();
             $table->boolean('published')->default(true);
-            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

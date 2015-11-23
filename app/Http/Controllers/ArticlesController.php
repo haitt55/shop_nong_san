@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Storage\ArticleRepositoryInterface as ArticleRepository;
@@ -24,7 +23,7 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        $articles = $this->articleRepository->getPublishedArticles()->paginate(config('article.per_page'));
+        $articles = $this->articleRepository->getPublishedArticles(config('article.per_page'));
 
         return view('articles.index', compact('articles'));
     }

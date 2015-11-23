@@ -12,9 +12,9 @@ class ArticleRepository extends Repository implements ArticleRepositoryInterface
         return $this->model->findBySlug($slug);
     }
 
-    public function getPublishedArticles()
+    public function getPublishedArticles($limit = null)
     {
-        return $this->model->published()->orderBy('created_at', 'desc');
+        return $this->model->published()->orderBy('created_at', 'desc')->paginate($limit);
     }
 }
 ?>
