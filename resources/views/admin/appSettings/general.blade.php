@@ -81,6 +81,7 @@
         function initMap() {
             var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 15,
+                disableDoubleClickZoom : true,
                 center: {lat: latitude, lng: longitude}
             });
 
@@ -94,7 +95,12 @@
             marker.addListener('dragend', function(evt){
                 $('#latitude').val(evt.latLng.lat().toFixed(5));
                 $('#longitude').val(evt.latLng.lng().toFixed(5));
-            })
+            });
+            google.maps.event.addListener(map, 'click', function(evt){
+                marker.setPosition( new google.maps.LatLng( evt.latLng.lat(), evt.latLng.lng()) );
+                $('#latitude').val(evt.latLng.lat().toFixed(5));
+                $('#longitude').val(evt.latLng.lng().toFixed(5));
+            });
         }
 
         function toggleBounce() {
