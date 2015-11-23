@@ -18,6 +18,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
         Route::resource('users', 'UsersController');
         Route::resource('pages', 'PagesController');
         Route::resource('articles', 'ArticlesController');
+        Route::post('articles/{id}/images', ['uses' => 'ArticleImagesController@store', 'as' => 'admin.articles.images']);
         Route::post('articles/addPhoto', ['uses' => 'ArticlesController@addPhoto', 'as' => 'admin.articles.addPhoto']);
         Route::post('articles/deletePhoto', ['uses' => 'ArticlesController@deletePhoto', 'as' => 'admin.articles.deletePhoto']);
         Route::resource('messages', 'MessagesController', ['only' => ['index', 'show', 'destroy']]);

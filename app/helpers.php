@@ -34,4 +34,14 @@ function image($src, $htmlOptions = array(), $noImageSrc = null)
     return false;
 }
 
+function static_page_path(App\Models\Page $page)
+{
+    return '/' . $page->slug . '.html';
+}
+
+function article_path(App\Models\Article $article)
+{
+    return '/articles/' . $article->slug . '.html';
+}
+
 ?>

@@ -2,12 +2,6 @@
 
 @section('title', 'Add Article')
 
-@section('css')
-    @parent
-
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/dropzone.css">
-@endsection
-
 @section('content')
     <div class="row">
         <div class="col-lg-12">
@@ -72,11 +66,6 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="photo">Featured Image</label>
-                                    <div class="dropzone" id="photo"></div>
-                                    <input type="hidden" name="image" value="{{ old('image') }}">
-                                </div>
-                                <div class="form-group">
                                     <button type="submit" class="btn btn-primary">Save</button>
                                 </div>
                             </form>
@@ -92,12 +81,6 @@
     <!-- /.row -->
 @endsection
 
-@section('javascript')
-    @parent
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/dropzone.js"></script>
-@endsection
-
 @section('inline_scripts')
     <script type="text/javascript">
     $(document).ready(function() {
@@ -111,63 +94,6 @@
             minHeight: null,
             maxHeight: null
         });
-    });
-    </script>
-
-    <script type="text/javascript">
-    $(document).ready(function() {
-        Dropzone.options.photo = {
-            url: "{{ route('admin.articles.addPhoto') }}",
-            paramName: 'photo', // The name that will be used to transfer the file
-            maxFilesize: 2, // MB
-            acceptedFiles: 'image/*',
-            maxFiles: 1,
-            headers: {
-                'X-CSRF-Token': $('meta[name="csrf_token"]').attr('content')
-            },
-            thumbnailWidth: {{ config('article.thumbnail_width') }},
-            thumbnailHeight: {{ config('article.thumbnail_height') }},
-            addRemoveLinks: true,
-            removedfile: function(file) {
-                var _ref;
-                return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
-            },
-            init: function() {
-                @if ($article->image && file_exists(public_path(config('article.image_path') . '/' . $article->image)))
-                var thisDropzone = this;
-                var fileName = $('input[name="image"]').val();
-                if (fileName != '') {
-                    var mockFile = { name: '{{ config("article.image_path") }}/' + fileName, size: 12345 };
-                    thisDropzone.emit('addedfile', mockFile);
-                    thisDropzone.emit('thumbnail', mockFile, '{{ config("article.image_path") }}/tn-' + fileName);
-                    thisDropzone.emit("complete", mockFile);
-                    var existingFileCount = 1;
-                    thisDropzone.options.maxFiles = thisDropzone.options.maxFiles - existingFileCount;
-                }
-                @endif
-                this.on("success", function(file, response) {
-                    $('input[name="image"]').val(response.fileName);
-                });
-                this.on("removedfile", function(file) {
-                    this.options.maxFiles = this.options.maxFiles + 1;
-                    var image = $('input[name="image"]');
-                    var fileName = image.val();
-                    image.val('');
-                    $.ajax({
-                        type: 'POST',
-                        url: "{{ route('admin.articles.deletePhoto') }}",
-                        data: 'fileName=' + fileName,
-                        dataType: 'html',
-                        headers: {
-                            'X-CSRF-Token': $('meta[name="csrf_token"]').attr('content')
-                        }
-                    });
-                });
-                this.on("maxfilesexceeded", function(file) {
-                    this.removeFile(file);
-                });
-            }
-        };
     });
     </script>
 @endsection

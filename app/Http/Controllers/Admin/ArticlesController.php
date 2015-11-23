@@ -57,7 +57,7 @@ class ArticlesController extends Controller
 
         event(new ArticleWasCreated($article));
 
-        return redirect()->route('admin.articles.index');
+        return redirect()->route('admin.articles.edit', $article->id);
     }
 
     public function addPhoto(UploadPhotoRequest $request)

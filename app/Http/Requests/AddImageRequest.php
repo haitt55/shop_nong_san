@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class UploadPhotoRequest extends Request
+class AddImageRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class UploadPhotoRequest extends Request
     public function rules()
     {
         return [
-            'photo' => 'required|mimes:jpg,jpeg,png,bmp'
+            'image' => 'required|mimes:jpg,jpeg,png,bmp'
         ];
     }
 }

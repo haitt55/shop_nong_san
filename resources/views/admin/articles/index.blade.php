@@ -50,7 +50,9 @@
                                         @foreach ($articles as $article)
                                         <tr>
                                             <td class="text-center">
-                                                {!! $article->image ? image(config('article.image_path') . '/tn-' . $article->image, array('width' => 50), '/img/no_image.png') : '<img src="/img/no_image.png" width="50">' !!}
+                                            <?php
+                                            ?>
+                                                {!! $article->featuredImage() ? image('/' . $article->featuredImage()->thumbnail_path, array('width' => 50), '/img/no_image.png') : '<img src="/img/no_image.png" width="50">' !!}
                                             </td>
                                             <td><a href="{{ route('admin.articles.show', $article->id) }}">{{ $article->title }}</td>
                                             <td>{{ $article->author->name or '' }}</td>
