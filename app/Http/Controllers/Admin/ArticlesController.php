@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\ArticleRequest;
+use App\Http\Requests\UploadPhotoRequest;
 use App\Http\Controllers\Admin\Controller;
 use App\Storage\ArticleRepositoryInterface as ArticleRepository;
 use App\Events\Article\WasCreated as ArticleWasCreated;
@@ -11,6 +12,7 @@ use App\Events\Article\WasUpdated as ArticleWasUpdated;
 use App\Events\Article\WasDeleted as ArticleWasDeleted;
 use App\Events\ExceptionOccurred;
 use Exception;
+use App\Services\Photo;
 
 class ArticlesController extends Controller
 {
@@ -55,7 +57,37 @@ class ArticlesController extends Controller
 
         event(new ArticleWasCreated($article));
 
-        return redirect()->route('admin.articles.index');
+        return redirect()->route('admin.articles.edit', $article->id);
+    }
+
+    public function addPhoto(UploadPhotoRequest $request)
+    {
+        try {
+            $photo = Photo::fromFile($request->file('photo'), public_path(config('article.image_path')));
+        } catch (Exception $ex) {
+            return response()->json([
+                'error' => [
+                    'message' => $ex->getMessage(),
+                ]
+            ]);
+        }
+
+        return response()->json(['fileName' => $photo->name]);
+    }
+
+    public function deletePhoto(Request $request)
+    {
+        try {
+            Photo::delete($request->get('fileName'), public_path(config('article.image_path')));
+        } catch (Exception $ex) {
+            return response()->json([
+                'error' => [
+                    'message' => $ex->getMessage(),
+                ]
+            ]);
+        }
+
+        return response()->json();
     }
 
     /**

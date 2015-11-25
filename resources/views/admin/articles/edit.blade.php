@@ -2,6 +2,12 @@
 
 @section('title', 'Edit Article')
 
+@section('css')
+    @parent
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/dropzone.css">
+@endsection
+
 @section('content')
     <div class="row">
         <div class="col-lg-12">
@@ -27,7 +33,7 @@
                         <div class="col-lg-12">
                             <form method="POST" action="{{ route('admin.articles.update', $article->id) }}" role="form">
                                 @include('admin.layouts.partials.errors')
-                                {{ csrf_field() }}
+                                {!! csrf_field() !!}
                                 {!! method_field('put') !!}
                                 <div class="form-group">
                                     <label for="title">Title</label>
@@ -67,6 +73,24 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12 gallery">
+                                            @foreach ($article->images->chunk(3) as $set)
+                                            <div class="row">
+                                                @foreach ($set as $image)
+                                                <div class="col-md-4 gallery__image">
+                                                    <img src="/{{ $image->thumbnail_path }}" alt="">
+                                                </div>
+                                                @endforeach
+                                            </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="dropzone" id="image"></div>
+                                </div>
+                                <div class="form-group">
                                     <button type="submit" class="btn btn-primary">Save</button>
                                 </div>
                             </form>
@@ -85,6 +109,12 @@
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
+@endsection
+
+@section('javascript')
+    @parent
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/dropzone.js"></script>
 @endsection
 
 @section('inline_scripts')
@@ -130,6 +160,22 @@
                 });
             }
         });
+    });
+    </script>
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+        Dropzone.options.image = {
+            url: "{{ route('admin.articles.images', $article->id) }}",
+            paramName: 'image', // The name that will be used to transfer the file
+            maxFilesize: 2, // MB
+            acceptedFiles: 'image/*',
+            headers: {
+                'X-CSRF-Token': $('meta[name="csrf_token"]').attr('content')
+            },
+            thumbnailWidth: {{ config('article.thumbnail_width') }},
+            thumbnailHeight: {{ config('article.thumbnail_height') }}
+        };
     });
     </script>
 @endsection

@@ -19,6 +19,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
         Route::resource('pages', 'PagesController');
         Route::resource('articles', 'ArticlesController');
         Route::resource('categories', 'CategoriesController');
+
+        Route::post('articles/{id}/images', ['uses' => 'ArticleImagesController@store', 'as' => 'admin.articles.images']);
+        Route::post('articles/addPhoto', ['uses' => 'ArticlesController@addPhoto', 'as' => 'admin.articles.addPhoto']);
+        Route::post('articles/deletePhoto', ['uses' => 'ArticlesController@deletePhoto', 'as' => 'admin.articles.deletePhoto']);
         Route::resource('messages', 'MessagesController', ['only' => ['index', 'show', 'destroy']]);
 
         Route::get('appSettings/general', ['uses' => 'AppSettingsController@general', 'as' => 'admin.appSettings.general']);
@@ -28,3 +32,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
 
 // Web
 Route::get('/', ['uses' => 'HomeController@index', 'as' => 'home.index']);
+Route::get('articles.html', ['uses' => 'ArticlesController@index', 'as' => 'articles.index']);
+Route::get('articles/{slug}.html', ['uses' => 'ArticlesController@show', 'as' => 'articles.show']);
+Route::get('{slug}.html', ['uses' => 'PagesController@show', 'as' => 'pages.show']);
+Route::post('messages', ['uses' => 'MessagesController@store', 'as' => 'messages.store']);

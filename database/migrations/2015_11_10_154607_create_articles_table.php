@@ -15,6 +15,7 @@ class CreateArticlesTable extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->string('slug');
             $table->text('excerpt')->nullable();
             $table->mediumText('content')->nullable();
             $table->integer('author_id');
@@ -22,7 +23,6 @@ class CreateArticlesTable extends Migration
             $table->string('meta_keyword')->nullable();
             $table->string('meta_description', 160)->nullable();
             $table->boolean('published')->default(true);
-            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

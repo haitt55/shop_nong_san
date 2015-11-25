@@ -25,8 +25,19 @@ class CategoryRequest extends Request
     {
         $this->merge(['active' => $this->input('active', 0)]);
 
-        return [
+        $rules = [
             'name' => 'required|max:255',
         ];
+        if ($this->route('categories')) {
+            $optionalRules = [
+                'name' => 'unique:categories,name,' . $this->route('categories'),
+            ];
+        } else {
+            $optionalRules = [
+                'name' => 'unique:categories',
+            ];
+        }
+
+        return array_merge($rules, $optionalRules);
     }
 }

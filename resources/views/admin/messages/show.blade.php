@@ -11,7 +11,7 @@
     </div>
     <!-- /.row -->
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-12 text-right">
             <a href="{{ route('admin.messages.index') }}" class="btn btn-success"><i class="fa fa-list"></i> List</a>
         </div>
     </div>
@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="content">Content</label>
-                                    <p class="form-control-static">{{ $message->content }}</p>
+                                    <div class="form-control-static">{!! $message->content !!}</div>
                                 </div>
                             </form>
                         </div>

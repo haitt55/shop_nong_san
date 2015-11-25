@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\AppSetting;
 
 class AppSettingTableSeeder extends Seeder
 {
@@ -11,30 +12,44 @@ class AppSettingTableSeeder extends Seeder
      */
     public function run()
     {
-        App\Models\AppSetting::truncate();
+        AppSetting::truncate();
         $appSettings = [
             [
+                'key' => 'name',
+                'value' => 'GCMS',
+            ],
+            [
+                'key' => 'company',
+                'value' => 'GTK',
+            ],
+            [
                 'key' => 'email',
-                'value' => 'name@example.com',
+                'value' => 'cuong@gtk.vn',
             ], [
                 'key' => 'phone',
-                'value' => '123.456.7890',
+                'value' => '0979.861.547',
             ], [
                 'key' => 'address',
-                'value' => '3481 Melrose Place Beverly Hills, CA 90210',
+                'value' => 'No. 1C, Lane 105/41 Yen Hoa, Cau Giay District, Hanoi',
             ], [
                 'key' => 'page_title',
-                'value' => 'GCMS',
+                'value' => 'An awesome CMS!',
             ], [
                 'key' => 'meta_keyword',
-                'value' => '',
+                'value' => 'awesome,cms',
             ], [
                 'key' => 'meta_description',
-                'value' => '',
+                'value' => 'GCMS is an awesome CMS!',
+            ], [
+                'key' => 'latitude',
+                'value' => '21.02163',
+            ], [
+                'key' => 'longitude',
+                'value' => '105.79544',
             ]
         ];
         foreach ($appSettings as $appSetting) {
-            App\Models\AppSetting::create($appSetting);
+            AppSetting::create($appSetting);
         }
     }
 }

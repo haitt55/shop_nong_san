@@ -27,7 +27,7 @@
                         <div class="col-lg-12">
                             <form method="POST" action="{{ route('admin.pages.update', $page->id) }}" role="form">
                                 @include('admin.layouts.partials.errors')
-                                {{ csrf_field() }}
+                                {!! csrf_field() !!}
                                 {!! method_field('put') !!}
                                 <div class="form-group">
                                     <label for="title">Title</label>
@@ -50,13 +50,19 @@
                                     <input type="text" name="meta_description" id="meta_description" class="form-control" value="{{ old('meta_description', $page->meta_description) }}">
                                 </div>
                                 <div class="form-group">
-                                    <label for="handle">Handle</label>
-                                    <input type="text" name="handle" id="handle" class="form-control" value="{{ old('handle', $page->handle) }}">
-                                </div>
-                                <div class="form-group">
                                     <div class="checkbox">
                                         <label><input type="checkbox" name="published" id="published" value="1"{{ old('published', $page->published) ? ' checked="checked"' : '' }}> Visible</label>
                                     </div>
+                                </div>
+                                @inject('templateSuffixes', 'App\Http\Utilities\TemplateSuffix')
+                                <div class="form-group">
+                                    <label for="template_suffix">Template</label>
+                                    <select id="template_suffix" name="template_suffix" class="form-control">
+                                        <option value="">page</option>
+                                        @foreach($templateSuffixes::all() as $key => $value)
+                                            <option value="{{ $key }}"{{ (old('template_suffix', $page->template_suffix) == $key) ? ' selected="selected"' : '' }}>{{ $value }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary">Save</button>

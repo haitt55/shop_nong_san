@@ -2,12 +2,6 @@
 
 @section('title', 'Add Article')
 
-@section('css')
-    @parent
-
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/dropzone.css">
-@endsection
-
 @section('content')
     <div class="row">
         <div class="col-lg-12">
@@ -33,7 +27,7 @@
                         <div class="col-lg-12">
                             <form method="POST" action="{{ route('admin.articles.store') }}" enctype="multipart/form-data" role="form">
                                 @include('admin.layouts.partials.errors')
-                                {{ csrf_field() }}
+                                {!! csrf_field() !!}
                                 <div class="form-group">
                                     <label for="title">Title</label>
                                     <input type="text" name="title" id="title" class="form-control" value="{{ old('title') }}">
@@ -72,15 +66,10 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="image">Featured image</label>
-                                    <div class="dropzone" id="dropzone"></div>
-                                </div>
-                                <div class="form-group">
                                     <button type="submit" class="btn btn-primary">Save</button>
                                 </div>
                             </form>
                         </div>
-
                     </div>
                 </div>
                 <!-- /.panel-body -->
@@ -90,12 +79,6 @@
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
-@endsection
-
-@section('javascript')
-    @parent
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/dropzone.js"></script>
 @endsection
 
 @section('inline_scripts')
@@ -111,7 +94,6 @@
             minHeight: null,
             maxHeight: null
         });
-        $("div#dropzone").dropzone({ url: "/file/post" });
     });
     </script>
 @endsection

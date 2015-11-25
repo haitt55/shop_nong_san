@@ -49,7 +49,11 @@
                                     <tbody>
                                         @foreach ($articles as $article)
                                         <tr>
-                                            <td></td>
+                                            <td class="text-center">
+                                            <?php
+                                            ?>
+                                                {!! $article->featuredImage() ? image('/' . $article->featuredImage()->thumbnail_path, array('width' => 50), '/img/no_image.png') : '<img src="/img/no_image.png" width="50">' !!}
+                                            </td>
                                             <td><a href="{{ route('admin.articles.show', $article->id) }}">{{ $article->title }}</td>
                                             <td>{{ $article->author->name or '' }}</td>
                                             <td>{{ $article->updated_at }}</td>

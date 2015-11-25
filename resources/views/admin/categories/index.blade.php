@@ -22,7 +22,7 @@
 
     <!-- /.row -->
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-12 text-right">
             <a href="{{ route('admin.categories.create') }}" class="btn btn-success"><i class="fa fa-plus-circle"></i> Add category</a>
         </div>
     </div>
@@ -52,12 +52,12 @@
                                     <tbody>
                                     @foreach ($categories as $category)
                                         <tr>
-                                            <td><a href="{{ route('admin.categories.show', $category->id) }}">{{ $category->name }}</a></td>
+                                            <td class="text-center"><a href="{{ route('admin.categories.show', $category->id) }}">{{ $category->name }}</a></td>
                                             <td>{{ $category->parent_id ? (!empty($category->parent()) ? $category->parent->name : '') : '' }}</td>
                                             <td>{{ $category->type ? config('app.category_types')[$category->type] : '' }}</td>
                                             <td><span class="label {{ $category->active ? 'label-success' : 'label-danger' }}">{{ $category->active ? 'active' : 'unactive' }}</span></td>
                                             <td>
-                                                <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-warning" title="Edit"><i class="fa fa-edit"></i></a>
+                                                <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-info" title="Edit"><i class="fa fa-edit"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach
