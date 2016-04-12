@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('product_code')->nullable();
             $table->double('price');
+            $table->integer('discount')->default(0);
             $table->longText('detail')->nullable();
             $table->string('slug');
             $table->string('page_title', 70)->nullable();
