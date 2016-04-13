@@ -19,6 +19,12 @@ class DatabaseSeeder extends Seeder
         $this->call(ArticleTableSeeder::class);
         $this->call(MessageTableSeeder::class);
         $this->call(AppSettingTableSeeder::class);
+        $this->call(NewsCategoryTableSeeder::class);
+        $this->call(NewsTableSeeder::class);
+        $this->call(ProductCategoryTableSeeder::class);
+        $this->call(ProductTableSeeder::class);
+        $this->call(ProductArticleTableSeeder::class);
+        $this->call(IntroducePolicyTableSeeder::class);
 
         Model::reguard();
     }

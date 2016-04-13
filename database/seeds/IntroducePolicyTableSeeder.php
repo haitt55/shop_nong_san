@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\Product;
+use App\Models\IntroducePolicy;
 
-class ProductTableSeeder extends Seeder
+class IntroducePolicyTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,9 +12,9 @@ class ProductTableSeeder extends Seeder
      */
     public function run()
     {
-        Product::truncate();
+        IntroducePolicy::truncate();
         if (app()->environment() != 'production') {
-            factory(Product::class, 50)->create();
+            factory(IntroducePolicy::class, 5)->create();
         }
     }
 }

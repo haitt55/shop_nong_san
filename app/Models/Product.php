@@ -17,6 +17,11 @@ class Product extends BaseModel implements SluggableInterface
         'meta_description', 'published'
     ];
 
+    protected $sluggable = [
+        'build_from' => 'name',
+        'save_to'    => 'slug',
+    ];
+
     public function author()
     {
         return $this->belongsTo('App\Models\User', 'author_id');
@@ -25,6 +30,10 @@ class Product extends BaseModel implements SluggableInterface
     public function images()
     {
         return $this->hasMany('App\Models\ProductImage');
+    }
+
+    public function articles() {
+        return $this->hasMany('App\Models\ProductArticle');
     }
 
     public function category() {

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\News;
 
 class NewsTableSeeder extends Seeder
 {
@@ -11,6 +12,9 @@ class NewsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        News::truncate();
+        if (app()->environment() != 'production') {
+            factory(News::class, 50)->create();
+        }
     }
 }

@@ -53,3 +53,41 @@ $factory->define(App\Models\Message::class, function (Faker\Generator $faker) {
         'unread' => $faker->boolean(),
     ];
 });
+
+$factory->define(App\Models\News::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->sentence,
+        'excerpt' => $faker->paragraph(),
+        'content' => '<p>' . implode('</p><p>', $faker->paragraphs()) . '</p>',
+        'category_id' => $faker->randomElement(App\Models\NewsCategory::lists('id')->toArray()),
+        'page_title' => $faker->sentence(),
+        'meta_keyword' => implode(',', $faker->words()),
+        'meta_description' => $faker->text(),
+        'published' => 1,
+    ];
+});
+
+$factory->define(App\Models\Product::class, function (Faker\Generator $faker) {
+    return [
+        'name' => 'product '. $faker->name,
+        'price' => $faker->randomNumber(3) . '0000',
+        'discount' => $faker->randomNumber(2),
+        'detail' => '<p>' . implode('</p><p>', $faker->paragraphs()) . '</p>',
+        'category_id' => $faker->randomElement(App\Models\NewsCategory::lists('id')->toArray()),
+        'page_title' => $faker->sentence,
+        'meta_keyword' => implode(',', $faker->words()),
+        'meta_description' => $faker->text(),
+    ];
+});
+
+$factory->define(App\Models\IntroducePolicy::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->sentence,
+        'excerpt' => $faker->paragraph(),
+        'content' => '<p>' . implode('</p><p>', $faker->paragraphs()) . '</p>',
+        'page_title' => $faker->sentence,
+        'meta_keyword' => implode(',', $faker->words()),
+        'meta_description' => $faker->text(),
+        'published' => 1,
+    ];
+});
