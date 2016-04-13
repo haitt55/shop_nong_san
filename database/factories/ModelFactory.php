@@ -73,7 +73,7 @@ $factory->define(App\Models\Product::class, function (Faker\Generator $faker) {
         'price' => $faker->randomNumber(3) . '0000',
         'discount' => $faker->randomNumber(2),
         'detail' => '<p>' . implode('</p><p>', $faker->paragraphs()) . '</p>',
-        'category_id' => $faker->randomElement(App\Models\NewsCategory::lists('id')->toArray()),
+        'category_id' => $faker->randomElement(App\Models\ProductCategory::lists('id')->toArray()),
         'page_title' => $faker->sentence,
         'meta_keyword' => implode(',', $faker->words()),
         'meta_description' => $faker->text(),

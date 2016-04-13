@@ -12,6 +12,11 @@ class IntroducePolicy extends BaseModel implements SluggableInterface
 
     protected $table = 'introduces_policies';
 
+    protected $fillable = [
+        'title', 'content', 'page_title', 'meta_keyword',
+        'meta_description', 'published'
+    ];
+
     public static function findBySlug($slug)
     {
         return static::whereSlug($slug)->firstOrFail();

@@ -44,4 +44,13 @@ function article_path(App\Models\Article $article)
     return '/articles/' . $article->slug . '.html';
 }
 
+function string_limit($str, $limit = 100, $end = '...')
+{
+    if (mb_strwidth($str, 'UTF-8') <= $limit) {
+        return $str;
+    }
+
+    return rtrim(mb_strimwidth($str, 0, $limit, '', 'UTF-8')).$end."</p>";
+}
+
 ?>

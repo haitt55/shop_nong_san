@@ -13,8 +13,11 @@
             <li>
                 <a href="{{ route('admin.categories.index') }}"><i class="fa fa-list fa-fw"></i> Categories</a>
             </li>
-            <li>
+            <li class="hidden">
                 <a href="{{ route('admin.messages.index') }}"><i class="fa fa-envelope-o fa-fw"></i> Messages</a>
+            </li>
+            <li>
+                <a href="{{ route('admin.introduces_policies.index') }}"><i class="fa fa-info-circle fa-fw"></i> Giới thiệu và chính sách</a>
             </li>
             <li>
                 <a href="{{ route('admin.users.index') }}"><i class="fa fa-user fa-fw"></i> Users</a>

@@ -19,6 +19,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
         Route::resource('pages', 'PagesController');
         Route::resource('articles', 'ArticlesController');
         Route::resource('categories', 'CategoriesController');
+        Route::resource('news_categories', 'NewsCategoriesController');
+        Route::resource('news', 'NewsController');
+        Route::resource('products', 'ProductsController');
+        Route::resource('product_categories', 'ProductCategoriesController');
+        Route::resource('product_articles', 'ProductArticlesController');
+        Route::resource('introduces_policies', 'IntroducesPoliciesController');
 
         Route::post('articles/{id}/images', ['uses' => 'ArticleImagesController@store', 'as' => 'admin.articles.images']);
         Route::post('articles/addPhoto', ['uses' => 'ArticlesController@addPhoto', 'as' => 'admin.articles.addPhoto']);
