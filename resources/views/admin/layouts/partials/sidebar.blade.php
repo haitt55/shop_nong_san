@@ -20,6 +20,9 @@
                 <a href="{{ route('admin.introduces_policies.index') }}"><i class="fa fa-info-circle fa-fw"></i> Giới thiệu và chính sách</a>
             </li>
             <li>
+                <a href="{{ route('admin.news.index') }}"><i class="fa fa-newspaper-o fa-fw"></i> Tin tức</a>
+            </li>
+            <li>
                 <a href="{{ route('admin.news_categories.index') }}"><i class="fa fa-list fa-fw"></i> Danh mục tin tức</a>
             </li>
             <li class="hidden">
