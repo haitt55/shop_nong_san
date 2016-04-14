@@ -21,7 +21,7 @@ class NewsCategoryRepository extends Repository implements NewsCategoryRepositor
 
     public function getCategoryOptions($id = null)
     {
-        $categoryOptions = DB::table('categories')->lists('name', 'id');
+        $categoryOptions = DB::table('news_categories')->lists('name', 'id');
         if (!is_null($id)) {
             unset($categoryOptions[$id]);
         }

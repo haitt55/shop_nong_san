@@ -3,19 +3,19 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\CategoryRequest;
+use App\Http\Requests\NewsCategoryRequest;
 use App\Http\Controllers\Admin\Controller;
-use App\Storage\CategoryRepositoryInterface as CategoryRepository;
-use App\Events\Category\WasCreated as CategoryWasCreated;
-use App\Events\Category\WasUpdated as CategoryWasUpdated;
-use App\Events\Category\WasDeleted as CategoryWasDeleted;
+use App\Storage\NewsCategoryRepositoryInterface as NewsCategoryRepository;
+use App\Events\NewsCategory\WasCreated as NewsCategoryWasCreated;
+use App\Events\NewsCategory\WasUpdated as NewsCategoryWasUpdated;
+use App\Events\NewsCategory\WasDeleted as NewsCategoryWasDeleted;
 use App\Events\ExceptionOccurred;
 
 class NewsCategoriesController extends Controller
 {
     protected $categoryRepository;
 
-    public function __construct(CategoryRepository $categoryRepository)
+    public function __construct(NewsCategoryRepository $categoryRepository)
     {
         $this->categoryRepository = $categoryRepository;
     }
@@ -29,7 +29,7 @@ class NewsCategoriesController extends Controller
     {
         $categories = $this->categoryRepository->all();
 
-        return view('admin.categories.index', compact('categories'));
+        return view('admin.news_categories.index', compact('categories'));
     }
 
     /**
@@ -39,10 +39,7 @@ class NewsCategoriesController extends Controller
      */
     public function create()
     {
-        $categoryOptions = $this->categoryRepository->getCategoryOptions();
-        $typeOptions = config('app.category_types');
-
-        return view('admin.categories.create', compact('categoryOptions', 'typeOptions'));
+        return view('admin.news_categories.create');
     }
 
     /**
@@ -51,13 +48,13 @@ class NewsCategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryRequest $request)
+    public function store(NewsCategoryRequest $request)
     {
         $category = $this->categoryRepository->create($request->all());
 
-        event(new CategoryWasCreated($category));
+        event(new NewsCategoryWasCreated($category));
 
-        return redirect()->route('admin.categories.index');
+        return redirect()->route('admin.news_categories.index');
     }
 
     /**
@@ -70,7 +67,7 @@ class NewsCategoriesController extends Controller
     {
         $category = $this->categoryRepository->findOrFail($id);
 
-        return view('admin.categories.show', compact('category'));
+        return view('admin.news_categories.show', compact('category'));
     }
 
     /**
@@ -82,10 +79,8 @@ class NewsCategoriesController extends Controller
     public function edit($id)
     {
         $category = $this->categoryRepository->findOrFail($id);
-        $categoryOptions = $this->categoryRepository->getCategoryOptions($id);
-        $typeOptions = config('app.category_types');
 
-        return view('admin.categories.edit', compact('category', 'categoryOptions', 'typeOptions'));
+        return view('admin.news_categories.edit', compact('category'));
     }
 
     /**
@@ -95,13 +90,13 @@ class NewsCategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryRequest $request, $id)
+    public function update(NewsCategoryRequest $request, $id)
     {
         $category = $this->categoryRepository->update($id, $request->all());
 
-        event(new CategoryWasUpdated($category));
+        event(new NewsCategoryWasUpdated($category));
 
-        return redirect()->route('admin.categories.index');
+        return redirect()->route('admin.news_categories.index');
     }
 
     /**
@@ -124,7 +119,7 @@ class NewsCategoriesController extends Controller
             ]);
         }
 
-        event(new CategoryWasDeleted());
+        event(new NewsCategoryWasDeleted());
 
         return response()->json();
     }

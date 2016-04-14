@@ -57,7 +57,7 @@
                                             <td>{{ $introduce_policy->updated_at }}</td>
                                             <td width="18%">
                                                 <a href="{{ route('admin.introduces_policies.edit', $introduce_policy->id) }}" class="btn btn-info"><i class="fa fa-edit"></i> Sửa</a>
-                                                <button class="btn btn-danger" id="btn-delete" data-link="{{ route('admin.introduces_policies.destroy', $introduce_policy->id) }}"><i class="fa fa-remove"></i> Xóa</button>
+                                                <button class="btn btn-danger btn-delete" data-link="{{ route('admin.introduces_policies.destroy', $introduce_policy->id) }}"><i class="fa fa-remove"></i> Xóa</button>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -103,28 +103,8 @@
     </script>
 
     <script type="text/javascript">
-        $(document).ready(function() {
-            $("#btn-delete").click(function() {
-                if (confirm('Bạn có thực sự muốn xóa?')) {
-                    var url = $(this).attr('data-link');
-                    $.ajax({
-                        url : url,
-                        type : 'DELETE',
-                        beforeSend: function (xhr) {
-                            var token = $('meta[name="csrf_token"]').attr('content');
-                            if (token) {
-                                return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                            }
-                        },
-                        success: function(data) {
-                            window.location.href = '{{ URL::route('admin.introduces_policies.index') }}';
-                        },
-                        error: function(data) {
-                            window.location.href = '{{ URL::route('admin.introduces_policies.index') }}';
-                        }
-                    });
-                }
-            });
-        });
+        var indexUrl = '{{ URL::route('admin.introduces_policies.index') }}';
     </script>
+
+    <script src="/templates/admin/js/delete-item.js"></script>
 @endsection

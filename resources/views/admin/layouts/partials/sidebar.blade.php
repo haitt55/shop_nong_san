@@ -4,13 +4,13 @@
             <li>
                 <a href="{{ route('admin.home.dashboard') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
             </li>
-            <li>
+            <li class="hidden">
                 <a href="{{ route('admin.pages.index') }}"><i class="fa fa-file-o fa-fw"></i> Pages</a>
             </li>
-            <li>
+            <li class="hidden">
                 <a href="{{ route('admin.articles.index') }}"><i class="fa fa-tag fa-fw"></i> Articles</a>
             </li>
-            <li>
+            <li class="hidden">
                 <a href="{{ route('admin.categories.index') }}"><i class="fa fa-list fa-fw"></i> Categories</a>
             </li>
             <li class="hidden">
@@ -20,6 +20,9 @@
                 <a href="{{ route('admin.introduces_policies.index') }}"><i class="fa fa-info-circle fa-fw"></i> Giới thiệu và chính sách</a>
             </li>
             <li>
+                <a href="{{ route('admin.news_categories.index') }}"><i class="fa fa-list fa-fw"></i> Danh mục tin tức</a>
+            </li>
+            <li class="hidden">
                 <a href="{{ route('admin.users.index') }}"><i class="fa fa-user fa-fw"></i> Users</a>
             </li>
             <li>
