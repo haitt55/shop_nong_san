@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-12 text-right">
             <h1 class="page-header">Sửa sản phẩm</h1>
         </div>
         <!-- /.col-lg-12 -->
