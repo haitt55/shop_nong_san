@@ -53,4 +53,14 @@ function string_limit($str, $limit = 100, $end = '...')
     return rtrim(mb_strimwidth($str, 0, $limit, '', 'UTF-8')).$end."</p>";
 }
 
+function display_money($number)
+{
+    $currency = app_settings('currency_word');
+    if (!$number) {
+        return '';
+    }
+
+    return number_format($number). ' ' . $currency;
+}
+
 ?>

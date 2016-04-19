@@ -13,8 +13,8 @@ class Product extends BaseModel implements SluggableInterface
     protected $table = 'products';
 
     protected $fillable = [
-        'title', 'excerpt', 'category_id', 'content', 'author_id', 'page_title', 'meta_keyword',
-        'meta_description', 'published'
+        'name', 'category_id', 'content', 'amount', 'unit_id', 'price', 'discount', 'status', 'page_title', 'meta_keyword',
+        'meta_description', 'detail'
     ];
 
     protected $sluggable = [
@@ -63,5 +63,14 @@ class Product extends BaseModel implements SluggableInterface
     public function featuredImage()
     {
         return $this->images()->first();
+    }
+
+    public function delete()
+    {
+        if ($this->articles()->count() > 0) {
+            throw new Exception('Không thể xóa. Vẫn còn bài viết về sản phẩm này.');
+        }
+
+        return parent::delete();
     }
 }

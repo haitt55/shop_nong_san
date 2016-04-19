@@ -47,6 +47,10 @@
                                     <label for="meta_description">Meta Description</label>
                                     <input type="text" name="meta_description" id="meta_description" class="form-control" value="{{ old('meta_description', $appSettings['meta_description']) }}">
                                 </div>
+                                <div class="form-group">
+                                    <label for="currency_word">Đơn vị tiền</label>
+                                    <input type="text" name="currency_word" id="currency_word" class="form-control" value="{{ old('currency_word', $appSettings['currency_word']) }}">
+                                </div>
                                 <div>
                                     <label>Google Maps</label>
                                     <div id="map"></div>

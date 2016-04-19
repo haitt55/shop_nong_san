@@ -21,7 +21,7 @@ class ProductCategoryRepository extends Repository implements ProductCategoryRep
 
     public function getCategoryOptions($id = null)
     {
-        $categoryOptions = DB::table('categories')->lists('name', 'id');
+        $categoryOptions = DB::table('product_categories')->lists('name', 'id');
         if (!is_null($id)) {
             unset($categoryOptions[$id]);
         }

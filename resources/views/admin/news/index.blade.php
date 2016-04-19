@@ -57,7 +57,7 @@
                                             <td>{{ $news->updated_at }}</td>
                                             <td width="18%">
                                                 <a href="{{ route('admin.news.edit', $news->id) }}" class="btn btn-info"><i class="fa fa-edit"></i> Sửa</a>
-                                                <button class="btn btn-danger btn-delete" data-link="{{ route('admin.news.destroy', $news->id) }}"><i class="fa fa-remove"></i> Xóa</button>
+                                                <button class="btn btn-danger btn-delete" data-link="{{ route('admin.news.destroy', $news->id) }}" onclick="delete_item(this);"><i class="fa fa-remove"></i> Xóa</button>
                                             </td>
                                         </tr>
                                         @endforeach

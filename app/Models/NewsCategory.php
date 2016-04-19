@@ -45,4 +45,13 @@ class NewsCategory extends BaseModel
     public function news() {
         return $this->hasMany('App\Models\News');
     }
+
+    public function delete()
+    {
+        if ($this->news()->count() > 0) {
+            throw new Exception('Không thể xóa. Vẫn còn tin tức thuộc danh mục này.');
+        }
+
+        return parent::delete();
+    }
 }

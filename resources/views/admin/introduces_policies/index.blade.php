@@ -57,7 +57,7 @@
                                             <td>{{ $introduce_policy->updated_at }}</td>
                                             <td width="18%">
                                                 <a href="{{ route('admin.introduces_policies.edit', $introduce_policy->id) }}" class="btn btn-info"><i class="fa fa-edit"></i> Sửa</a>
-                                                <button class="btn btn-danger btn-delete" data-link="{{ route('admin.introduces_policies.destroy', $introduce_policy->id) }}"><i class="fa fa-remove"></i> Xóa</button>
+                                                <button class="btn btn-danger btn-delete" data-link="{{ route('admin.introduces_policies.destroy', $introduce_policy->id) }}" onclick="delete_item(this);"><i class="fa fa-remove"></i> Xóa</button>
                                             </td>
                                         </tr>
                                         @endforeach

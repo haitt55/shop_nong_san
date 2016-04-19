@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNewsCategoriesTable extends Migration
+class CreateProductUnitsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,10 @@ class CreateNewsCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('news_categories', function (Blueprint $table) {
+        Schema::create('product_units', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('parent_id')->default(0);
             $table->string('name');
-            $table->tinyInteger('type');
-            $table->boolean('active')->default(true);
+            $table->tinyInteger('type')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -30,6 +28,6 @@ class CreateNewsCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('news_categories');
+        Schema::drop('product_units');
     }
 }

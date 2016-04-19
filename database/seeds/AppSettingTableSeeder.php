@@ -46,6 +46,9 @@ class AppSettingTableSeeder extends Seeder
             ], [
                 'key' => 'longitude',
                 'value' => '105.79544',
+            ], [
+                'key' => 'currency_word',
+                'value' => 'Đ',
             ]
         ];
         foreach ($appSettings as $appSetting) {

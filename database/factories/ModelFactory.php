@@ -68,12 +68,20 @@ $factory->define(App\Models\News::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\Models\Product::class, function (Faker\Generator $faker) {
+    $amount = $faker->randomElement($array = array(330, 500, 750, 1, 5));
+    if($amount > 10) {
+        $unit = 1;
+    } else {
+        $unit = 2;
+    }
     return [
         'name' => 'product '. $faker->name,
-        'price' => $faker->randomNumber(3) . '0000',
+        'price' => $faker->randomNumber(2) . '0000',
         'discount' => $faker->randomNumber(2),
         'detail' => '<p>' . implode('</p><p>', $faker->paragraphs()) . '</p>',
         'category_id' => $faker->randomElement(App\Models\ProductCategory::lists('id')->toArray()),
+        'amount' => $amount,
+        'unit_id' => $unit,
         'page_title' => $faker->sentence,
         'meta_keyword' => implode(',', $faker->words()),
         'meta_description' => $faker->text(),

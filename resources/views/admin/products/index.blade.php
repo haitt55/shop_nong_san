@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Danh mục tin tức')
+@section('title', 'Danh sách sản phẩm')
 
 @section('css')
 @parent
@@ -15,7 +15,7 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Danh mục tin tức</h1>
+            <h1 class="page-header">Danh sách sản phẩm</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -23,7 +23,7 @@
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-12 text-right">
-            <a href="{{ route('admin.news_categories.create') }}" class="btn btn-success"><i class="fa fa-plus-circle"></i> Thêm danh mục mới</a>
+            <a href="{{ route('admin.products.create') }}" class="btn btn-success"><i class="fa fa-plus-circle"></i> Thêm sản phẩm</a>
         </div>
     </div>
     <br />
@@ -33,30 +33,32 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Danh sách danh mục tin tức
+                    Danh sách sản phẩm
                 </div>
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="dataTable_wrapper">
-                                <table class="table table-striped table-bordered table-hover" id="dataTables-categories">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-products">
                                     <thead>
                                     <tr>
-                                        <th></th>
-                                        <th>Tên danh mục</th>
+                                        <th>Tên sản phẩm</th>
+                                        <th>Giá</th>
+                                        <th>Khối lượng/Dung tích</th>
+                                        <th>Trạng thái</th>
                                         <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <?php $index = 0; ?>
-                                    @foreach ($categories as $category)
-                                        <?php $index ++; ?>
+                                    @foreach ($products as $product)
                                         <tr>
-                                            <td>#{{ $index }}</td>
-                                            <td class="text-left">{{ $category->name }}</td>
+                                            <td class="text-center">{{ $product->name }}</td>
+                                            <td>{{ $product->price ? display_money($product->price) : '' }}</td>
+                                            <td>{{ $product->amount or '' }} {{ $product->unit_id ? $arrUnits[$product->unit_id] : '' }}</td>
+                                            <td><span class="label {{ $product->status ? 'label-success' : 'label-danger' }}">{{ $product->status ? 'còn hàng' : 'hết hàng' }}</span></td>
                                             <td>
-                                                <a href="{{ route('admin.news_categories.edit', $category->id) }}" class="btn btn-info" title="Sửa"><i class="fa fa-edit"></i> Sửa</a>
-                                                <button class="btn btn-danger btn-delete" data-link="{{ route('admin.news_categories.destroy', $category->id) }}" onclick="delete_item(this);"><i class="fa fa-remove"></i> Xóa</button>
+                                                <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-info" title="Edit"><i class="fa fa-edit"> Sửa</i></a>
+                                                <button class="btn btn-danger btn-delete" data-link="{{ route('admin.products.destroy', $product->id) }}" onclick="delete_item(this);"><i class="fa fa-remove"></i> Xóa</button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -86,9 +88,11 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-            $("#dataTables-categories").DataTable({
+            $("#dataTables-products").DataTable({
                 responsive: true,
                 "aoColumns": [
+                    null,
+                    null,
                     null,
                     null,
                     { bSortable: false }
@@ -98,7 +102,7 @@
     </script>
 
     <script type="text/javascript">
-        var indexUrl = '{{ URL::route('admin.news_categories.index') }}';
+        var indexUrl = '{{ URL::route('admin.products.index') }}';
     </script>
 
     <script src="/templates/admin/js/delete-item.js"></script>

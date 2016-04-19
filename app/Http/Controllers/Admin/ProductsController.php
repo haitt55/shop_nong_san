@@ -3,20 +3,26 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\CategoryRequest;
+use App\Http\Requests\ProductRequest;
 use App\Http\Controllers\Admin\Controller;
-use App\Storage\CategoryRepositoryInterface as CategoryRepository;
-use App\Events\Category\WasCreated as CategoryWasCreated;
-use App\Events\Category\WasUpdated as CategoryWasUpdated;
-use App\Events\Category\WasDeleted as CategoryWasDeleted;
+use App\Storage\ProductRepositoryInterface as ProductRepository;
+use App\Storage\ProductCategoryRepositoryInterface as CategoryRepository;
+use App\Events\Product\WasCreated as ProductWasCreated;
+use App\Events\Product\WasUpdated as ProductWasUpdated;
+use App\Events\Product\WasDeleted as ProductWasDeleted;
 use App\Events\ExceptionOccurred;
 
 class ProductsController extends Controller
 {
+    protected $productRepository;
+
     protected $categoryRepository;
 
-    public function __construct(CategoryRepository $categoryRepository)
+    public function __construct(ProductRepository $productRepository,
+                                CategoryRepository $categoryRepository)
     {
+        parent::__construct();
+        $this->productRepository = $productRepository;
         $this->categoryRepository = $categoryRepository;
     }
 
@@ -27,9 +33,10 @@ class ProductsController extends Controller
      */
     public function index()
     {
-//        $categories = $this->categoryRepository->all();
-//
-//        return view('admin.categories.index', compact('categories'));
+        $products = $this->productRepository->all();
+        $arrUnits = $this->units;
+
+        return view('admin.products.index', compact('products', 'arrUnits'));
     }
 
     /**
@@ -39,10 +46,10 @@ class ProductsController extends Controller
      */
     public function create()
     {
-//        $categoryOptions = $this->categoryRepository->getCategoryOptions();
-//        $typeOptions = config('app.category_types');
-//
-//        return view('admin.categories.create', compact('categoryOptions', 'typeOptions'));
+        $categoryOptions = $this->categoryRepository->getCategoryOptions();
+        $arrUnits = $this->units;
+
+        return view('admin.products.create', compact('categoryOptions', 'arrUnits'));
     }
 
     /**
@@ -51,13 +58,13 @@ class ProductsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryRequest $request)
+    public function store(ProductRequest $request)
     {
-//        $category = $this->categoryRepository->create($request->all());
-//
-//        event(new CategoryWasCreated($category));
-//
-//        return redirect()->route('admin.categories.index');
+        $product = $this->productRepository->create($request->all());
+
+        event(new ProductWasCreated($product));
+
+        return redirect()->route('admin.products.index');
     }
 
     /**
@@ -81,11 +88,11 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-//        $category = $this->categoryRepository->findOrFail($id);
-//        $categoryOptions = $this->categoryRepository->getCategoryOptions($id);
-//        $typeOptions = config('app.category_types');
-//
-//        return view('admin.categories.edit', compact('category', 'categoryOptions', 'typeOptions'));
+        $product = $this->productRepository->findOrFail($id);
+        $categoryOptions = $this->categoryRepository->getCategoryOptions();
+        $arrUnits = $this->units;
+
+        return view('admin.products.edit', compact('product', 'categoryOptions', 'arrUnits'));
     }
 
     /**
@@ -95,13 +102,13 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryRequest $request, $id)
+    public function update(ProductRequest $request, $id)
     {
-//        $category = $this->categoryRepository->update($id, $request->all());
-//
-//        event(new CategoryWasUpdated($category));
-//
-//        return redirect()->route('admin.categories.index');
+        $product = $this->productRepository->update($id, $request->all());
+
+        event(new ProductWasUpdated($product));
+
+        return redirect()->route('admin.products.index');
     }
 
     /**
@@ -112,20 +119,20 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-//        try {
-//            $this->categoryRepository->delete($id);
-//        } catch (Exception $ex) {
-//            event(new ExceptionOccurred($ex));
-//
-//            return response()->json([
-//                'error' => [
-//                    'message' => $ex->getMessage(),
-//                ]
-//            ]);
-//        }
-//
-//        event(new CategoryWasDeleted());
-//
-//        return response()->json();
+        try {
+            $this->productRepository->delete($id);
+        } catch (Exception $ex) {
+            event(new ExceptionOccurred($ex));
+
+            return response()->json([
+                'error' => [
+                    'message' => $ex->getMessage(),
+                ]
+            ]);
+        }
+
+        event(new ProductWasDeleted());
+
+        return response()->json();
     }
 }
