@@ -5,17 +5,17 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Storage\ArticleRepositoryInterface as ArticleRepository;
+use App\Storage\ProductRepositoryInterface as ProductRepository;
 use App\Http\Requests\AddImageRequest;
-use App\Services\AddImageToArticle;
+use App\Services\AddImageToProduct;
 
 class ProductImagesController extends Controller
 {
-    protected $articleRepository;
+    protected $productRepository;
 
-    public function __construct(ArticleRepository $articleRepository)
+    public function __construct(ProductRepository $productRepository)
     {
-        $this->articleRepository = $articleRepository;
+        $this->productRepository = $productRepository;
     }
 
     /**
@@ -24,12 +24,12 @@ class ProductImagesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($articleId, AddImageRequest $request)
+    public function store($productId, AddImageRequest $request)
     {
-        $article = $this->articleRepository->findOrFail($articleId);
+        $product = $this->productRepository->findOrFail($productId);
         $image = $request->file('image');
 
-        (new AddImageToArticle($article, $image))->save();
+        (new AddImageToProduct($product, $image))->save();
 
         return response()->json();
     }

@@ -12,7 +12,7 @@ class ProductImage extends BaseModel
         'name', 'path', 'thumbnail_path'
     ];
 
-    public function news()
+    public function product()
     {
         return $this->belongsTo('App\Models\Product');
     }

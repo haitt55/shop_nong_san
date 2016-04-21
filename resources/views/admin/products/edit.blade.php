@@ -2,6 +2,12 @@
 
 @section('title', 'Sửa sản phẩm')
 
+@section('css')
+    @parent
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/dropzone.css">
+@endsection
+
 @section('content')
     <div class="row">
         <div class="col-lg-12 text-right">
@@ -86,6 +92,24 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12 gallery">
+                                            @foreach ($product->images->chunk(3) as $set)
+                                                <div class="row">
+                                                    @foreach ($set as $image)
+                                                        <div class="col-md-4 gallery__image">
+                                                            <img src="/{{ $product->thumbnail_path }}" alt="">
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="dropzone" id="image"></div>
+                                </div>
+                                <div class="form-group">
                                     <button type="submit" class="btn btn-primary">Lưu</button>
                                 </div>
                             </form>
@@ -101,6 +125,12 @@
     <!-- /.row -->
 @endsection
 
+@section('javascript')
+    @parent
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/dropzone.js"></script>
+@endsection
+
 @section('inline_scripts')
     <script type="text/javascript">
         $(document).ready(function() {
@@ -109,6 +139,22 @@
                 minHeight: null,
                 maxHeight: null
             });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            Dropzone.options.image = {
+                url: "{{ route('admin.products.images', $product->id) }}",
+                paramName: 'image', // The name that will be used to transfer the file
+                maxFilesize: 2, // MB
+                acceptedFiles: 'image/*',
+                headers: {
+                    'X-CSRF-Token': $('meta[name="csrf_token"]').attr('content')
+                },
+                thumbnailWidth: {{ config('product.thumbnail_width') }},
+                thumbnailHeight: {{ config('product.thumbnail_height') }}
+            };
         });
     </script>
 @endsection

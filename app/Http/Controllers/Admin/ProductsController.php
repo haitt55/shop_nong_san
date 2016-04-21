@@ -64,7 +64,37 @@ class ProductsController extends Controller
 
         event(new ProductWasCreated($product));
 
-        return redirect()->route('admin.products.index');
+        return redirect()->route('admin.products.edit', $product->id);
+    }
+
+    public function addPhoto(UploadPhotoRequest $request)
+    {
+        try {
+            $photo = Photo::fromFile($request->file('photo'), public_path(config('product.image_path')));
+        } catch (Exception $ex) {
+            return response()->json([
+                'error' => [
+                    'message' => $ex->getMessage(),
+                ]
+            ]);
+        }
+
+        return response()->json(['fileName' => $photo->name]);
+    }
+
+    public function deletePhoto(Request $request)
+    {
+        try {
+            Photo::delete($request->get('fileName'), public_path(config('product.image_path')));
+        } catch (Exception $ex) {
+            return response()->json([
+                'error' => [
+                    'message' => $ex->getMessage(),
+                ]
+            ]);
+        }
+
+        return response()->json();
     }
 
     /**
@@ -75,9 +105,9 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-//        $category = $this->categoryRepository->findOrFail($id);
-//
-//        return view('admin.categories.show', compact('category'));
+        $product = $this->productRepository->findOrFail($id);
+
+        return view('admin.products.show', compact('product', 'arrUnits'));
     }
 
     /**

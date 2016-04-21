@@ -26,6 +26,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
         Route::resource('product_articles', 'ProductArticlesController');
         Route::resource('introduces_policies', 'IntroducesPoliciesController');
 
+        Route::post('products/{id}/images', ['uses' => 'ProductImagesController@store', 'as' => 'admin.products.images']);
+        Route::post('products/addPhoto', ['uses' => 'ProductsController@addPhoto', 'as' => 'admin.products.addPhoto']);
+        Route::post('products/deletePhoto', ['uses' => 'ProductsController@deletePhoto', 'as' => 'admin.products.deletePhoto']);
         Route::post('articles/{id}/images', ['uses' => 'ArticleImagesController@store', 'as' => 'admin.articles.images']);
         Route::post('articles/addPhoto', ['uses' => 'ArticlesController@addPhoto', 'as' => 'admin.articles.addPhoto']);
         Route::post('articles/deletePhoto', ['uses' => 'ArticlesController@deletePhoto', 'as' => 'admin.articles.deletePhoto']);
