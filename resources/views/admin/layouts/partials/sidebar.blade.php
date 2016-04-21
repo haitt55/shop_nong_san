@@ -17,6 +17,9 @@
                 <a href="{{ route('admin.messages.index') }}"><i class="fa fa-envelope-o fa-fw"></i> Messages</a>
             </li>
             <li>
+                <a href="{{ route('admin.product_categories.index') }}"><i class="fa fa-list fa-fw"></i> Danh mục sản phẩm</a>
+            </li>
+            <li>
                 <a href="{{ route('admin.products.index') }}"><i class="fa fa-qrcode fa-fw"></i> Sản phẩm</a>
             </li>
             <li>

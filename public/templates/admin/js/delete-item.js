@@ -4,7 +4,7 @@
 
     function delete_item(element) {
         if (confirm('Bạn có thực sự muốn xóa?')) {
-            var url = element.attr('data-link');
+            var url = element.getAttribute('data-link');
             $.ajax({
                 url : url,
                 type : 'DELETE',
