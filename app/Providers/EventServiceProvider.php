@@ -25,6 +25,11 @@ class EventServiceProvider extends ServiceProvider
         'App\Listeners\PageEventListener',
         'App\Listeners\UserEventListener',
         'App\Listeners\CategoryEventListener',
+        'App\Listeners\ProductEventListener',
+        'App\Listeners\NewsEventListener',
+        'App\Listeners\NewsCategoryEventListener',
+        'App\Listeners\ProductCategoryEventListener',
+        'App\Listeners\ProductArticleEventListener',
     ];
 
     /**

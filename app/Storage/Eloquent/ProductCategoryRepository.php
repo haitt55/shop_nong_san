@@ -21,11 +21,36 @@ class ProductCategoryRepository extends Repository implements ProductCategoryRep
 
     public function getCategoryOptions($id = null)
     {
-        $categoryOptions = DB::table('product_categories')->lists('name', 'id');
+        $categories = $this->model->where('parent_id', 0)->get();
+        $categoryOptions = array();
+        foreach ($categories as $category) {
+            $this->addOptionCategory($categoryOptions, $category);
+        }
         if (!is_null($id)) {
             unset($categoryOptions[$id]);
         }
 
+        return $categoryOptions;
+    }
+
+    public function addOptionCategory(&$categoryOptions, $category) {
+        $level = $category->getLevel();
+        if ($category->parent_id != 0) {
+            $printLevel = '';
+            for ($i = 0; $i < $level; $i++) {
+                $printLevel .= '++';
+            }
+            $name = $printLevel . $category->name;
+        } else {
+            $name = $category->name;
+        }
+        $categoryOptions[$category->id] = $name;
+        $childs = $category->childs;
+        if ($childs) {
+            foreach ($childs as $child) {
+                $this->addOptionCategory($categoryOptions, $child);
+            }
+        }
         return $categoryOptions;
     }
 }

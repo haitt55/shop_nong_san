@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
+use App\Http\Requests\UploadPhotoRequest;
 use App\Http\Controllers\Admin\Controller;
 use App\Storage\ProductRepositoryInterface as ProductRepository;
 use App\Storage\ProductCategoryRepositoryInterface as CategoryRepository;
@@ -11,6 +12,8 @@ use App\Events\Product\WasCreated as ProductWasCreated;
 use App\Events\Product\WasUpdated as ProductWasUpdated;
 use App\Events\Product\WasDeleted as ProductWasDeleted;
 use App\Events\ExceptionOccurred;
+use Exception;
+use App\Services\Photo;
 
 class ProductsController extends Controller
 {
@@ -106,6 +109,7 @@ class ProductsController extends Controller
     public function show($id)
     {
         $product = $this->productRepository->findOrFail($id);
+        $arrUnits = $this->units;
 
         return view('admin.products.show', compact('product', 'arrUnits'));
     }

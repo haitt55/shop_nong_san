@@ -10,14 +10,14 @@
 
 @section('content')
     <div class="row">
-        <div class="col-lg-12 text-right">
+        <div class="col-lg-12">
             <h1 class="page-header">Sửa sản phẩm</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-12 text-right">
             <a href="{{ route('admin.products.index') }}" class="btn btn-success"><i class="fa fa-list"></i> Danh sách</a>
         </div>
     </div>
@@ -26,7 +26,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Edit category
+                    Sửa sản phẩm
                 </div>
                 <div class="panel-body">
                     <div class="row">
@@ -98,7 +98,7 @@
                                                 <div class="row">
                                                     @foreach ($set as $image)
                                                         <div class="col-md-4 gallery__image">
-                                                            <img src="/{{ $product->thumbnail_path }}" alt="">
+                                                            <img src="/{{ $image->thumbnail_path }}" alt="">
                                                         </div>
                                                     @endforeach
                                                 </div>

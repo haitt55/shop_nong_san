@@ -34,15 +34,29 @@ class ProductCategory extends BaseModel
 
     public function parent()
     {
-        return $this->belongsTo('App\Models\ProductCategory', 'parent_id', 'id');
+        return $this->belongsTo('App\Models\ProductCategory', 'parent_id');
     }
 
     public function childs()
     {
-        return $this->hasMany('App\Models\ProductCategory', 'id', 'parent_id');
+        return $this->hasMany('App\Models\ProductCategory', 'parent_id', 'id');
     }
 
     public function products() {
         return $this->hasMany('App\Models\Product');
+    }
+
+    public function getLevel() {
+        if ($this->parent_id == 0) {
+            $level = 0;
+        } else {
+            $level = 1;
+            $parent = $this->parent;
+            while ($parent->parent_id != 0) {
+                $level ++;
+                $parent = $parent->parent;
+            }
+        }
+        return $level;
     }
 }

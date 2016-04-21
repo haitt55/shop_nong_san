@@ -11,7 +11,7 @@
     </div>
     <!-- /.row -->
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-12 text-right">
             <a href="{{ route('admin.products.index') }}" class="btn btn-success"><i class="fa fa-list"></i> Danh sách</a>
         </div>
     </div>
@@ -26,40 +26,79 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <form role="form">
-                                <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <p class="form-control-static">{{ $product->name }}</p>
+                                <div class="form-group row">
+                                    <div class="col-xs-6">
+                                        <div class="form-group thumbnail">
+                                            <img width="100%" src="/{{ $product->images->first()->path }}" alt="">
+                                        </div>
+                                        <div class="form-group">
+                                            @foreach ($product->images->chunk(4) as $set)
+                                                <div class="row">
+                                                    @foreach ($set as $image)
+                                                        <div class="col-xs-3">
+                                                            <img width="100%" src="/{{ $image->thumbnail_path }}" alt="">
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <table class="table">
+                                            <tr>
+                                                <th><p class="form-control-static"><strong>Tên sản phẩm:</strong></p></th>
+                                                <td><p class="form-control-static">{{ $product->name }}</p></td>
+                                            </tr>
+                                            <tr>
+                                                <th><p class="form-control-static"><strong>Xuất xứ:</strong></p></th>
+                                                <td><p class="form-control-static"></p></td>
+                                            </tr>
+                                            <tr>
+                                                <th><p class="form-control-static"><strong>Dung tích/Khối lượng:</strong></p></th>
+                                                <td><p class="form-control-static">{{ $product->amount or '' }} {{ $product->unit_id ? $arrUnits[$product->unit_id] : '' }}</p></td>
+                                            </tr>
+                                            <tr>
+                                                <th><p class="form-control-static"><strong>Giá:</strong></p></th>
+                                                <td><p class="form-control-static">{{ display_money($product->price) }}</p></td>
+                                            </tr>
+                                            <tr>
+                                                <th><p class="form-control-static"><strong>Khuyến mãi:</strong></p></th>
+                                                <td><p class="form-control-static">{{ $product->discount ? $product->discount . '%' : '' }}</p></td>
+                                            </tr>
+                                            <tr>
+                                                <th><p class="form-control-static"><strong>Trạng thái:</strong></p></th>
+                                                <td><p class="form-control-static"><span class="label {{ $product->status ? 'label-success' : 'label-danger' }}">{{ $product->status ? 'còn hàng' : 'tạm hết' }}</span></p></td>
+                                            </tr>
+                                            <tr>
+                                                <th><p class="form-control-static"><strong>Danh mục:</strong></p></th>
+                                                <td><p class="form-control-static">{{ $product->category_id ? $product->category->name : '' }}</p></td>
+                                            </tr>
+                                        </table>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="email">Parent</label>
-                                    <p class="form-control-static">{{ $product->parent_id ? (!empty($category->parent()) ? $category->parent->name : '') : '' }}</p>
-                                </div>
-                                <div class="form-group">
-                                    <label for="phone_number">Type</label>
-                                    <p class="form-control-static">{{ $product->type ? config('app.category_types')[$category->type] : '' }}</p>
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Page title</label>
-                                    <p class="form-control-static">{{ $product->page_title }}</p>
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Key word</label>
-                                    <p class="form-control-static">{{ $product->mete_keyword }}</p>
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Description</label>
-                                    <p class="form-control-static">{{ $product->meta_description }}</p>
-                                </div>
-                                <div class="form-group">
-                                    <label for="content">Status</label>
-                                    <p class="form-control-static"><span class="label {{ $product->active ? 'label-success' : 'label-danger' }}">{{ $category->active ? 'active' : 'unactive' }}</span></p>
-                                </div>
+                                <?php $articles = $product->articles->sortBy('order'); ?>
+                                @if($articles)
+                                    @foreach($articles as $article)
+                                    <div>
+                                        <div>
+                                            <img src="/{{ $article->image }}" alt="">
+                                        </div>
+                                        <div>
+                                            <p><i>{{ $article->image ? $article->image_comment : '' }}</i></p>
+                                        </div>
+                                        <div>
+                                            {!! $article->paragraph !!}
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                @endif
                             </form>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
-                            <button class="btn btn-danger" id="btn-delete" data-link="{{ route('admin.products.destroy', $category->id) }}"><i class="fa fa-remove"></i> Delete category</button>
+                            <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-info" title="Edit"><i class="fa fa-edit"> Sửa</i></a>
+                            <button class="btn btn-danger" id="btn-delete" data-link="{{ route('admin.products.destroy', $product->id) }}"><i class="fa fa-remove"></i> Xóa</button>
                         </div>
                     </div>
                 </div>
@@ -89,7 +128,7 @@
                     },
                     success: function(data) {
                         if (data.error) {
-                            window.location.href = '{{ URL::route('admin.products.show', $category->id) }}';
+                            window.location.href = '{{ URL::route('admin.products.show', $product->id) }}';
                         } else {
                             window.location.href = '{{ URL::route('admin.products.index') }}';
                         }

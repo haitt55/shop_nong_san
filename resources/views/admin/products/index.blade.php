@@ -52,10 +52,10 @@
                                     <tbody>
                                     @foreach ($products as $product)
                                         <tr>
-                                            <td class="text-center">{{ $product->name }}</td>
+                                            <td><a href="{{ route('admin.products.show', $product->id) }}">{{ $product->name }}</a></td>
                                             <td>{{ $product->price ? display_money($product->price) : '' }}</td>
                                             <td>{{ $product->amount or '' }} {{ $product->unit_id ? $arrUnits[$product->unit_id] : '' }}</td>
-                                            <td><span class="label {{ $product->status ? 'label-success' : 'label-danger' }}">{{ $product->status ? 'còn hàng' : 'hết hàng' }}</span></td>
+                                            <td><span class="label {{ $product->status ? 'label-success' : 'label-danger' }}">{{ $product->status ? 'còn hàng' : 'tạm hết' }}</span></td>
                                             <td>
                                                 <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-info" title="Edit"><i class="fa fa-edit"> Sửa</i></a>
                                                 <button class="btn btn-danger btn-delete" data-link="{{ route('admin.products.destroy', $product->id) }}" onclick="delete_item(this);"><i class="fa fa-remove"></i> Xóa</button>
