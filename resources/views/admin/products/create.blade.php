@@ -64,6 +64,10 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label for="made_in">Xuất xứ</label>
+                                    <input type="text" name="made_in" id="made_in" class="form-control" value="{{ old('made_in') }}" placeholder="VD: Hà nội, TP HCM ...">
+                                </div>
+                                <div class="form-group">
                                     <label for="detail">Chi tiết sản phẩm</label>
                                     <textarea name="detail" id="detail">{{ old('detail') }}</textarea>
                                 </div>

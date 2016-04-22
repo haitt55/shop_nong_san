@@ -51,7 +51,7 @@
                                             </tr>
                                             <tr>
                                                 <th><p class="form-control-static"><strong>Xuất xứ:</strong></p></th>
-                                                <td><p class="form-control-static"></p></td>
+                                                <td><p class="form-control-static">{{ $product->made_in }}</p></td>
                                             </tr>
                                             <tr>
                                                 <th><p class="form-control-static"><strong>Dung tích/Khối lượng:</strong></p></th>
