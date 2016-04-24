@@ -1,0 +1,77 @@
+﻿#bigPic{
+	width:400px;
+	height:313px;
+	padding:2px;
+	background-image: url('images/bg-framectds.png');
+	background-repeat: no-repeat;
+	margin-bottom:5px;
+}
+
+#bigPicLQ{
+	width:370px;
+	height:232px;
+	padding:2px;
+	margin-bottom:5px;
+}
+
+#bigPicLQ img{
+	position:absolute;
+	display:none;
+}
+
+
+#borderthumbs {
+	width:321px;
+	padding: 3px 0;
+	height: 70px;
+	border:1px solid #CCC;
+}
+
+#bigPic img{
+	position:absolute;
+	display:none;
+}
+ul#thumbs li.active{
+	border:1px solid #005500;	
+	background:#fff;
+	padding:2px;
+}
+ul#thumbs, ul#thumbs li{
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+ 
+ul#thumbs li{
+	float:left;
+	margin: 0 3px 5px 3px;
+	border:1px solid #CCC;	
+	padding:2px;
+	cursor:pointer;
+}
+ul#thumbs img{
+	float:left;
+	width:68px;
+	height:64px;
+	overflow:hidden;
+	position:relative;
+	z-index:1;	
+	border: 0px;	
+}
+
+.thumbslarge {
+	width: 320px;
+	height: 302px;
+	border: 0px;
+}
+
+.imgsize {
+	background: #FFFF99;
+	width: 390px;
+	padding: 2px 0 2px 0;
+	font-size: 11px;
+	color: gray;
+	font-family: Tahoma;
+	font-style: italic;
+	text-align: center;
+}

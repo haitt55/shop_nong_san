@@ -1,0 +1,106 @@
+﻿.indentmenu{
+font: bold 14px Tahoma;
+width: 100%; 
+overflow: hidden;
+}
+
+.indentmenu ul{
+margin: 0;
+padding: 0;
+float: left;
+width: 100%; /*width of menu*/
+border: 0px solid #564c66; /*dark purple border*/
+}
+
+.indentmenu ul li{
+display: inline;
+}
+
+.indentmenu ul li a{
+float: left;
+color: #fff; /*text color*/
+padding: 2px 15px 2px 15px ;
+margin: 5px 10px 3px 0;
+text-decoration: none;
+border-right: 0px solid #564c66; /*dark purple divider between menu items*/
+border-radius: 40px;
+-moz-border-radius: 40px;
+-webkit-border-radius: 40px;
+-ms-border-radius: 40px;
+-o-border-radius: 40px;
+
+}
+
+.indentmenu ul li .homeicon a{
+float: left;
+color: #DBDBDB; /*text color*/
+padding: 7px 15px 0 0;
+text-decoration: none;
+border-right: 0px solid #564c66; /*dark purple divider between menu items*/
+}
+
+
+.indentmenu ul li a:hover, .indentmenu ul li .current{
+color: #316CA8 !important; /*text color of selected and active item*/
+padding: 1px 15px 2px 15px; /*shift text down 1px for selected and active item*/
+background: #ffff00 url(media/indentbg2.html) center center repeat-x;
+margin-right: 10px;
+/* margin: 3px 0;
+border-radius: 44px;
+height: 12px;
+-moz-border-radius: 44px;
+-webkit-border-radius: 44px;
+-ms-border-radius: 44px;
+-o-border-radius: 44px;
+*/
+}
+
+
+.menu
+{
+	list-style-type:none;
+}
+.menu li
+{position:relative; 
+	float:right;
+	padding:0px;
+}
+.menu li a:hover
+{
+	text-decoration:underline;
+}
+.menu li a
+{
+	color:#fff;
+	text-decoration:none;
+}
+
+/* more menu */
+li.moreitem > a
+{
+	background:blue url(more-icon.html) right center no-repeat;
+	padding-right:25px;
+}
+li.moreitem
+{
+	position:relative;             
+}
+.moredropdown div
+{
+	padding:5px 0;
+}
+.moredropdown
+{
+	display:none;
+	position: absolute;
+	background:blue;
+	padding:5px;
+	margin-top:20px;
+	top:35px;
+	right:0;
+	width:180px;
+}
+li.moreitem:hover .moredropdown
+{
+	display:block;
+}
