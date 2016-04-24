@@ -106,7 +106,7 @@ a:visited { /*   */
 	width: 980px;
 	margin: 0 auto;
 	height: 140px;
-	background-image: url('images/bg-header.png');
+	background-image: url('/images/bg-header.png');
 }
 
 #header div#logo {
@@ -121,7 +121,7 @@ a:visited { /*   */
 	float: left;
 	width: 980px;
 	height: 49px;
-	background-image: url('images/bg-menu.png');
+	background-image: url('/images/bg-menu.png');
 }
 
 #overslideshow div#icontrangchu {
@@ -162,7 +162,7 @@ a:visited { /*   */
 	width: 30px;
 	height: 30px;
 	margin-top: 8px;
-	background-image: url('images/search.png');
+	background-image: url('/images/search.png');
     padding: 0 10px;
 }
 
@@ -198,7 +198,7 @@ a:visited { /*   */
 	float:left;
 	padding:16px 12px 14px 12px;
 	color:#0F9104;
-	background-image: url('images/bg-menu.png');
+	background-image: url('/images/bg-menu.png');
 }
 
 #nav li a:hover {
@@ -209,7 +209,7 @@ a:visited { /*   */
 
 #nav li a.current {
 	color: #fff;
-   	background-image: url('images/bg-menu-current.png');
+   	background-image: url('/images/bg-menu-current.png');
 }
 
 
@@ -251,7 +251,7 @@ search o vuong
 */
 
 .inputbutton:hover {
-	background-image: url('images/search1.png');
+	background-image: url('/images/search1.png');
     cursor: pointer;
 }
 
@@ -393,7 +393,7 @@ search o vuong
 
 #spbanchay div#titlebanchay{
 	float: left;
-	background-image: url('images/bg-spbanchay.png');
+	background-image: url('/images/bg-spbanchay.png');
 	height: 24px;
 	width: 219px; 
 	font-size: 16px;
