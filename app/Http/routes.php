@@ -39,7 +39,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
 // Web
 // Route::get('/', ['uses' => 'HomeController@index', 'as' => 'home.index']);
 Route::get('/', function(){
-    return view('front.layouts.master');
+    return view('front.index.php');
 });
 Route::get('articles.html', ['uses' => 'ArticlesController@index', 'as' => 'articles.index']);
 Route::get('articles/{slug}.html', ['uses' => 'ArticlesController@show', 'as' => 'articles.show']);

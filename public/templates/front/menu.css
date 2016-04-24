@@ -1,4 +1,4 @@
-.indentmenu{
+﻿.indentmenu{
 font: bold 14px Tahoma;
 width: 100%; 
 overflow: hidden;
@@ -43,7 +43,7 @@ border-right: 0px solid #564c66; /*dark purple divider between menu items*/
 .indentmenu ul li a:hover, .indentmenu ul li .current{
 color: #316CA8 !important; /*text color of selected and active item*/
 padding: 1px 15px 2px 15px; /*shift text down 1px for selected and active item*/
-background: #ffff00 url(media/indentbg2.gif) center center repeat-x;
+background: #ffff00 url(media/indentbg2.html) center center repeat-x;
 margin-right: 10px;
 /* margin: 3px 0;
 border-radius: 44px;
@@ -78,7 +78,7 @@ height: 12px;
 /* more menu */
 li.moreitem > a
 {
-	background:blue url(more-icon.gif) right center no-repeat;
+	background:blue url(more-icon.html) right center no-repeat;
 	padding-right:25px;
 }
 li.moreitem

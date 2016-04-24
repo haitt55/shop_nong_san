@@ -1,4 +1,4 @@
-inputslhtml, body, div, span, h1, h2, h3, strong, ol, ul, li {
+﻿inputslhtml, body, div, span, h1, h2, h3, strong, ol, ul, li {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -12,7 +12,7 @@ body {
 	line-height: 1;
 	font-size: 12px;;
 	font-family: Tahoma, Verdana, Arial, sans-serif;
-	background-image: url('images/bg-background.png');
+	background-image: url('/images/bg-background.png');
 	background-position: center;
 	background-repeat: repeat-y;
 	/* 	background-image:url('../images/background.jpg');
@@ -296,7 +296,7 @@ search o vuong
 	clear: both;
 	float: left;
 	width: 100%;
-	background: #E5F9F7 url('images/bg-background.png');
+	background: #E5F9F7 url('/images/bg-background.png');
 	background-position: center;
 	background-repeat: repeat-y;
 }
@@ -344,7 +344,7 @@ search o vuong
 
 #menuleft div#titlemenu{
 	float: left;
-	background-image: url('images/bg-menuleft.png');
+	background-image: url('/images/bg-menuleft.png');
 	height: 24px;
 	width: 178px; 
 	padding: 10px 0 0 62px;
@@ -460,7 +460,7 @@ search o vuong
 	margin-right: 10px;
 	width: 688px;
 	border-bottom: 0;
-	background: #E5F9F7 url('images/bg-background.png');
+	background: #E5F9F7 url('/images/bg-background.png');
 	background-position: center;
 	background-repeat: repeat-y;
 }
@@ -484,7 +484,7 @@ search o vuong
 	clear: both;
 	float: left;
 	width: 100%;
-	background: #E5F9F7 url('images/bg-background.png');
+	background: #E5F9F7 url('/images/bg-background.png');
 	background-position: center;
 	background-repeat: repeat-y;
 }
@@ -509,7 +509,7 @@ search o vuong
 	width: 700px;
 	height: 27px;
 	padding: 3px 0 0 0;
-	background-image: url('images/gachchan.png');
+	background-image: url('/images/gachchan.png');
 	background-repeat: no-repeat;
 	font-size: 16px;
 	font-weight: bold;
@@ -523,7 +523,7 @@ search o vuong
 	width: 700px;
 	height: 26px;
 	padding: 10px 0 0 0;
-	background-image: url('images/gachchanall.png');
+	background-image: url('/images/gachchanall.png');
 	background-repeat: no-repeat;
 	font-size: 16px;
 	font-weight: bold;
@@ -563,7 +563,7 @@ search o vuong
 	width: 212px;
 	margin-right: 11px;
 	height: 290px;
-	background-image: url('images/framedssp.png');
+	background-image: url('/images/framedssp.png');
 	background-repeat: no-repeat; 
 	padding: 5px;
 }
@@ -578,7 +578,7 @@ search o vuong
 	text-align: center;
 	padding: 10px 0 0 0;
 	line-height: 140%;
-	background-image: url('images/deal.png');
+	background-image: url('/images/deal.png');
 	background-repeat: no-repeat;
 }
 
@@ -592,7 +592,7 @@ search o vuong
 	text-align: center;
 	padding: 18px 0 0 0;
 	line-height: 130%;
-	background-image: url('images/deal.png');
+	background-image: url('/images/deal.png');
 	background-repeat: no-repeat;
 }
 
@@ -822,7 +822,7 @@ li.dot a:hover {
 	float: left;
 	width: 980px;
 	height: 11px;
-	background-image: url('images/bg-topfooter.png');
+	background-image: url('/images/bg-topfooter.png');
 	background-repeat: no-repeat; 
 }
 
@@ -830,7 +830,7 @@ li.dot a:hover {
 	float: left;
 	width: 980px;
 	padding: 0px 15px 2px 15px;
-	background-image:url('images/bgbotfooter.png');
+	background-image:url('/images/bgbotfooter.png');
 	background-repeat: repeat-y;
 }
 
@@ -849,7 +849,7 @@ li.dot a:hover {
 
 #hrfooter {
 	float: left;
-	background-image: url('images/hrfooter.png');
+	background-image: url('/images/hrfooter.png');
 	background-repeat: repeat-x;
     height: 17px;
 	width: 980px;
@@ -860,7 +860,7 @@ li.dot a:hover {
 	margin: 0 auto;	
 	height: 200px;
 	padding: 10px 0;
-	background-image: url('images/bgbotfooter.png');
+	background-image: url('/images/bgbotfooter.png');
 	background-repeat: repeat-y;
 }
 
@@ -914,7 +914,7 @@ li.dot a:hover {
 	font-size: 14px;
 	color: #f5f5f5;
 	text-align: center;
-	background-image:url('images/bgbotfooter.png');
+	background-image:url('/images/bgbotfooter.png');
 	background-repeat: repeat-y;
 
 }
@@ -962,7 +962,7 @@ li.dot a:hover {
 	float: left;
 	width: 21px;
 	height: 36px;
-	background-image: url('images/vs.png');
+	background-image: url('/images/vs.png');
 }
 
 #linktitlesp div#nameds {
