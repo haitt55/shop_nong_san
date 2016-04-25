@@ -43,6 +43,11 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" name="active" id="active" value="1" {{ old('active', $category->active) ? ' checked="checked"' : '' }}> Active</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <button type="submit" class="btn btn-primary">Lưu</button>
                                 </div>
                             </form>

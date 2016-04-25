@@ -21,7 +21,7 @@ class ProductCategoryRepository extends Repository implements ProductCategoryRep
 
     public function getCategoryOptions($id = null)
     {
-        $categories = $this->model->where('parent_id', 0)->get();
+        $categories = $this->model->where('parent_id', 0)->get()->sortBy('name');
         $categoryOptions = array();
         foreach ($categories as $category) {
             $this->addOptionCategory($categoryOptions, $category);
@@ -45,10 +45,47 @@ class ProductCategoryRepository extends Repository implements ProductCategoryRep
             $name = $category->name;
         }
         $categoryOptions[$category->id] = $name;
-        $childs = $category->childs;
+        $childs = $category->childs->sortBy('name');
         if ($childs) {
             foreach ($childs as $child) {
                 $this->addOptionCategory($categoryOptions, $child);
+            }
+        }
+        return $categoryOptions;
+    }
+
+    public function getTree()
+    {
+        $categories = $this->model->where('parent_id', 0)->get()->sortBy('name');
+        $categoryOptions = array();
+        $index = 0;
+        foreach ($categories as $category) {
+            $index++;
+            $this->addTreeCategory($categoryOptions, $category, $index);
+        }
+
+        return $categoryOptions;
+    }
+
+    public function addTreeCategory(&$categoryOptions, $category, $index) {
+        $level = $category->getLevel();
+        if ($category->parent_id != 0) {
+            $printLevel = '';
+            for ($i = 0; $i < $level; $i++) {
+                $printLevel .= '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+            }
+            $name = $printLevel . $index . '.' . $category->name;
+        } else {
+            $name = $index . '.' . $category->name;
+        }
+        $category->name = $name;
+        $categoryOptions[] = $category;
+        $childs = $category->childs->sortBy('name');
+        if ($childs) {
+            $index = 0;
+            foreach ($childs as $child) {
+                $index++;
+                $this->addTreeCategory($categoryOptions, $child, $index);
             }
         }
         return $categoryOptions;

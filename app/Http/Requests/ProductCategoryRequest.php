@@ -23,9 +23,12 @@ class ProductCategoryRequest extends Request
      */
     public function rules()
     {
+        $this->merge(['active' => $this->input('active', 0)]);
+
         $rules = [
             'name' => 'required|max:255',
         ];
+
         if ($this->route('product_categories')) {
             $optionalRules = [
                 'name' => 'unique:product_categories,name,' . $this->route('product_categories'),
