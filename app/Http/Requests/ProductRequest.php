@@ -26,7 +26,8 @@ class ProductRequest extends Request
         return [
             'name' => 'required|max:255',
             'price' => 'numeric',
-            'discount' => 'between:0,100'
+            'discount' => 'between:0,100',
+            'category_id' => 'required'
         ];
     }
 }

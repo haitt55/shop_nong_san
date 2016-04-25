@@ -28,8 +28,9 @@ class ProductCategoriesController extends Controller
     public function index()
     {
         $categories = $this->categoryRepository->all();
+        $categoryTree = $this->categoryRepository->getTree();
 
-        return view('admin.product_categories.index', compact('categories'));
+        return view('admin.product_categories.index', compact('categories', 'categoryTree'));
     }
 
     /**

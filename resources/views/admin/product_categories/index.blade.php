@@ -44,18 +44,18 @@
                                     <tr>
                                         <th></th>
                                         <th>Tên danh mục</th>
-                                        <th>Danh mục cha</th>
+                                        <th>Trạng thái</th>
                                         <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <?php $index = 0; ?>
-                                    @foreach ($categories as $category)
+                                    @foreach ($categoryTree as $category)
                                         <?php $index ++; ?>
                                         <tr>
-                                            <td>#{{ $index }}</td>
+                                            <td>#</td>
                                             <td class="text-left">{{ $category->name }}</td>
-                                            <td>{{ $category->parent_id ? $category->parent->name : '' }}</td>
+                                            <td width="10%"><span class="label {{ $category->active ? 'label-success' : 'label-danger' }}">{{ $category->active ? 'active' : 'inactive' }}</span></td>
                                             <td>
                                                 <a href="{{ route('admin.product_categories.edit', $category->id) }}" class="btn btn-info" title="Sửa"><i class="fa fa-edit"></i> Sửa</a>
                                                 <button class="btn btn-danger btn-delete" data-link="{{ route('admin.product_categories.destroy', $category->id) }}" onclick="delete_item(this);"><i class="fa fa-remove"></i> Xóa</button>
@@ -90,8 +90,9 @@
         $(document).ready(function() {
             $("#dataTables-categories").DataTable({
                 responsive: true,
+                "pageLength": 100,
                 "aoColumns": [
-                    null,
+                    { bSortable: false },
                     null,
                     null,
                     { bSortable: false }

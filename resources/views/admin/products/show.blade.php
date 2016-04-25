@@ -29,7 +29,7 @@
                                 <div class="form-group row">
                                     <div class="col-xs-6">
                                         <div class="form-group thumbnail">
-                                            <img width="100%" src="/{{ $product->images->first()->path }}" alt="">
+                                            <img width="100%" src=@if($product->images->first()) "/{{ $product->images->first()->path }}" @else '/img/no_image.png' @endif alt="">
                                         </div>
                                         <div class="form-group">
                                             @foreach ($product->images->chunk(4) as $set)
