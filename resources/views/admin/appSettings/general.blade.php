@@ -24,16 +24,48 @@
                                 {!! csrf_field() !!}
                                 {!! method_field('put') !!}
                                 <div class="form-group">
+                                    <label for="company">Tên công ty</label>
+                                    <input type="company" name="email" id="email" class="form-control" value="{{ old('company', $appSettings['company']) }}">
+                                </div>
+                                <div class="form-group">
                                     <label for="email">Email</label>
                                     <input type="email" name="email" id="email" class="form-control" value="{{ old('email', $appSettings['email']) }}">
                                 </div>
+                                {{--<div class="form-group">--}}
+                                    {{--<label for="phone">Di động</label>--}}
+                                    {{--<input type="text" name="phone" id="phone" class="form-control" value="{{ old('phone', $appSettings['phone']) }}">--}}
+                                {{--</div>--}}
+                                {{--<div class="form-group">--}}
+                                    {{--<label for="telephone">Điện thoại bàn</label>--}}
+                                    {{--<input type="text" name="telephone" id="telephone" class="form-control" value="{{ old('telephone', $appSettings['telephone']) }}">--}}
+                                {{--</div>--}}
                                 <div class="form-group">
-                                    <label for="phone">Phone</label>
-                                    <input type="text" name="phone" id="phone" class="form-control" value="{{ old('phone', $appSettings['phone']) }}">
+                                    <label for="whole_phone">Di động - bán buôn</label>
+                                    <input type="text" name="whole_phone" id="whole_phone" class="form-control" value="{{ old('whole_phone', $appSettings['whole_phone']) }}">
                                 </div>
                                 <div class="form-group">
-                                    <label for="address">Address</label>
+                                    <label for="whole_telephone">Điện thoại bàn - bán buôn</label>
+                                    <input type="text" name="whole_telephone" id="whole_telephone" class="form-control" value="{{ old('whole_telephone', $appSettings['whole_telephone']) }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="retail_phone">Di động - bán lẻ</label>
+                                    <input type="text" name="retail_phone" id="retail_phone" class="form-control" value="{{ old('retail_phone', $appSettings['retail_phone']) }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="retail_telephone">Điện thoại bàn - bán lẻ</label>
+                                    <input type="text" name="retail_telephone" id="retail_telephone" class="form-control" value="{{ old('retail_telephone', $appSettings['retail_telephone']) }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="source_telephone">SĐT nguồn hàng</label>
+                                    <input type="text" name="source_telephone" id="source_telephone" class="form-control" value="{{ old('source_telephone', $appSettings['source_telephone']) }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="address">Địa chỉ</label>
                                     <input type="text" name="address" id="address" class="form-control" value="{{ old('address', $appSettings['address']) }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="currency_word">Đơn vị tiền</label>
+                                    <input type="text" name="currency_word" id="currency_word" class="form-control" value="{{ old('currency_word', $appSettings['currency_word']) }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="page_title">Page Title</label>
@@ -46,10 +78,6 @@
                                 <div class="form-group">
                                     <label for="meta_description">Meta Description</label>
                                     <input type="text" name="meta_description" id="meta_description" class="form-control" value="{{ old('meta_description', $appSettings['meta_description']) }}">
-                                </div>
-                                <div class="form-group">
-                                    <label for="currency_word">Đơn vị tiền</label>
-                                    <input type="text" name="currency_word" id="currency_word" class="form-control" value="{{ old('currency_word', $appSettings['currency_word']) }}">
                                 </div>
                                 <div>
                                     <label>Google Maps</label>

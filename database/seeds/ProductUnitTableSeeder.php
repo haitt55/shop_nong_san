@@ -15,11 +15,19 @@ class ProductUnitTableSeeder extends Seeder
         if (app()->environment() != 'production') {
             DB::table('product_units')->insert([
                 'name' => 'ml',
-                'type' => 0,
+                'type' => 1,
             ]);
             DB::table('product_units')->insert([
                 'name' => 'l',
-                'type' => 0,
+                'type' => 1,
+            ]);
+            DB::table('product_units')->insert([
+                'name' => 'g',
+                'type' => 2,
+            ]);
+            DB::table('product_units')->insert([
+                'name' => 'kg',
+                'type' => 2,
             ]);
         }
     }

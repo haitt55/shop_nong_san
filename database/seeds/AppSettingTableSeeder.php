@@ -20,7 +20,7 @@ class AppSettingTableSeeder extends Seeder
             ],
             [
                 'key' => 'company',
-                'value' => 'GTK',
+                'value' => 'CÔNG TY TNHH GTK',
             ],
             [
                 'key' => 'email',
@@ -49,6 +49,21 @@ class AppSettingTableSeeder extends Seeder
             ], [
                 'key' => 'currency_word',
                 'value' => 'Đ',
+            ], [
+                'key' => 'whole_phone',
+                'value' => '0966.668.001',
+            ], [
+                'key' => 'whole_telephone',
+                'value' => '0466.668.001',
+            ], [
+                'key' => 'retail_phone',
+                'value' => '0966.888.002',
+            ], [
+                'key' => 'retail_telephone',
+                'value' => '0466.888.002',
+            ], [
+                'key' => 'source_telephone',
+                'value' => '0466.888.888',
             ]
         ];
         foreach ($appSettings as $appSetting) {
