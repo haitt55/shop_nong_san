@@ -42,6 +42,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
 // Web
 // Route::get('/', ['uses' => 'HomeController@index', 'as' => 'home.index']);
 Route::get('/', ['uses' => 'Front\HomeController@index', 'as' => 'front.home.index']);
+Route::get('/products', ['uses' => 'Front\ProductController@index', 'as' => 'front.products.index']);
 Route::get('articles.html', ['uses' => 'ArticlesController@index', 'as' => 'articles.index']);
 Route::get('articles/{slug}.html', ['uses' => 'ArticlesController@show', 'as' => 'articles.show']);
 Route::get('{slug}.html', ['uses' => 'PagesController@show', 'as' => 'pages.show']);

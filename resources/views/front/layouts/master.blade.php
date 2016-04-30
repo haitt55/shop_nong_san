@@ -195,7 +195,7 @@ $(document).ready(function() {
 	<div id="menu">	
 		<ul id="nav">
 			<li><a href="/422/ve-chung-toi/">Giới thiệu</a></li>      
-			<li><a href="/shop-hoa-qua/">Hoa quả</a></li>   
+			<li>{!! link_to_route('front.products.index', 'Sản phẩm') !!}</li>   
 			<li><a href="/hoa-qua/16/rau-sach/">Rau sạch</a></li>
 			<li><a href="/khuyen-mai/">Khuyến mại<span class="sodeal">5</span></a></li> 
 			<li><a href="/420/chinh-sach-van-chuyen/">Giao hàng</a></li>        
