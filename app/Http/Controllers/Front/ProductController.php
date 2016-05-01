@@ -14,7 +14,7 @@ class ProductController extends Controller
 
 	public function __construct(
 		ProductRepository $productRepository,
-		ProductCategoryRepository $productCategoryRepository,
+		ProductCategoryRepository $productCategoryRepository
 	) {
 		$this->productRepository = $productRepository;
 		$this->productCategoryRepository = $productCategoryRepository;
