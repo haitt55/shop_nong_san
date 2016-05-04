@@ -16,7 +16,7 @@
         <div class="col-md-12 text-center">
             <p>We looked everywhere but we couldn't find it!</p>
             <p>
-                <a href="{{ route('home.index') }}" class="btn btn-primary">Home</a>
+                <a href="{{ route('front.home.index') }}" class="btn btn-primary">Home</a>
             </p>
         </div>
         <div class="clearfix"></div>

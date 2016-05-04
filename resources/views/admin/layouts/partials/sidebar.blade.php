@@ -23,6 +23,9 @@
                 <a href="{{ route('admin.products.index') }}"><i class="fa fa-qrcode fa-fw"></i> Sản phẩm</a>
             </li>
             <li>
+                <a href="{{ route('admin.discount.index') }}"><i class="fa fa-paper-plane-o fa-fw"></i> Sản phẩm khuyến mại</a>
+            </li>
+            <li>
                 <a href="{{ route('admin.introduces_policies.index') }}"><i class="fa fa-info-circle fa-fw"></i> Giới thiệu và chính sách</a>
             </li>
             <li>

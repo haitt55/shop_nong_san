@@ -15,6 +15,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
         Route::get('profile/editPassword', ['uses' => 'ProfileController@editPassword', 'as' => 'admin.profile.editPassword']);
         Route::put('profile/updatePassword', ['uses' => 'ProfileController@updatePassword', 'as' => 'admin.profile.updatePassword']);
 
+        Route::get('discount', ['uses' => 'DiscountController@discount', 'as' => 'admin.discount.index']);
+        Route::put('updateDiscount', ['uses' => 'DiscountController@updateDiscount', 'as' => 'admin.discount.update']);
+
         Route::resource('users', 'UsersController');
         Route::resource('pages', 'PagesController');
         Route::resource('articles', 'ArticlesController');
