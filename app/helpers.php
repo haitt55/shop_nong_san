@@ -63,4 +63,11 @@ function display_money($number)
     return number_format($number). ' ' . $currency;
 }
 
+function priceDiscount($price, $discount)
+{
+    $priceDiscount = $price - $price*$discount/100;
+
+    return display_money($priceDiscount);
+}
+
 ?>

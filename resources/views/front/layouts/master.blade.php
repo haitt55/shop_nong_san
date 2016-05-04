@@ -154,7 +154,7 @@ function showNext(){
     var next = currentIndex < (len-1) ? currentIndex + 1 : 0;
     showImage(next);
 }
-
+ 
 var myTimer;
 
 $(document).ready(function() {
@@ -196,8 +196,7 @@ $(document).ready(function() {
 		<ul id="nav">
 			<li>{!! link_to_route('front.home.about', 'Giới thiệu') !!}</li>      
 			<li>{!! link_to_route('front.products.index', 'Sản phẩm') !!}</li>   
-			<li><a href="/hoa-qua/16/rau-sach/">Rau sạch</a></li>
-			<li><a href="/khuyen-mai/">Khuyến mại<span class="sodeal">5</span></a></li> 
+			<li><a href="{!! route('front.products.discount') !!}">Khuyến mại<span class="sodeal">{!! count($__productDiscounts) !!}</span></a></li> 
 			<li>{!! link_to_route('front.home.transport', 'Giao hàng') !!}</li>        
 			<li>{!! link_to_route('front.home.payment', 'Thanh toán') !!}</li>       
 		</ul>

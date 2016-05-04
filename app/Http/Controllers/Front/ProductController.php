@@ -33,8 +33,14 @@ class ProductController extends Controller
     {
     	$product = $this->productRepository->findOrFail($id);
     	$listProducts = $this->productRepository->getListProductByCategory($product->category_id);
-    	// dd($listProducts);
 
     	return view('front.products.detail')->with(['product' => $product, 'listProducts' => $listProducts]);
+    }
+
+    public function getDiscount()
+    {
+    	$productDiscounts = $this->productRepository->getProductDiscount();
+
+    	return view('front.products.discount')->with(['productDiscounts' => $productDiscounts]);
     }
 }
