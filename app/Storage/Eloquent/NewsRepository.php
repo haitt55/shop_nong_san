@@ -16,5 +16,10 @@ class NewsRepository extends Repository implements NewsRepositoryInterface
     {
         return $this->model->published()->orderBy('created_at', 'desc')->paginate($limit);
     }
+
+    public function getNewsByCategory($categoryId)
+    {
+    	return $this->model->where('category_id', $categoryId)->get();
+    }
 }
 ?>

@@ -4,16 +4,7 @@
 	@include('front.layouts.sliderleft')
 	<div id="contentwrapper">
 		<div id="homecontent">
-			<div id="linktitlesp">
-				<div id="iconhome"><a href="../../../index.html"><img src="/images/icontrangchu.png" border="0"></a></div>
-				<!-- <div id="sptexthome"><span class="sptexthometext"> <a href="/">Trang chu</a></span></div> -->
-				<div id="spblankds"></div>
-				<div id="nameds"><span class="linktitle "><a href="../../../shop-hoa-qua/index.html">Hoa quả</a></span></div>
-				<div id="spblankds"></div>
-				<div id="nameds"><span class="linktitle">
-					<a href='../../../hoa-qua/25/index.html'>Hoa quả Việt Nam</a>			</span>
-				</div>
-			</div>
+			@include('front.layouts.linktitlesp', ['linkRoute' => route('front.products.index'), 'name' => 'Sản phẩm'])
 			<div id="contentds">
 				<div id="chitietsp">
 					<div id="chitietsp-left">

@@ -45,7 +45,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
 // Web
 // Route::get('/', ['uses' => 'HomeController@index', 'as' => 'home.index']);
 Route::get('/', ['uses' => 'Front\HomeController@index', 'as' => 'front.home.index']);
-Route::get('/products', ['uses' => 'Front\ProductController@index', 'as' => 'front.products.index']);
 Route::get('/payments', ['uses' => 'Front\HomeController@payment', 'as' => 'front.home.payment']);
 Route::get('/preferences', ['uses' => 'Front\HomeController@preference', 'as' => 'front.home.preference']);
 Route::get('/promotion', ['uses' => 'Front\HomeController@promotion', 'as' => 'front.home.promotion']);
@@ -54,8 +53,13 @@ Route::get('/regulation', ['uses' => 'Front\HomeController@regulation', 'as' => 
 Route::get('/delivery', ['uses' => 'Front\HomeController@delivery', 'as' => 'front.home.delivery']);
 Route::get('/about', ['uses' => 'Front\HomeController@about', 'as' => 'front.home.about']);
 Route::get('/transport', ['uses' => 'Front\HomeController@transport', 'as' => 'front.home.transport']);
+
+Route::get('/products', ['uses' => 'Front\ProductController@index', 'as' => 'front.products.index']);
 Route::get('/products/{id}/detail', ['uses' => 'Front\ProductController@getProductDetail', 'as' => 'front.products.detail']);
 Route::get('/discount', ['uses' => 'Front\ProductController@getDiscount', 'as' => 'front.products.discount']);
+
+Route::get('/news', ['uses' => 'Front\NewsController@index', 'as' => 'front.news.index']);
+Route::get('/news/{id}/detail', ['uses' => 'Front\NewsController@getDetail', 'as' => 'front.news.detail']);
 
 
 

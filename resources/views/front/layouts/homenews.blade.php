@@ -1,6 +1,6 @@
 <div id="newshome">
 	<div id="newshomespds">
-		<div id="titlenewshot">Các bài viết về Shop Hoa Quả</div>
+		<div id="titlenewshot">Các bài viết về Shop Nông Sản</div>
 		<ul class="list">
 			@foreach($__homeNews as $news)
 			<li class="dot">
@@ -9,6 +9,6 @@
 			</li>
 			@endforeach
 		</ul>
-		<div id="newshotmore"><span class="more"><a href="tin-tuc/index.html">Xem thêm tin khác &gt;&gt;</a></span></div>
+		<div id="newshotmore"><span class="more"><a href="{!! route('front.news.index') !!}">Xem thêm tin khác &gt;&gt;</a></span></div>
 	</div>
 </div>

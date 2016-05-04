@@ -4,11 +4,7 @@
 	@include('front.layouts.sliderleft')
 	<div id="contentwrapper">
 		<div id="homecontent">
-			<div id="linktitlesp">
-				<div id="iconhome"><a href="{!! route('front.home.index') !!}"><img src="../images/icontrangchu.png" border="0"></a></div>
-				<div id="spblankds"></div>
-				<div id="nameds"><span class="linktitle "><a href="{!! route('front.products.discount') !!}">Khuyến mại</a></span></div>
-			</div>
+			@include('front.layouts.linktitlesp', ['linkRoute' => route('front.products.discount'), 'name' => 'Khuyến mại'])
 			<div id="contenthonesp">
 				@if(count($productDiscounts))
 					@foreach ($productDiscounts as $key => $product)
