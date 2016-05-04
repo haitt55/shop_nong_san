@@ -23,8 +23,18 @@ class ProductController extends Controller
     public function index()
     {
     	$categories = $this->productCategoryRepository->all();
+    	dd($categories);
     	$products = $this->productRepository->all();
 
         return view('front.products.index')->with(['products' => $products]);
+    }
+
+    public function getProductDetail($id)
+    {
+    	$product = $this->productRepository->findOrFail($id);
+    	$listProducts = $this->productRepository->getListProductByCategory($product->category_id);
+    	// dd($listProducts);
+
+    	return view('front.products.detail')->with(['product' => $product, 'listProducts' => $listProducts]);
     }
 }

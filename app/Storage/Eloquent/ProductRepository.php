@@ -37,6 +37,9 @@ class ProductRepository extends Repository implements ProductRepositoryInterface
             }
         }
         DB::commit();
+    public function getListProductByCategory($categoryId)
+    {
+    	return $this->model->where('category_id', $categoryId)->get();
     }
 }
 ?>
