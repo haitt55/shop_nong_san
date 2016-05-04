@@ -11,5 +11,10 @@ class ProductRepository extends Repository implements ProductRepositoryInterface
     {
         return $this->model->findBySlug($slug);
     }
+
+    public function getListProductByCategory($categoryId)
+    {
+    	return $this->model->where('category_id', $categoryId)->get();
+    }
 }
 ?>

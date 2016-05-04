@@ -3,25 +3,25 @@
 		<div id="titlehotline">Mua hàng</div>
 		<table style="width: 100%">
 			<tr>
-				<td width="6%" height="30"><img src="images/tele.png" align="absmiddle" height="25"  border="0"  /></td>
+				<td width="6%" height="30"><img src="/images/tele.png" align="absmiddle" height="25"  border="0"  /></td>
 				<td colspan="3" width="94%"><b><span style="font-size: 14px">Bán lẻ: 096.6868.001</span></b></td>
 			</tr>
 			<tr>
-				<td width="6%" height="30"><img src="images/tele.png" align="absmiddle" height="25"  border="0"  /></td>
+				<td width="6%" height="30"><img src="/images/tele.png" align="absmiddle" height="25"  border="0"  /></td>
 				<td colspan="3" width="44%"><b><span style="font-size: 14px">Đại lý: 096.6868.002</span></b></td>
 			</tr>
 			<tr>
 				<td width="6%" height="35" style="padding-left: 3px;">
-					<a href="ymsgr:SendIM?kd.shophoaqua"><img src="images/yahoo.png" align="absmiddle" height="25" border="0" /></a></td>
+					<a href="ymsgr:SendIM?kd.shophoaqua"><img src="/images/yahoo.png" align="absmiddle" height="25" border="0" /></a></td>
 				<td width="44%">
 					<b>Chat Yahoo!</b></td>
 				<td width="6%" height="30" style="padding-left: 3px;">
-					<a href="skype:kd.shophoaqua?chat"><img src="images/skype.png" align="absmiddle" height="25" border="0" /></a></td>
+					<a href="skype:kd.shophoaqua?chat"><img src="/images/skype.png" align="absmiddle" height="25" border="0" /></a></td>
 				<td width="44%">
 					<b>Chat Skype</b></td>
 			</tr>
 			<tr>
-				<td width="6%" height="30"><img src="images/shopicon.png" height="25"  border="0"  /></td>
+				<td width="6%" height="30"><img src="/images/shopicon.png" height="25"  border="0"  /></td>
 				<td colspan="3" width="94%"><span style="line-height: 150%; font-weight: bold; ">Số 123 Đặng Tiến Đông, Đống Đa, Hà Nội</span></td>
 			</tr>
 		</table>
@@ -37,8 +37,8 @@
 				<ul class="list">
 				@foreach ($__products as $product)
 					<li class="dot">
-						<img src="images/dot.png" align="absmiddle" style="padding-right: 5px;">
-						<a href="chi-tiet/21/buoi-nam-roi/index.html"> {!! $product->name !!} </a>
+						<img src="/images/dot.png" align="absmiddle" style="padding-right: 5px;">
+						{!! link_to_route('front.products.detail', $product->name, $product->id) !!}
 					</li>
 				@endforeach
 				</ul>
@@ -64,7 +64,7 @@
 			<div class="">
 				<ul class="list">
 					<li class="dot">
-						<img src="images/dot.png" align="absmiddle" style="padding-right: 5px;"><a href="chi-tiet/44/qua-kiwi-xanh/index.html">Quả Kiwi xanh</a>
+						<img src="/images/dot.png" align="absmiddle" style="padding-right: 5px;"><a href="chi-tiet/44/qua-kiwi-xanh/index.html">Quả Kiwi xanh</a>
 					</li>	
 				</ul>
 			</div>
@@ -72,7 +72,7 @@
 		<div id="endmenu"></div>
 	</div>
 	<div id="thanhvienvip">
-		<a href="406/the-uu-dai-thanh-vien/index.html" border="0"><img src="images/ads/1353922031_ads.png" class="imgthanhvienvip"></a>
+		<a href="406/the-uu-dai-thanh-vien/index.html" border="0"><img src="/images/ads/1353922031_ads.png" class="imgthanhvienvip"></a>
 	</div>
 	<div id="spbanchay">
 		<div id="titlebanchay">Hoa quả bán chạy</div>
