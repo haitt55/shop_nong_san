@@ -25,10 +25,9 @@ class HomeController extends Controller
     public function index()
     {
         $products = $this->productRepository->all();
-        $categories = $this->categoryRepository->all();
-        // dd($categories);
+        $categories = $this->categoryRepository->getproductCategory();
 
-        return view('front.index')->with(['products' => $products]);
+        return view('front.index')->with(['products' => $products, 'categories' => $categories]);
     }
 
     public function payment()

@@ -24,6 +24,8 @@ class ViewComposerServiceProvider extends ServiceProvider
         view()->share('__homeNews', $__homeNews);
         $__productDiscounts = \App\Models\Product::where('discount', '!=', 0)->get();
         view()->share('__productDiscounts', $__productDiscounts);
+        $__productCategories = \App\Models\ProductCategory::where('parent_id', 0)->get();
+        view()->share('__productCategories', $__productCategories);
     }
 
     /**

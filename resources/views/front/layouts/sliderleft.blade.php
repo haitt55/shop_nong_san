@@ -27,55 +27,32 @@
 		</table>
 	</div>
 	<div id="menuleft">
-		<div id="titlemenu">
-			<span class="titlemenutext ">
-				<a href="hoa-qua/12/hoa-qua-viet-nam/index.html">Hoa quả Việt Nam</a>
-			</span>
-		</div>
-		<div id="contentmenu">
-			<div class="scroll-pane">
-				<ul class="list">
-				@foreach ($__products as $product)
-					<li class="dot">
-						<img src="/images/dot.png" align="absmiddle" style="padding-right: 5px;">
-						{!! link_to_route('front.products.detail', $product->name, $product->id) !!}
-					</li>
-				@endforeach
-				</ul>
+		@foreach($__productCategories as $category)
+			<div id="titlemenu">
+				<span class="titlemenutext ">
+				{!! link_to_route('front.categories.index', $category->name, $category->id) !!}
+				</span>
 			</div>
-		</div>
-		<div id="titlemenu">
-			<span class="titlemenutext ">
-				<a href="hoa-qua/16/gio-hoa-qua/index.html">Giỏ hoa quả</a>
-			</span>
-		</div>
-		<div id="contentmenu">
-			<div class="">
-				<ul class="list">
-								</ul>
+			<div id="contentmenu">
+				<div class="scroll-pane">
+					<ul class="list">
+					@foreach (get_product_by_category($category->id) as $product)
+						<li class="dot">
+							<img src="/images/dot.png" align="absmiddle" style="padding-right: 5px;">
+							{!! link_to_route('front.products.detail', $product->name, $product->id) !!}
+						</li>
+					@endforeach
+					</ul>
+				</div>
 			</div>
-		</div>
-		<div id="titlemenu">
-			<span class="titlemenutext ">
-				<a href="hoa-qua/11/hoa-qua-nhap-khau/index.html">Hoa quả nhập khẩu</a>
-			</span>
-		</div>
-		<div id="contentmenu">
-			<div class="">
-				<ul class="list">
-					<li class="dot">
-						<img src="/images/dot.png" align="absmiddle" style="padding-right: 5px;"><a href="chi-tiet/44/qua-kiwi-xanh/index.html">Quả Kiwi xanh</a>
-					</li>	
-				</ul>
-			</div>
-		</div>
+		@endforeach
 		<div id="endmenu"></div>
 	</div>
 	<div id="thanhvienvip">
-		<a href="406/the-uu-dai-thanh-vien/index.html" border="0"><img src="/images/ads/1353922031_ads.png" class="imgthanhvienvip"></a>
+		<a href="{!! route('front.home.preference') !!}" border="0"><img src="/images/ads/1353922031_ads.png" class="imgthanhvienvip"></a>
 	</div>
 	<div id="spbanchay">
-		<div id="titlebanchay">Hoa quả bán chạy</div>
+		<div id="titlebanchay">Sản phẩm bán chạy</div>
 		<div id="contentbanchay">
 			@foreach ($__products as $product)
 				<a href="chi-tiet/20/buoi-da-xanh/index.html"><img src="{!! $product->image !!}" class="imgspbanchay" /> </a>

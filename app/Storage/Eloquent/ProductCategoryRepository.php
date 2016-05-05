@@ -90,5 +90,12 @@ class ProductCategoryRepository extends Repository implements ProductCategoryRep
         }
         return $categoryOptions;
     }
+
+    public function getproductCategory()
+    {
+        $categories = $this->model->where('parent_id', 0)->get();
+
+        return $categories;
+    }
 }
 ?>

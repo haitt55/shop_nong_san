@@ -70,4 +70,12 @@ function priceDiscount($price, $discount)
     return display_money($priceDiscount);
 }
 
+function get_product_by_category($categoryId)
+{
+    // $category = new \App\Models\ProductCategory;
+    // $parentCategory = $category->find($categoryId);
+    // $categories = $
+    return \App\Models\Product::where('category_id', $categoryId)->get();
+}
+
 ?>
