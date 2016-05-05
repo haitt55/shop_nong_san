@@ -19,7 +19,7 @@ class NewsRepository extends Repository implements NewsRepositoryInterface
 
     public function getNewsByCategory($categoryId)
     {
-    	return $this->model->where('category_id', $categoryId)->get();
+    	return $this->model->where('category_id', $categoryId)->orderBy('created_at', 'desc')->get();
     }
 }
 ?>

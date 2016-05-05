@@ -20,7 +20,7 @@ class ViewComposerServiceProvider extends ServiceProvider
         view()->share('__products', $__products);
         $__hotNews = \App\Models\News::orderBy('views')->get()->take(10);
         view()->share('__hotNews', $__hotNews);
-        $__homeNews = \App\Models\News::orderBy('created_at')->get()->take(5);
+        $__homeNews = \App\Models\News::orderBy('created_at', 'desc')->get()->take(5);
         view()->share('__homeNews', $__homeNews);
         $__productDiscounts = \App\Models\Product::where('discount', '!=', 0)->get();
         view()->share('__productDiscounts', $__productDiscounts);

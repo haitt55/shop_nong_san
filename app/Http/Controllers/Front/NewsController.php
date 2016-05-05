@@ -37,6 +37,8 @@ class NewsController extends Controller
     public function getDetail($id)
     {
         $news = $this->newsRepository->findOrFail($id);
+        $news->views += 1;
+        $news->save();
         $arrNews = $this->newsRepository->getNewsByCategory($news->category_id);
 
         return view('front.news.detail')->with(['news' => $news, 'arrNews' => $arrNews]);

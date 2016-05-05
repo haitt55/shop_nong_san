@@ -61,6 +61,8 @@ Route::get('/discount', ['uses' => 'Front\ProductController@getDiscount', 'as' =
 Route::get('/news', ['uses' => 'Front\NewsController@index', 'as' => 'front.news.index']);
 Route::get('/news/{id}/detail', ['uses' => 'Front\NewsController@getDetail', 'as' => 'front.news.detail']);
 
+Route::get('/categories/{id}', ['uses' => 'Front\ProductCategoryController@index', 'as' => 'front.categories.index']);
+
 
 
 Route::get('articles.html', ['uses' => 'ArticlesController@index', 'as' => 'articles.index']);

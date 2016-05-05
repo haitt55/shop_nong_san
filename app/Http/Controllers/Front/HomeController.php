@@ -6,19 +6,27 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Front\Controller;
 use App\Storage\ProductRepositoryInterface as ProductRepository;
+use App\Storage\ProductCategoryRepositoryInterface as CategoryRepository;
 
 class HomeController extends Controller
 {
 	private $productRepository;
+    private $categoryRepository;
 
-	public function __construct(ProductRepository $productRepository)
+	public function __construct(
+                                CategoryRepository $categoryRepository,
+                                ProductRepository $productRepository
+                                )
 	{
+        $this->categoryRepository = $categoryRepository;
 		$this->productRepository = $productRepository;
 	}
 
     public function index()
     {
         $products = $this->productRepository->all();
+        $categories = $this->categoryRepository->all();
+        // dd($categories);
 
         return view('front.index')->with(['products' => $products]);
     }
