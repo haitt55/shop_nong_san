@@ -5,12 +5,27 @@ namespace App\Storage\Eloquent;
 use App\Storage\ProductRepositoryInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Illuminate\Support\Facades\DB;
+use Intervention\Image\Facades\Image;
 
 class ProductRepository extends Repository implements ProductRepositoryInterface
 {
     public function findBySlug($slug)
     {
         return $this->model->findBySlug($slug);
+    }
+
+    public function create($data)
+    {
+        $arrData = $data->all();
+        $name = sha1(time() . $data->file('image')->getClientOriginalName());
+        $extention = $data->file('image')->getClientOriginalExtension();
+        $filename = "{$name}.{$extention}";
+        Image::make($data->file('image')->getRealPath())->save(config('product.image_path'). '/' . $filename);
+        $name1 = sha1(time() . $data->file('image1')->getClientOriginalName());
+        $extention1 = $data->file('image1')->getClientOriginalExtension();
+        $filename1 = "{$name1}.{$extention1}";
+        Image::make($data->file('image1')->getRealPath())->save(config('product.image_path'). '/' . $filename1);
+        return $this->model->create($data);
     }
 
     public function updateDiscount($arrRequest, $mode = '')

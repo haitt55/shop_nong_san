@@ -31,7 +31,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
-                            <form method="POST" action="{{ route('admin.products.update', $product->id) }}" role="form">
+                            <form method="POST" action="{{ route('admin.products.update', $product->id) }}" role="form" enctype="multipart/form-data">
                                 @include('admin.layouts.partials.errors')
                                 {{ csrf_field() }}
                                 {!! method_field('put') !!}
@@ -95,24 +95,24 @@
                                         <label><input type="checkbox" name="status" id="status" value="1" {{ old('status', $product->status) ? ' checked="checked"' : '' }}> Còn hàng</label>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-12 gallery">
-                                            @foreach ($product->images->chunk(3) as $set)
-                                                <div class="row">
-                                                    @foreach ($set as $image)
-                                                        <div class="col-md-4 gallery__image">
-                                                            <img src="/{{ $image->thumbnail_path }}" alt="">
-                                                        </div>
-                                                    @endforeach
-                                                </div>
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="dropzone" id="image"></div>
-                                </div>
+                                {{--<div class="form-group">--}}
+                                    {{--<div class="row">--}}
+                                        {{--<div class="col-md-12 gallery">--}}
+                                            {{--@foreach ($product->images->chunk(3) as $set)--}}
+                                                {{--<div class="row">--}}
+                                                    {{--@foreach ($set as $image)--}}
+                                                        {{--<div class="col-md-4 gallery__image">--}}
+                                                            {{--<img src="/{{ $image->thumbnail_path }}" alt="">--}}
+                                                        {{--</div>--}}
+                                                    {{--@endforeach--}}
+                                                {{--</div>--}}
+                                            {{--@endforeach--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="form-group">--}}
+                                    {{--<div class="dropzone" id="image"></div>--}}
+                                {{--</div>--}}
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary">Lưu</button>
                                 </div>

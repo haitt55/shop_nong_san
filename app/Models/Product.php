@@ -14,7 +14,7 @@ class Product extends BaseModel implements SluggableInterface
 
     protected $fillable = [
         'name', 'category_id', 'content', 'amount', 'unit_id', 'price', 'discount', 'status', 'page_title', 'meta_keyword',
-        'meta_description', 'detail', 'made_in'
+        'meta_description', 'detail', 'made_in', 'image', 'image1', 'image2', 'image3'
     ];
 
     protected $sluggable = [
