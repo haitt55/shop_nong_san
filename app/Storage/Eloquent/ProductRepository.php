@@ -41,6 +41,8 @@ class ProductRepository extends Repository implements ProductRepositoryInterface
     
     public function getListProductByCategory($categoryId)
     {
+        // $category = \App\Models\ProductCategory::find($categoryId);
+        
     	return $this->model->where('category_id', $categoryId)->get();
     }
 

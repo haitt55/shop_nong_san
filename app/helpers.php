@@ -72,10 +72,11 @@ function priceDiscount($price, $discount)
 
 function get_product_by_category($categoryId)
 {
-    // $category = new \App\Models\ProductCategory;
-    // $parentCategory = $category->find($categoryId);
-    // $categories = $
-    return \App\Models\Product::where('category_id', $categoryId)->get();
+    $product = new \App\Models\Product;
+    $productRepository = new \App\Storage\Eloquent\ProductRepository($product);
+    $products = $productRepository->getListProductByCategory($categoryId);
+
+    return $products;
 }
 
 ?>
