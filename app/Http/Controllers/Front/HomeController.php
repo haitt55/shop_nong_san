@@ -69,4 +69,11 @@ class HomeController extends Controller
     {
         return view('front.policy.transport');
     }
+
+    public function getSearch(Request $request)
+    {
+        $products = $this->productRepository->getProductBySearch($request);
+
+        return view('front.search')->with(['products' => $products]);
+    }
 }

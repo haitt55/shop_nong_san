@@ -4,11 +4,11 @@
 		<table style="width: 100%">
 			<tr>
 				<td width="6%" height="30"><img src="/images/tele.png" align="absmiddle" height="25"  border="0"  /></td>
-				<td colspan="3" width="94%"><b><span style="font-size: 14px">Bán lẻ: 096.6868.001</span></b></td>
+				<td colspan="3" width="94%"><b><span style="font-size: 14px">Bán lẻ: {!! app_settings('retail_phone') !!}</span></b></td>
 			</tr>
 			<tr>
 				<td width="6%" height="30"><img src="/images/tele.png" align="absmiddle" height="25"  border="0"  /></td>
-				<td colspan="3" width="44%"><b><span style="font-size: 14px">Đại lý: 096.6868.002</span></b></td>
+				<td colspan="3" width="44%"><b><span style="font-size: 14px">Đại lý: {!! app_settings('whole_phone') !!}</span></b></td>
 			</tr>
 			<tr>
 				<td width="6%" height="35" style="padding-left: 3px;">
@@ -16,13 +16,13 @@
 				<td width="44%">
 					<b>Chat Yahoo!</b></td>
 				<td width="6%" height="30" style="padding-left: 3px;">
-					<a href="skype:kd.shophoaqua?chat"><img src="/images/skype.png" align="absmiddle" height="25" border="0" /></a></td>
+					<a href="skype:haitt55?chat"><img src="/images/skype.png" align="absmiddle" height="25" border="0" /></a></td>
 				<td width="44%">
 					<b>Chat Skype</b></td>
 			</tr>
 			<tr>
 				<td width="6%" height="30"><img src="/images/shopicon.png" height="25"  border="0"  /></td>
-				<td colspan="3" width="94%"><span style="line-height: 150%; font-weight: bold; ">Số 123 Đặng Tiến Đông, Đống Đa, Hà Nội</span></td>
+				<td colspan="3" width="94%"><span style="line-height: 150%; font-weight: bold; ">{!! app_settings('address') !!}</span></td>
 			</tr>
 		</table>
 	</div>

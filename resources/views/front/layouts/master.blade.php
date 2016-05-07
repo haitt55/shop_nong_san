@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-<title>Shop Hoa Quả | ShopHoaQua.vn</title>
+<title>Shop Nông Sản | Shopnongsan.vn</title>
 <meta name="keywords" content="shophoaqua.vn, shophoaqua, qua phat thu, buoi diem, buoi ho lo,buoi nam roi, buoi doan hung, buoi long co co, Bưởi da xanh (túi lưới),Bưởi da xanh (không túi lưới),Bưởi Diễn,Bưởi Năm roi,Bưởi Đường lá cam,Bưởi Đoan Hùng,Bưởi Sửu ( Bưởi Đoan Hùng),Bưởi Lông cổ cò,Bưởi Phúc Trạch,Bưởi hồ lô - in chữ Tài Lộc,Bưởi Tân Triều,Bưởi Thanh Trà - Huế,Vú sữa Lò rèn,Vú sữa Bơ hồng,Vú sữa tím,Mít siêu sớm,Xoài cát Hòa Lộc,Xoài Cát Chu,Na Đồng Mỏ,Thanh long ruột đỏ,Cam xoàn,Bơ sáp Trịnh Mười,Sapoche - Hồng xiêm Tiền Giang,Sầu riêng Ri 6 -cơm vàng hạt lép,Quả Kiwi vàng,Quả Kiwi xanh" />
 <meta name="description" content="Bán buôn bán lẻ hoa quả, đặt hàng trực tuyến, giao hàng tận nhà miễn phí. Hoa quả sạch, theo tiêu chuẩn Viet gap và global gap. Uy tín, chất lượng" />
 <link rel="stylesheet" href="/templates/front/style.css" type="text/css" media="screen" />
@@ -202,10 +202,10 @@ $(document).ready(function() {
 		</ul>
 	</div>
 	<div id="logoright">
-		<form action="/timkiem.php" method="get">
-			<input style="color: #444" type="text" id="search" name="search" value="Quả gì?" onblur="if(this.value == '') {this.style.color='#444'; this.value='Quả gì?'}" onfocus="if (this.value == 'Quả gì?') {this.style.color='#444'; this.value=''}" class="inputtext">
+		{!! Form::open(['route' => 'front.search.index', 'method' => 'GET']) !!}
+			<input style="color: #444" type="text" id="search" name="search" value="Sản phẩm?" onblur="if(this.value == '') {this.style.color='#444'; this.value='Sản phẩm?'}" onfocus="if (this.value == 'Sản phẩm?') {this.style.color='#444'; this.value=''}" class="inputtext">
 			<input type ="submit"  value="" class="inputbutton">
-		</form>
+		{!! Form::close() !!}
 	</div>
 </div>	</div>
 	<div id="wrappercontent">
@@ -222,25 +222,25 @@ $(document).ready(function() {
 <div id="hrfooter"></div>
 <div id="footeraddress">
 	<div id="footyenbai">
-		<div id="foottitleyenbai">CÔNG TY TNHH THƯƠNG MẠI VÀ PHÂN PHỐI ĐÔNG DƯƠNG</div>
+		<div id="foottitleyenbai">{!! app_settings('company') !!}</div>
 		<table cellpadding="5"  class="fontaddfot" style="width: 100%">
 			<tr>
-				<td height="20">Địa chỉ: Số 123 Đặng Tiến Đông, Đống Đa, Hà Nội</td>
+				<td height="20">{!! app_settings('address') !!}</td>
 			</tr>
 			<tr>
 				<td height="20">Điện thoại: </td>
 			</tr>
 			<tr>
-				<td height="20">&nbsp;&nbsp;&nbsp;-&nbsp;Bán lẻ: 0966868001 - 0466886633</td>
+				<td height="20">&nbsp;&nbsp;&nbsp;-&nbsp;Bán buôn: {!! app_settings('whole_phone') !!} - {!! app_settings('whole_telephone') !!}</td>
 			</tr>
 			<tr>
-				<td height="20">&nbsp;&nbsp;&nbsp;-&nbsp;Bán buôn: 0966868002 - 0466886611</td>
+				<td height="20">&nbsp;&nbsp;&nbsp;-&nbsp;Bán lẻ: {!! app_settings('retail_phone') !!} - {!! app_settings('retail_telephone') !!}</td>
 			</tr>
 			<tr>
 				<td height="20">&nbsp;&nbsp;&nbsp;-&nbsp;Nguồn hàng: 0466886644</td>
 			</tr>
 			<tr>
-				<td height="20">Email: kd.shophoaqua@gmail.com</td>
+				<td height="20">Email: {!! app_settings('email') !!}</td>
 			</tr>
 		</table>
 	</div>

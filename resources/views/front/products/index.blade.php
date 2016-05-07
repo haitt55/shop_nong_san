@@ -4,15 +4,7 @@
 	@include('front.layouts.sliderleft')
 	<div id="contentwrapper">
 		<div id="homecontent">
-			<div id="linktitlesp">
-				<div id="iconhome">
-					<a href="../index.html"><img src="../images/icontrangchu.png" border="0"></a>
-				</div>
-				<div id="spblankds"></div>
-				<div id="nameds">
-					<span class="linktitle "><a href="index.html">Sản phẩm</a></span>
-				</div>
-			</div>
+			@include('front.layouts.linktitlesp', ['linkRoute' => route('front.products.index'), 'name' => 'Sản phẩm'])
 			@foreach($categories as $category)
 				<div id="titlehomespall">
 					<span class="titlehomesptext">{!! $category->name !!}</span>&nbsp;&nbsp;&nbsp;&nbsp;
