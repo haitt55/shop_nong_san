@@ -31,7 +31,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
-                            <form method="POST" action="{{ route('admin.products.update', $product->id) }}" role="form">
+                            <form method="POST" action="{{ route('admin.products.update', $product->id) }}" role="form" enctype="multipart/form-data">
                                 @include('admin.layouts.partials.errors')
                                 {{ csrf_field() }}
                                 {!! method_field('put') !!}
@@ -75,6 +75,34 @@
                                     <input type="text" name="made_in" id="made_in" class="form-control" value="{{ old('made_in', $product->made_in) }}" placeholder="VD: Hà nội, TP HCM ...">
                                 </div>
                                 <div class="form-group">
+                                    <label for="image">Ảnh đại diện</label>
+                                    <input type="file" name="image" accept="image/*">
+                                    <div>
+                                        <img src="/{{ $product->image }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="image1">Ảnh phụ 1</label>
+                                    <input type="file" name="image1" accept="image/*">
+                                    <div>
+                                        <img src="/{{ $product->image1 }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="image2">Ảnh phụ 2</label>
+                                    <input type="file" name="image2" accept="image/*">
+                                    <div>
+                                        <img src="/{{ $product->image2 }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="image3">Ảnh phụ 3</label>
+                                    <input type="file" name="image3" accept="image/*">
+                                    <div>
+                                        <img src="/{{ $product->image3 }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label for="detail">Chi tiết sản phẩm</label>
                                     <textarea name="detail" id="detail">{{ old('detail', $product->detail) }}</textarea>
                                 </div>
@@ -95,24 +123,24 @@
                                         <label><input type="checkbox" name="status" id="status" value="1" {{ old('status', $product->status) ? ' checked="checked"' : '' }}> Còn hàng</label>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-12 gallery">
-                                            @foreach ($product->images->chunk(3) as $set)
-                                                <div class="row">
-                                                    @foreach ($set as $image)
-                                                        <div class="col-md-4 gallery__image">
-                                                            <img src="/{{ $image->thumbnail_path }}" alt="">
-                                                        </div>
-                                                    @endforeach
-                                                </div>
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="dropzone" id="image"></div>
-                                </div>
+                                {{--<div class="form-group">--}}
+                                    {{--<div class="row">--}}
+                                        {{--<div class="col-md-12 gallery">--}}
+                                            {{--@foreach ($product->images->chunk(3) as $set)--}}
+                                                {{--<div class="row">--}}
+                                                    {{--@foreach ($set as $image)--}}
+                                                        {{--<div class="col-md-4 gallery__image">--}}
+                                                            {{--<img src="/{{ $image->thumbnail_path }}" alt="">--}}
+                                                        {{--</div>--}}
+                                                    {{--@endforeach--}}
+                                                {{--</div>--}}
+                                            {{--@endforeach--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="form-group">--}}
+                                    {{--<div class="dropzone" id="image"></div>--}}
+                                {{--</div>--}}
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary">Lưu</button>
                                 </div>

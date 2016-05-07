@@ -63,7 +63,7 @@ class ProductsController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        $product = $this->productRepository->create($request->all());
+        $product = $this->productRepository->create($request);
 
         event(new ProductWasCreated($product));
 
