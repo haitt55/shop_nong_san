@@ -75,6 +75,34 @@
                                     <input type="text" name="made_in" id="made_in" class="form-control" value="{{ old('made_in', $product->made_in) }}" placeholder="VD: Hà nội, TP HCM ...">
                                 </div>
                                 <div class="form-group">
+                                    <label for="image">Ảnh đại diện</label>
+                                    <input type="file" name="image" accept="image/*">
+                                    <div>
+                                        <img src="/{{ $product->image }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="image1">Ảnh phụ 1</label>
+                                    <input type="file" name="image1" accept="image/*">
+                                    <div>
+                                        <img src="/{{ $product->image1 }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="image2">Ảnh phụ 2</label>
+                                    <input type="file" name="image2" accept="image/*">
+                                    <div>
+                                        <img src="/{{ $product->image2 }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="image3">Ảnh phụ 3</label>
+                                    <input type="file" name="image3" accept="image/*">
+                                    <div>
+                                        <img src="/{{ $product->image3 }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label for="detail">Chi tiết sản phẩm</label>
                                     <textarea name="detail" id="detail">{{ old('detail', $product->detail) }}</textarea>
                                 </div>
