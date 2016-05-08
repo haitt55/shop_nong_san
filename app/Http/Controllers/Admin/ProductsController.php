@@ -67,7 +67,7 @@ class ProductsController extends Controller
 
         event(new ProductWasCreated($product));
 
-        return redirect()->route('admin.products.edit', $product->id);
+        return redirect()->route('admin.products.index');
     }
 
     public function addPhoto(UploadPhotoRequest $request)

@@ -6,6 +6,7 @@ use App\Storage\ProductRepositoryInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
+use App\Models\ProductImage;
 
 class ProductRepository extends Repository implements ProductRepositoryInterface
 {
@@ -19,30 +20,54 @@ class ProductRepository extends Repository implements ProductRepositoryInterface
         $arrData = $data->all();
         $path = config('product.image_path');
         $image = $data->file('image');
-        $name = sha1(time() . $image->getClientOriginalName());
-        $extention = $image->getClientOriginalExtension();
-        $filename = "{$name}.{$extention}";
-        Image::make($image->getRealPath())->save($path . '/' . $filename);
+        $productImageData = array();
+        if ($image) {
+            $name = sha1(time() . $image->getClientOriginalName());
+            $extention = $image->getClientOriginalExtension();
+            $filename = "{$name}.{$extention}";
+            Image::make($image->getRealPath())->save($path . '/' . $filename);
+            $productImageData[] = $filename;
+        }
         $image1 = $data->file('image1');
-        $name1 = sha1(time() . $image1->getClientOriginalName());
-        $extention1 = $image1->getClientOriginalExtension();
-        $filename1 = "{$name1}.{$extention1}";
-        Image::make($image1->getRealPath())->save($path . '/' . $filename1);
+        if ($image1) {
+            $name1 = sha1(time() . $image1->getClientOriginalName());
+            $extention1 = $image1->getClientOriginalExtension();
+            $filename1 = "{$name1}.{$extention1}";
+            Image::make($image1->getRealPath())->save($path . '/' . $filename1);
+            $productImageData[] = $filename1;
+        }
+
         $image2 = $data->file('image2');
-        $name2 = sha1(time() . $image2->getClientOriginalName());
-        $extention2 = $image2->getClientOriginalExtension();
-        $filename2 = "{$name2}.{$extention2}";
-        Image::make($image2->getRealPath())->save($path . '/' . $filename2);
+        if ($image2) {
+            $name2 = sha1(time() . $image2->getClientOriginalName());
+            $extention2 = $image2->getClientOriginalExtension();
+            $filename2 = "{$name2}.{$extention2}";
+            Image::make($image2->getRealPath())->save($path . '/' . $filename2);
+            $productImageData[] = $filename2;
+        }
+
         $image3 = $data->file('image3');
-        $name3 = sha1(time() . $image3->getClientOriginalName());
-        $extention3 = $image3->getClientOriginalExtension();
-        $filename3 = "{$name3}.{$extention3}";
-        Image::make($data->file('image3')->getRealPath())->save($path . '/' . $filename3);
-        $arrData['image'] = $path . '/' . $filename;
-        $arrData['image1'] = $path . '/' . $filename1;
-        $arrData['image2'] = $path . '/' . $filename2;
-        $arrData['image3'] = $path . '/' . $filename3;
-        return $this->model->create($arrData);
+        if ($image3) {
+            $name3 = sha1(time() . $image3->getClientOriginalName());
+            $extention3 = $image3->getClientOriginalExtension();
+            $filename3 = "{$name3}.{$extention3}";
+            Image::make($image3->getRealPath())->save($path . '/' . $filename3);
+            $productImageData[] = $filename3;
+        }
+        $product = $this->model->create($arrData);
+        if ($product) {
+            if ($productImageData) {
+                foreach ($productImageData as $imagedata) {
+                    $productImage = new ProductImage();
+                    $productImage->product_id = $product->id;
+                    $productImage->name = $imagedata;
+                    $productImage->path = $path . '/' . $imagedata;
+                    $productImage->save();
+                }
+            }
+            return $product;
+        }
+        return false;
     }
 
     public function updateDiscount($arrRequest, $mode = '')

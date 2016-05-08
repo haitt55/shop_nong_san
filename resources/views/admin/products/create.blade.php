@@ -33,7 +33,7 @@
                                     <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}">
                                 </div>
                                 <div class="form-group">
-                                    <label for="category_id">Danh mục</label>
+                                    <label for="category_id">Danh mục <span class="require">*</span></label>
                                     <select type="text" name="category_id" id="category_id" class="form-control" value="{{ old('category_id') }}">
                                         <option value="">--</option>
                                         @foreach($categoryOptions as $key => $value)
