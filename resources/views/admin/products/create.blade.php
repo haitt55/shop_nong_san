@@ -69,19 +69,19 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="image">Ảnh đại diện</label>
-                                    <input type="file" name="image" accept="image/*">
+                                    <input type="file" id="main-image" name="image" accept="image/*" onchange="enableImage1Input();">
                                 </div>
                                 <div class="form-group">
                                     <label for="image1">Ảnh phụ 1</label>
-                                    <input type="file" name="image1" accept="image/*">
+                                    <input type="file" class="sub-image" id="sub-image1" name="image1"  accept="image/*" onchange="enableImage2Input();">
                                 </div>
                                 <div class="form-group">
                                     <label for="image2">Ảnh phụ 2</label>
-                                    <input type="file" name="image2" accept="image/*">
+                                    <input type="file" class="sub-image" id="sub-image2" name="image2" accept="image/*" onchange="enableImage3Input();">
                                 </div>
                                 <div class="form-group">
                                     <label for="image3">Ảnh phụ 3</label>
-                                    <input type="file" name="image3" accept="image/*">
+                                    <input type="file" class="sub-image" id="sub-image3" name="image3" accept="image/*">
                                 </div>
                                 <div class="form-group">
                                     <label for="detail">Chi tiết sản phẩm</label>
@@ -128,7 +128,44 @@
                 minHeight: null,
                 maxHeight: null
             });
+
+            $('.sub-image').each( function() {
+                this.disabled = true;
+            });
         });
+
+        function enableImage1Input() {
+            if ($('#main-image').val()) {
+                $('#sub-image1').prop('disabled', false);
+            } else {
+                $('#sub-image1').prop('disabled', true);
+                $('#sub-image1').val('');
+                $('#sub-image2').prop('disabled', true);
+                $('#sub-image2').val('');
+                $('#sub-image3').prop('disabled', true);
+                $('#sub-image3').val('');
+            }
+        }
+
+        function enableImage2Input() {
+            if ($('#sub-image1').val()) {
+                $('#sub-image2').prop('disabled', false);
+            } else {
+                $('#sub-image2').prop('disabled', true);
+                $('#sub-image2').val('');
+                $('#sub-image3').prop('disabled', true);
+                $('#sub-image3').val('');
+            }
+        }
+
+        function enableImage3Input() {
+            if ($('#sub-image2').val()) {
+                $('#sub-image3').prop('disabled', false);
+            } else {
+                $('#sub-image3').prop('disabled', true);
+                $('#sub-image3').val('');
+            }
+        }
     </script>
 @endsection
 

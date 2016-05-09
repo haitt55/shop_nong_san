@@ -84,7 +84,7 @@
                                     <input type="file" name="image" accept="image/*">
                                     <br>
                                     <div>
-                                        <img class="thumbnail" style="width:200px" src=@if($arrImage[0]) "/{{ $arrImage[0]['path'] }}" @else '/img/no_image.png' @endif alt=">
+                                        <img class="thumbnail" style="width:200px" src=@if(array_key_exists(0, $arrImage)) "/{{ $arrImage[0]['path'] }}" @else '/img/no_image.png' @endif alt=">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -92,7 +92,7 @@
                                     <input type="file" name="image1" accept="image/*">
                                     <br>
                                     <div>
-                                        <img class="thumbnail" style="width:200px" src=@if($arrImage[1]) "/{{ $arrImage[1]['path'] }}" @else '/img/no_image.png' @endif alt=">
+                                        <img class="thumbnail" style="width:200px" src=@if(array_key_exists(1, $arrImage)) "/{{ $arrImage[1]['path'] }}" @else '/img/no_image.png' @endif alt=">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -100,7 +100,7 @@
                                     <input type="file" name="image2" accept="image/*">
                                     <br>
                                     <div>
-                                        <img class="thumbnail" style="width:200px" src=@if($arrImage[2]) "/{{ $arrImage[2]['path'] }}" @else '/img/no_image.png' @endif alt=">
+                                        <img class="thumbnail" style="width:200px" src=@if(array_key_exists(2, $arrImage)) "/{{ $arrImage[2]['path'] }}" @else '/img/no_image.png' @endif alt=">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -108,7 +108,7 @@
                                     <input type="file" name="image3" accept="image/*">
                                     <br>
                                     <div>
-                                        <img class="thumbnail" style="width:200px" src=@if($arrImage[3]) "/{{ $arrImage[3]['path'] }}" @else '/img/no_image.png' @endif alt=">
+                                        <img class="thumbnail" style="width:200px" src=@if(array_key_exists(3, $arrImage)) "/{{ $arrImage[3]['path'] }}" @else '/img/no_image.png' @endif alt=">
                                     </div>
                                 </div>
                                 <div class="form-group">

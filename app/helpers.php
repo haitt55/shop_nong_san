@@ -50,7 +50,7 @@ function string_limit($str, $limit = 100, $end = '...')
         return $str;
     }
 
-    return rtrim(mb_strimwidth($str, 0, $limit, '', 'UTF-8')).$end."</p>";
+    return rtrim(mb_strimwidth($str, 0, $limit, '', 'UTF-8')).$end;
 }
 
 function display_money($number)

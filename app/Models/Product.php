@@ -71,6 +71,12 @@ class Product extends BaseModel implements SluggableInterface
             throw new Exception('Không thể xóa. Vẫn còn bài viết về sản phẩm này.');
         }
 
+        if ($this->images()) {
+            foreach ($this->images() as $image) {
+                $image->delete();
+            }
+        }
+
         return parent::delete();
     }
 }

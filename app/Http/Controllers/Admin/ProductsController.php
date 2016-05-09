@@ -14,6 +14,7 @@ use App\Events\Product\WasDeleted as ProductWasDeleted;
 use App\Events\ExceptionOccurred;
 use Exception;
 use App\Services\Photo;
+use App\Models\ProductImage;
 
 class ProductsController extends Controller
 {
@@ -138,7 +139,7 @@ class ProductsController extends Controller
      */
     public function update(ProductRequest $request, $id)
     {
-        $product = $this->productRepository->update($id, $request->all());
+        $product = $this->productRepository->update($id, $request);
 
         event(new ProductWasUpdated($product));
 

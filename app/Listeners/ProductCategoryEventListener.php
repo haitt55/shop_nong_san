@@ -6,17 +6,17 @@ class ProductCategoryEventListener
 {
     public function onCreated($event)
     {
-        flash()->success('Success!', 'Tạo mới danh mục thành công.');
+        flash()->success('Success!', 'created success.');
     }
 
     public function onUpdated($event)
     {
-        flash()->success('Success!', 'Cập nhật danh mục thành công.');
+        flash()->success('Success!', 'updated success.');
     }
 
     public function onDeleted($event)
     {
-        flash()->success('Success!', 'Xóa danh mục thành công.');
+        flash()->success('Success!', 'delete success.');
     }
 
     public function subscribe($events)
