@@ -74,32 +74,41 @@
                                     <label for="made_in">Xuất xứ</label>
                                     <input type="text" name="made_in" id="made_in" class="form-control" value="{{ old('made_in', $product->made_in) }}" placeholder="VD: Hà nội, TP HCM ...">
                                 </div>
+                                <?php
+                                    if ($product->images) {
+                                        $arrImage = $product->images->toArray();
+                                    }
+                                ?>
                                 <div class="form-group">
                                     <label for="image">Ảnh đại diện</label>
                                     <input type="file" name="image" accept="image/*">
+                                    <br>
                                     <div>
-                                        <img src="/{{ $product->image }}" alt="">
+                                        <img class="thumbnail" style="width:200px" src=@if(array_key_exists(0, $arrImage)) "/{{ $arrImage[0]['path'] }}" @else '/img/no_image.png' @endif alt=">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="image1">Ảnh phụ 1</label>
                                     <input type="file" name="image1" accept="image/*">
+                                    <br>
                                     <div>
-                                        <img src="/{{ $product->image1 }}" alt="">
+                                        <img class="thumbnail" style="width:200px" src=@if(array_key_exists(1, $arrImage)) "/{{ $arrImage[1]['path'] }}" @else '/img/no_image.png' @endif alt=">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="image2">Ảnh phụ 2</label>
                                     <input type="file" name="image2" accept="image/*">
+                                    <br>
                                     <div>
-                                        <img src="/{{ $product->image2 }}" alt="">
+                                        <img class="thumbnail" style="width:200px" src=@if(array_key_exists(2, $arrImage)) "/{{ $arrImage[2]['path'] }}" @else '/img/no_image.png' @endif alt=">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="image3">Ảnh phụ 3</label>
                                     <input type="file" name="image3" accept="image/*">
+                                    <br>
                                     <div>
-                                        <img src="/{{ $product->image3 }}" alt="">
+                                        <img class="thumbnail" style="width:200px" src=@if(array_key_exists(3, $arrImage)) "/{{ $arrImage[3]['path'] }}" @else '/img/no_image.png' @endif alt=">
                                     </div>
                                 </div>
                                 <div class="form-group">

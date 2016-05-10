@@ -36,7 +36,7 @@
                                                 <div class="row">
                                                     @foreach ($set as $image)
                                                         <div class="col-xs-3">
-                                                            <img width="100%" src="/{{ $image->thumbnail_path }}" alt="">
+                                                            <img width="100%" src="/{{ $image->path }}" alt="">
                                                         </div>
                                                     @endforeach
                                                 </div>
