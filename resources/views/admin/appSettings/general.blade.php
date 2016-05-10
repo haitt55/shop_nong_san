@@ -25,7 +25,7 @@
                                 {!! method_field('put') !!}
                                 <div class="form-group">
                                     <label for="company">Tên công ty</label>
-                                    <input type="company" name="email" id="email" class="form-control" value="{{ old('company', $appSettings['company']) }}">
+                                    <input type="company" name="company" id="company" class="form-control" value="{{ old('company', $appSettings['company']) }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Email</label>

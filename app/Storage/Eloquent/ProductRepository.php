@@ -183,13 +183,14 @@ class ProductRepository extends Repository implements ProductRepositoryInterface
 
     public function getProductBySearch($request)
     {
-        if(isset($request->search)) {
+        if (isset($request->search)) {
             $products = $this->model->where('name', 'LIKE', '%' . $request->search . '%')->get();
         }
 
         return $products;
     }
     
+
     public function delete($id)
     {
         $productImages = ProductImage::where('product_id', $id)->get();
