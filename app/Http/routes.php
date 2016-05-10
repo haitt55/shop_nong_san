@@ -54,6 +54,8 @@ Route::get('/delivery', ['uses' => 'Front\HomeController@delivery', 'as' => 'fro
 Route::get('/about', ['uses' => 'Front\HomeController@about', 'as' => 'front.home.about']);
 Route::get('/transport', ['uses' => 'Front\HomeController@transport', 'as' => 'front.home.transport']);
 
+Route::get('/policies/{id}', ['uses' => 'Front\HomeController@getPolicy', 'as' => 'front.policies.index']);
+
 Route::get('/products', ['uses' => 'Front\ProductController@index', 'as' => 'front.products.index']);
 Route::get('/products/{id}/detail', ['uses' => 'Front\ProductController@getProductDetail', 'as' => 'front.products.detail']);
 Route::get('/discount', ['uses' => 'Front\ProductController@getDiscount', 'as' => 'front.products.discount']);

@@ -51,17 +51,4 @@
 	<div id="thanhvienvip">
 		<a href="{!! route('front.home.preference') !!}" border="0"><img src="/images/ads/1353922031_ads.png" class="imgthanhvienvip"></a>
 	</div>
-	<div id="spbanchay">
-		<div id="titlebanchay">Sản phẩm bán chạy</div>
-		<div id="contentbanchay">
-			@foreach ($__products as $product)
-				<a href="chi-tiet/20/buoi-da-xanh/index.html"><img src="{!! $product->image !!}" class="imgspbanchay" /> </a>
-				<h1 class="h1titlebanchay"><a href="chi-tiet/20/buoi-da-xanh/index.html">{!! $product->name !!}</a></h1>
-				<h2 class="h2giabanchay">
-					{!! $product->price !!}		
-				</h2>
-				<div id="dottedbanchay"></div>
-			@endforeach
-		</div>
-	</div>
 </div>

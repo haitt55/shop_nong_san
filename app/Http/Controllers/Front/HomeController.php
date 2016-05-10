@@ -76,4 +76,11 @@ class HomeController extends Controller
 
         return view('front.search')->with(['products' => $products]);
     }
+
+    public function getPolicy($id)
+    {
+        $policy = \App\Models\IntroducePolicy::find($id);
+
+        return view('front.policy.detail')->with(['policy' => $policy]);
+    }
 }
