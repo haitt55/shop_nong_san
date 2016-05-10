@@ -53,7 +53,7 @@
                                         <tr>
                                             <td>#{{ $index }}</td>
                                             <td>{{ $introduce_policy->title }}</td>
-                                            <td>{!! $introduce_policy->content ? string_limit($introduce_policy->content) : '' !!} </td>
+                                            <td>{!! $introduce_policy->content ? string_limit(strip_tags($introduce_policy->content)) : '' !!} </td>
                                             <td>{{ $introduce_policy->updated_at }}</td>
                                             <td width="18%">
                                                 <a href="{{ route('admin.introduces_policies.edit', $introduce_policy->id) }}" class="btn btn-info"><i class="fa fa-edit"></i> Sửa</a>

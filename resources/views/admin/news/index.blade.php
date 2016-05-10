@@ -53,7 +53,7 @@
                                         <tr>
                                             <td>#{{ $index }}</td>
                                             <td>{{ $news->title }}</td>
-                                            <td>{!! $news->content ? string_limit($news->content) : '' !!} </td>
+                                            <td>{!! $news->content ? string_limit(strip_tags($news->content)) : '' !!} </td>
                                             <td>{{ $news->updated_at }}</td>
                                             <td width="18%">
                                                 <a href="{{ route('admin.news.edit', $news->id) }}" class="btn btn-info"><i class="fa fa-edit"></i> Sửa</a>

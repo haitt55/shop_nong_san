@@ -14,6 +14,7 @@ use App\Events\Product\WasDeleted as ProductWasDeleted;
 use App\Events\ExceptionOccurred;
 use Exception;
 use App\Services\Photo;
+use App\Models\ProductImage;
 
 class ProductsController extends Controller
 {
@@ -63,11 +64,11 @@ class ProductsController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        $product = $this->productRepository->create($request->all());
+        $product = $this->productRepository->create($request);
 
         event(new ProductWasCreated($product));
 
-        return redirect()->route('admin.products.edit', $product->id);
+        return redirect()->route('admin.products.index');
     }
 
     public function addPhoto(UploadPhotoRequest $request)
@@ -138,7 +139,7 @@ class ProductsController extends Controller
      */
     public function update(ProductRequest $request, $id)
     {
-        $product = $this->productRepository->update($id, $request->all());
+        $product = $this->productRepository->update($id, $request);
 
         event(new ProductWasUpdated($product));
 

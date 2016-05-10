@@ -14,7 +14,7 @@ class Product extends BaseModel implements SluggableInterface
 
     protected $fillable = [
         'name', 'category_id', 'content', 'amount', 'unit_id', 'price', 'discount', 'status', 'page_title', 'meta_keyword',
-        'meta_description', 'detail', 'made_in'
+        'meta_description', 'detail', 'made_in', 'image', 'image1', 'image2', 'image3'
     ];
 
     protected $sluggable = [
@@ -69,6 +69,12 @@ class Product extends BaseModel implements SluggableInterface
     {
         if ($this->articles()->count() > 0) {
             throw new Exception('Không thể xóa. Vẫn còn bài viết về sản phẩm này.');
+        }
+
+        if ($this->images()) {
+            foreach ($this->images() as $image) {
+                $image->delete();
+            }
         }
 
         return parent::delete();
