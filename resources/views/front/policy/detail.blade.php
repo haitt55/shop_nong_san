@@ -1,5 +1,11 @@
 @extends('front.layouts.master')
 
+@section('title', $policy->title)
+
+@section('keywords', $policy->meta_keyword)
+
+@section('description', $policy->meta_description)
+
 @section('content')
 <div id="wrappercontent">
 	<div style="float: right; width: 900px; height: 10px;"></div>

@@ -1,5 +1,11 @@
 @extends('front.layouts.master')
 
+@section('title', 'Sản phẩm')
+
+@section('keywords', 'sản phẩm')
+
+@section('description', 'sản phẩm')
+
 @section('content')
 	@include('front.layouts.sliderleft')
 	<div id="contentwrapper">

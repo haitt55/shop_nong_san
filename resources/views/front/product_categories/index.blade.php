@@ -1,5 +1,11 @@
 @extends('front.layouts.master')
 
+@section('title', $category->name)
+
+@section('keywords', $category->meta_keyword)
+
+@section('description', $category->meta_description)
+
 @section('content')
 	@include('front.layouts.sliderleft')
 	<div id="contentwrapper">

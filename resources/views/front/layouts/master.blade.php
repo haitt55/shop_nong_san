@@ -4,9 +4,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-<title>Shop Nông Sản | Shopnongsan.vn</title>
-<meta name="keywords" content="shophoaqua.vn, shophoaqua, qua phat thu, buoi diem, buoi ho lo,buoi nam roi, buoi doan hung, buoi long co co, Bưởi da xanh (túi lưới),Bưởi da xanh (không túi lưới),Bưởi Diễn,Bưởi Năm roi,Bưởi Đường lá cam,Bưởi Đoan Hùng,Bưởi Sửu ( Bưởi Đoan Hùng),Bưởi Lông cổ cò,Bưởi Phúc Trạch,Bưởi hồ lô - in chữ Tài Lộc,Bưởi Tân Triều,Bưởi Thanh Trà - Huế,Vú sữa Lò rèn,Vú sữa Bơ hồng,Vú sữa tím,Mít siêu sớm,Xoài cát Hòa Lộc,Xoài Cát Chu,Na Đồng Mỏ,Thanh long ruột đỏ,Cam xoàn,Bơ sáp Trịnh Mười,Sapoche - Hồng xiêm Tiền Giang,Sầu riêng Ri 6 -cơm vàng hạt lép,Quả Kiwi vàng,Quả Kiwi xanh" />
-<meta name="description" content="Bán buôn bán lẻ hoa quả, đặt hàng trực tuyến, giao hàng tận nhà miễn phí. Hoa quả sạch, theo tiêu chuẩn Viet gap và global gap. Uy tín, chất lượng" />
+<title>Shop Nông Sản | @yield('title')</title>
+<meta name="keywords" content="@yield('keywords')" />
+<meta name="description" content="@yield('description')" />
 <link rel="stylesheet" href="/templates/front/style.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="/templates/front/themeslide/default/default.css" type="text/css" media="screen" />
 <link rel="shortcut icon" href="/templates/front/images/ico.png" type="image/x-icon" />
