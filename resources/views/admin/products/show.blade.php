@@ -76,6 +76,14 @@
                                         </table>
                                     </div>
                                 </div>
+                                <div>
+                                    <div>
+                                        <p class="form-control-static"><strong>Chi tiết:</strong></p>
+                                    </div>
+                                    <div>
+                                        {!! $product->detail !!}
+                                    </div>
+                                </div>
                                 <?php $articles = $product->articles->sortBy('order'); ?>
                                 @if($articles)
                                     @foreach($articles as $article)

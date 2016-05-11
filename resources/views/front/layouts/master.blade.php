@@ -237,7 +237,7 @@ $(document).ready(function() {
 				<td height="20">&nbsp;&nbsp;&nbsp;-&nbsp;Bán lẻ: {!! app_settings('retail_phone') !!} - {!! app_settings('retail_telephone') !!}</td>
 			</tr>
 			<tr>
-				<td height="20">&nbsp;&nbsp;&nbsp;-&nbsp;Nguồn hàng: 0466886644</td>
+				<td height="20">&nbsp;&nbsp;&nbsp;-&nbsp;Nguồn hàng: {!! app_settings('source_telephone') !!}</td>
 			</tr>
 			<tr>
 				<td height="20">Email: {!! app_settings('email') !!}</td>
@@ -259,10 +259,7 @@ $(document).ready(function() {
 				<td height="20">&nbsp;</td>
 			</tr>
 			<tr>
-				<td height="20">Copyright @ 2012 <B>Shop Hoa Qua</B></td>
-			</tr>
-			<tr>
-				<td height="20"><span class="linkfoot">Design by <a target="_blank" href="http://mrkhoa.net">Mr.Khoa</a> and <a target="_blank" href="http://shophoaqua.vn">Tuanck</a></span></td>
+				<td height="20">Copyright @ 2016 <B>Shop Nông Sản</B></td>
 			</tr>
 		</table>
 	</div>

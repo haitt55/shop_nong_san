@@ -127,7 +127,7 @@
 				</div>
 				<div id="infosp">
 					<div id="infotitlesp">Thông tin về hoa quả</div>	
-					{!! $product->detail !!}	
+					{!! $product->detail !!}
 				</div>
 				<br/><br/>
 				<div id="splienquan">Trao đổi trực tuyến với khách hàng bằng tài khoản Facebook</div>
@@ -141,12 +141,12 @@
 						<div id="sphomele">
 							<h1 class="h1tensp">{!! link_to_route('front.products.detail', $eachProduct->name, $eachProduct->id) !!}</h1>
 							<a href="{!! route('front.products.detail', $eachProduct->id) !!}">
-								<img src="{!! $eachProduct->images->first() ? $eachProduct->images->first()->path : '' !!}" class="imgsphomele" onerror="loadErrorImage(this,'/images/noimg.png');"  />
+								<img src="/{!! $eachProduct->images->first() ? $eachProduct->images->first()->path : '' !!}" class="imgsphomele" onerror="loadErrorImage(this,'/images/noimg.png');"  />
 							</a>
 							<div id="h1giasphomele">
 								<span class='giakmhome'>
 									<p class='xuongdong'></p>
-									{!! $eachProduct->price !!}
+									{{ $eachProduct->price ? display_money($eachProduct->price) : '' }}
 								</span>
 							</div>
 							<div id="nutchitiethome">
