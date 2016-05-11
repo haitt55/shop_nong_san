@@ -16,7 +16,7 @@ class AppSettingTableSeeder extends Seeder
         $appSettings = [
             [
                 'key' => 'name',
-                'value' => 'GCMS',
+                'value' => 'Shop Nông sản',
             ],
             [
                 'key' => 'company',

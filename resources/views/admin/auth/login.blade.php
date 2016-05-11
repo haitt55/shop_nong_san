@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>GCMS - Login</title>
+    <title>Shop Nông sản - Login</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="/templates/admin/sbadmin2/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -39,7 +39,7 @@
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">GCMS</h3>
+                        <h3 class="panel-title">Shop Nông sản</h3>
                     </div>
                     <div class="panel-body">
                         <form method="POST" action="{{ route('admin.auth.postLogin') }}" role="form">

@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Dashboard')
+@section('title', 'Quản lý Shop nông sản')
 
 @section('content')
     <div class="container-fluid">

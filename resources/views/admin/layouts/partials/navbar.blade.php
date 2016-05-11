@@ -5,7 +5,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="{{ route('admin.home.index') }}">GCMS</a>
+    <a class="navbar-brand" href="{{ route('admin.home.index') }}">Shop Nông sản</a>
 </div>
 <!-- /.navbar-header -->
 
