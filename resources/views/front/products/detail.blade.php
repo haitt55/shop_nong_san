@@ -58,11 +58,11 @@
 										<table style="width: 100%">
 											<tr>
 												<td width="10%" height="30"><img src="/images/tele.png" align="absmiddle" height="25"  border="0"  /></td>
-												<td width="90%"><b><span style="font-size: 14px">Bán lẻ: 096.6868.001</span></b></td>
+												<td width="90%"><b><span style="font-size: 14px">Bán lẻ: {!! app_settings('retail_phone') !!}</span></b></td>
 											</tr>
 											<tr>
 												<td width="10%" height="30"><img src="/images/tele.png" align="absmiddle" height="25"  border="0"  /></td>
-												<td width="90%"><b><span style="font-size: 14px">Đại lý: 096.6868.002</span></b></td>
+												<td width="90%"><b><span style="font-size: 14px">Đại lý: {!! app_settings('whole_phone') !!}</span></b></td>
 											</tr>
 											<tr>
 												<td width="10%" height="30" style="padding-left: 3px;"><a href="ymsgr:SendIM?kd.shophoaqua"><img src="/images/yahoo.png" align="absmiddle" height="25" border="0" /></a></td>
