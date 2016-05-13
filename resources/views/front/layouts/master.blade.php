@@ -184,7 +184,7 @@ $(document).ready(function() {
 	<div id="headerfull">
 		<div id="headerwide">
 	<div id="header">
-		<div id="logo"><!--<img width="980" height="140" src="images/thu 14.jpg" border="0">  --><object width="980" height="140" data="/images/logo.swf"></object></div> 
+		<div id="logo"><!--<img width="980" height="140" src="images/thu 14.jpg" border="0">  --><object width="980" height="140" data="/images/logo.jpg"></object></div> 
 		<div id="logoright">
 				
 		</div>
@@ -194,11 +194,17 @@ $(document).ready(function() {
 	<div id="icontrangchu"><a href="/"><img align="absmiddle"  src="/images/icontrangchu.png" border="0"></a></div>
 	<div id="menu">	
 		<ul id="nav">
-			<li>{!! link_to_route('front.home.about', 'Giới thiệu') !!}</li>      
+			@if(!is_null(App\Models\IntroducePolicy::find(11)))
+			<li><a href="{{ policiesl_path(App\Models\IntroducePolicy::find(11)) }}" >Giới thiệu</a></li>
+			@endif      
 			<li>{!! link_to_route('front.products.index', 'Sản phẩm') !!}</li>   
 			<li><a href="{!! route('front.products.discount') !!}">Khuyến mại<span class="sodeal">{!! count($__productDiscounts) !!}</span></a></li> 
-			<li>{!! link_to_route('front.home.transport', 'Giao hàng') !!}</li>        
-			<li>{!! link_to_route('front.home.payment', 'Thanh toán') !!}</li>       
+			@if(!is_null(App\Models\IntroducePolicy::find(9)))
+			<li><a href="{{ policiesl_path(App\Models\IntroducePolicy::find(9)) }}" >Giao hàng</a></li>
+			@endif        
+			@if(!is_null(App\Models\IntroducePolicy::find(6)))
+			<li><a href="{{ policiesl_path(App\Models\IntroducePolicy::find(10)) }}" >Thanh toán</a></li>       
+			@endif
 		</ul>
 	</div>
 	<div id="logoright">
@@ -213,11 +219,21 @@ $(document).ready(function() {
 	<div id="footer">
 		<div id="bgtopfooter"></div>
 <div id="foottop">
-	<span class="menubot"><a href="/421/phuong-thuc-thanh-toan/">Phương thức thanh toán</a></span>
-	<span class="menubot"><a href="/418/huong-dan-mua-hang/">Hướng dẫn mua hàng</a></span>
-	<span class="menubot"><a href="/425/chuong-trinh-khuyen-mai/">Chương trình khuyến mại</a></span>
-	<span class="menubot"><a href="/420/chinh-sach-van-chuyen/">Chính sách giao hàng</a></span>
-	<span class="menubot"><a href="/406/the-uu-dai-thanh-vien/">Thẻ ưu đãi thành viên</a></span>
+	<span class="menubot">
+		<a href="{{ policiesl_path(App\Models\IntroducePolicy::find(10)) }}" >{!! App\Models\IntroducePolicy::find(10)->title !!}</a>
+	</span>
+	<span class="menubot">
+		<a href="{{ policiesl_path(App\Models\IntroducePolicy::find(9)) }}" >{!! App\Models\IntroducePolicy::find(9)->title !!}</a>
+	</span>
+	<span class="menubot">
+		<a href="{{ policiesl_path(App\Models\IntroducePolicy::find(6)) }}" >{!! App\Models\IntroducePolicy::find(6)->title !!}</a>
+	</span>
+	<span class="menubot">
+		<a href="{{ policiesl_path(App\Models\IntroducePolicy::find(7)) }}" >{!! App\Models\IntroducePolicy::find(7)->title !!}</a>
+	</span>
+	<span class="menubot">
+		<a href="{{ policiesl_path(App\Models\IntroducePolicy::find(1)) }}" >{!! App\Models\IntroducePolicy::find(1)->title !!}</a>
+	</span>
 </div>
 <div id="hrfooter"></div>
 <div id="footeraddress">

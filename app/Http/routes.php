@@ -45,16 +45,17 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
 // Web
 // Route::get('/', ['uses' => 'HomeController@index', 'as' => 'home.index']);
 Route::get('/', ['uses' => 'Front\HomeController@index', 'as' => 'front.home.index']);
-Route::get('/payments', ['uses' => 'Front\HomeController@payment', 'as' => 'front.home.payment']);
-Route::get('/preferences', ['uses' => 'Front\HomeController@preference', 'as' => 'front.home.preference']);
-Route::get('/promotion', ['uses' => 'Front\HomeController@promotion', 'as' => 'front.home.promotion']);
-Route::get('/buy-guide', ['uses' => 'Front\HomeController@buyGuide', 'as' => 'front.home.buy_guide']);
-Route::get('/regulation', ['uses' => 'Front\HomeController@regulation', 'as' => 'front.home.regulation']);
-Route::get('/delivery', ['uses' => 'Front\HomeController@delivery', 'as' => 'front.home.delivery']);
-Route::get('/about', ['uses' => 'Front\HomeController@about', 'as' => 'front.home.about']);
-Route::get('/transport', ['uses' => 'Front\HomeController@transport', 'as' => 'front.home.transport']);
 
-Route::get('/policies/{id}', ['uses' => 'Front\HomeController@getPolicy', 'as' => 'front.policies.index']);
+// Route::get('/payments', ['uses' => 'Front\HomeController@payment', 'as' => 'front.home.payment']);
+// Route::get('/preferences', ['uses' => 'Front\HomeController@preference', 'as' => 'front.home.preference']);
+// Route::get('/promotion', ['uses' => 'Front\HomeController@promotion', 'as' => 'front.home.promotion']);
+// Route::get('/buy-guide', ['uses' => 'Front\HomeController@buyGuide', 'as' => 'front.home.buy_guide']);
+// Route::get('/regulation', ['uses' => 'Front\HomeController@regulation', 'as' => 'front.home.regulation']);
+// Route::get('/delivery', ['uses' => 'Front\HomeController@delivery', 'as' => 'front.home.delivery']);
+// Route::get('/about', ['uses' => 'Front\HomeController@about', 'as' => 'front.home.about']);
+// Route::get('/transport', ['uses' => 'Front\HomeController@transport', 'as' => 'front.home.transport']);
+
+Route::get('/chinh-sach/{slug}', ['uses' => 'Front\HomeController@getPolicy', 'as' => 'front.policies.index']);
 
 //Route::get('/products', ['uses' => 'Front\ProductController@index', 'as' => 'front.products.index']);
 //Route::get('/products/{id}/detail', ['uses' => 'Front\ProductController@getProductDetail', 'as' => 'front.products.detail']);
@@ -65,7 +66,7 @@ Route::get('/policies/{id}', ['uses' => 'Front\HomeController@getPolicy', 'as' =
 
 //Route::get('/categories/{id}', ['uses' => 'Front\ProductCategoryController@index', 'as' => 'front.categories.index']);
 
-Route::get('/search', ['uses' => 'Front\HomeController@getSearch', 'as' => 'front.search.index']);
+Route::get('/tim-kiem', ['uses' => 'Front\HomeController@getSearch', 'as' => 'front.search.index']);
 
 Route::get('articles.html', ['uses' => 'ArticlesController@index', 'as' => 'articles.index']);
 Route::get('articles/{slug}.html', ['uses' => 'ArticlesController@show', 'as' => 'articles.show']);

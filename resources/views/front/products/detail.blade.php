@@ -71,11 +71,11 @@
 												<td width="90%"><b><span style="font-size: 14px">Đại lý: {!! app_settings('whole_phone') !!}</span></b></td>
 											</tr>
 											<tr>
-												<td width="10%" height="30" style="padding-left: 3px;"><a href="ymsgr:SendIM?kd.shophoaqua"><img src="/images/yahoo.png" align="absmiddle" height="25" border="0" /></a></td>
+												<td width="10%" height="30" style="padding-left: 3px;"><a href="ymsgr:SendIM?"><img src="/images/yahoo.png" align="absmiddle" height="25" border="0" /></a></td>
 												<td width="90%"><b>Chat Yahoo!</b></td>
 											</tr>
 											<tr>
-												<td height="35"><a href="skype:kd.shophoaqua?chat"><img src="/images/skype.png" align="absmiddle" height="25" border="0"/></a></td>
+												<td height="35"><a href="skype:trungnn.92?chat"><img src="/images/skype.png" align="absmiddle" height="25" border="0"/></a></td>
 												<td><b>Chat Skype</b></td>
 											</tr>
 										</table>
@@ -86,7 +86,7 @@
 												<td >
 													<div id="thanhtoan">
 														<span class="chinhsachgiaohang">
-															{!! link_to_route('front.home.payment', 'Thanh toán') !!}
+															<a href="{{ policiesl_path(App\Models\IntroducePolicy::find(10)) }}" >Thanh toán</a>
 														</span>
 													</div>
 												</td>
@@ -95,7 +95,7 @@
 												<td >
 													<div id="huondanmua">
 														<span class="chinhsachgiaohang">
-															{!! link_to_route('front.home.buy_guide', 'Hướng dẫn mua hàng') !!}
+															<a href="{{ policiesl_path(App\Models\IntroducePolicy::find(7)) }}" >Hướng dẫn mua hàng</a>
 														</span>
 													</div>
 												</td>
@@ -104,7 +104,7 @@
 												<td >
 													<div id="chinhsach">
 														<span class="chinhsachgiaohang">
-															{!! link_to_route('front.home.delivery', 'Chính sách giao hàng') !!}
+															<a href="{{ policiesl_path(App\Models\IntroducePolicy::find(9)) }}" >Chính sách giao hàng</a>
 														</span>
 													</div>
 												</td>
@@ -161,7 +161,7 @@
 							<div id="nutchitiethome">
 								<span class="nutchitiethometext">
 									<span class="nutchitiethometext">
-										{!! link_to_route('front.products.detail', 'Chi tiết', $eachProduct->id) !!}
+										<a href="{{ product_detail_path($eachProduct) }}" >Chi tiết</a>
 									</span>
 								</span>
 							</div>	

@@ -56,6 +56,10 @@ function category_detail_path(App\Models\ProductCategory $productCategory) {
     return '/danh-muc/' . $productCategory->slug;
 }
 
+function policiesl_path(App\Models\IntroducePolicy $policy) {
+    return '/chinh-sach/' . $policy->slug;
+}
+
 function string_limit($str, $limit = 100, $end = '...')
 {
     if (mb_strwidth($str, 'UTF-8') <= $limit) {

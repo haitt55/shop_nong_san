@@ -26,6 +26,8 @@ class ViewComposerServiceProvider extends ServiceProvider
         view()->share('__productDiscounts', $__productDiscounts);
         $__productCategories = \App\Models\ProductCategory::where('parent_id', 0)->get();
         view()->share('__productCategories', $__productCategories);
+        $__policies = \App\Models\IntroducePolicy::all();
+        view()->share('__policies', $__policies);
     }
 
     /**
