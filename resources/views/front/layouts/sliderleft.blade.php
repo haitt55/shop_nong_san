@@ -31,7 +31,7 @@
 			<div id="titlemenu">
 				<span class="titlemenutext ">
 				{{--{!! link_to_route('front.categories.index', $category->name, $category->id) !!}--}}
-					<a href="{{ category_detail_path($category) }}" >{{ $category->name }}</a>
+				<a href="{{ category_detail_path($category) }}" >{{ $category->name }}</a>
 				</span>
 			</div>
 			<div id="contentmenu">
@@ -49,8 +49,5 @@
 			</div>
 		@endforeach
 		<div id="endmenu"></div>
-	</div>
-	<div id="thanhvienvip">
-		<a href="{!! route('front.home.preference') !!}" border="0"><img src="/images/ads/1353922031_ads.png" class="imgthanhvienvip"></a>
 	</div>
 </div>

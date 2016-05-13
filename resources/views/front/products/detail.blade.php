@@ -161,7 +161,8 @@
 							<div id="nutchitiethome">
 								<span class="nutchitiethometext">
 									<span class="nutchitiethometext">
-										{!! link_to_route('front.products.detail', 'Chi tiết', $eachProduct->id) !!}
+										<a href="{{ product_detail_path($eachProduct) }}" >Chi tiết</a>
+										<!-- {!! link_to_route('front.products.detail', 'Chi tiết', $eachProduct->id) !!} -->
 									</span>
 								</span>
 							</div>	
