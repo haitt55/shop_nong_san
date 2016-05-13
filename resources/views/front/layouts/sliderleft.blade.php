@@ -30,7 +30,8 @@
 		@foreach($__productCategories as $category)
 			<div id="titlemenu">
 				<span class="titlemenutext ">
-				{!! link_to_route('front.categories.index', $category->name, $category->id) !!}
+				{{--{!! link_to_route('front.categories.index', $category->name, $category->id) !!}--}}
+					<a href="{{ category_detail_path($category) }}" >{{ $category->name }}</a>
 				</span>
 			</div>
 			<div id="contentmenu">
@@ -39,7 +40,8 @@
 					@foreach (get_product_by_category($category->id) as $product)
 						<li class="dot">
 							<img src="/images/dot.png" align="absmiddle" style="padding-right: 5px;">
-							{!! link_to_route('front.products.detail', $product->name, $product->id) !!}
+							{{--{!! link_to_route('front.products.detail', $product->name, $product->id) !!}--}}
+							<a href="{{ product_detail_path($product) }}" >{{ $product->name }}</a>
 						</li>
 					@endforeach
 					</ul>

@@ -7,6 +7,10 @@ use DB;
 
 class ProductCategoryRepository extends Repository implements ProductCategoryRepositoryInterface
 {
+    public function findBySlug($slug)
+    {
+        return $this->model->findBySlug($slug);
+    }
 
     public function isParent($id)
     {

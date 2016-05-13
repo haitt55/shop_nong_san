@@ -56,14 +56,14 @@ Route::get('/transport', ['uses' => 'Front\HomeController@transport', 'as' => 'f
 
 Route::get('/policies/{id}', ['uses' => 'Front\HomeController@getPolicy', 'as' => 'front.policies.index']);
 
-Route::get('/products', ['uses' => 'Front\ProductController@index', 'as' => 'front.products.index']);
-Route::get('/products/{id}/detail', ['uses' => 'Front\ProductController@getProductDetail', 'as' => 'front.products.detail']);
-Route::get('/discount', ['uses' => 'Front\ProductController@getDiscount', 'as' => 'front.products.discount']);
+//Route::get('/products', ['uses' => 'Front\ProductController@index', 'as' => 'front.products.index']);
+//Route::get('/products/{id}/detail', ['uses' => 'Front\ProductController@getProductDetail', 'as' => 'front.products.detail']);
+//Route::get('/discount', ['uses' => 'Front\ProductController@getDiscount', 'as' => 'front.products.discount']);
 
-Route::get('/news', ['uses' => 'Front\NewsController@index', 'as' => 'front.news.index']);
-Route::get('/news/{id}/detail', ['uses' => 'Front\NewsController@getDetail', 'as' => 'front.news.detail']);
+//Route::get('/news', ['uses' => 'Front\NewsController@index', 'as' => 'front.news.index']);
+//Route::get('/news/{id}/detail', ['uses' => 'Front\NewsController@getDetail', 'as' => 'front.news.detail']);
 
-Route::get('/categories/{id}', ['uses' => 'Front\ProductCategoryController@index', 'as' => 'front.categories.index']);
+//Route::get('/categories/{id}', ['uses' => 'Front\ProductCategoryController@index', 'as' => 'front.categories.index']);
 
 Route::get('/search', ['uses' => 'Front\HomeController@getSearch', 'as' => 'front.search.index']);
 
@@ -71,4 +71,14 @@ Route::get('articles.html', ['uses' => 'ArticlesController@index', 'as' => 'arti
 Route::get('articles/{slug}.html', ['uses' => 'ArticlesController@show', 'as' => 'articles.show']);
 Route::get('{slug}.html', ['uses' => 'PagesController@show', 'as' => 'pages.show']);
 Route::post('messages', ['uses' => 'MessagesController@store', 'as' => 'messages.store']);
+
+Route::get('san-pham', ['uses' => 'Front\ProductController@index', 'as' => 'front.products.index']);
+Route::get('san-pham/{slug}', ['uses' => 'Front\ProductController@getProductDetail', 'as' => 'front.products.detail']);
+
+Route::get('/tin-tuc', ['uses' => 'Front\NewsController@index', 'as' => 'front.news.index']);
+Route::get('/tin-tuc/{slug}', ['uses' => 'Front\NewsController@getDetail', 'as' => 'front.news.detail']);
+
+Route::get('/khuyen-mai', ['uses' => 'Front\ProductController@getDiscount', 'as' => 'front.products.discount']);
+
+Route::get('/danh-muc/{slug}', ['uses' => 'Front\ProductCategoryController@index', 'as' => 'front.categories.index']);
 

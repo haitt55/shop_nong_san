@@ -138,15 +138,18 @@
 				<br/><br/>
 				<div id="splienquan">Trao đổi trực tuyến với khách hàng bằng tài khoản Facebook</div>
 				<div id="commemsFB">
-					<div class="fb-comments" data-href="{!! route('front.products.detail', $product->id) !!}" data-num-posts="10" data-width="686"></div>
+					<div class="fb-comments" data-href="{!! product_detail_path($product) !!}" data-num-posts="10" data-width="686"></div>
 				</div>
 				<div id="splienquan">Hoa quả liên quan</div>
 				<div id="contenthonesp">
 				@if(count($listProducts) > 0)
 					@foreach($listProducts as $eachProduct)
 						<div id="sphomele">
-							<h1 class="h1tensp">{!! link_to_route('front.products.detail', $eachProduct->name, $eachProduct->id) !!}</h1>
-							<a href="{!! route('front.products.detail', $eachProduct->id) !!}">
+							<h1 class="h1tensp">
+								{{--{!! link_to_route('front.products.detail', $eachProduct->name, $eachProduct->id) !!}--}}
+								<a href="{{ product_detail_path($eachProduct) }}" >{{ $eachProduct->name }}</a>
+							</h1>
+							<a href="{!! product_detail_path($eachProduct) !!}">
 								<img src="/{!! $eachProduct->images->first() ? $eachProduct->images->first()->path : '' !!}" class="imgsphomele" onerror="loadErrorImage(this,'/images/noimg.png');"  />
 							</a>
 							<div id="h1giasphomele">

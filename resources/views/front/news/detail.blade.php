@@ -27,7 +27,8 @@
 						@foreach($arrNews as $moreNews)
 							<li class="dot">
 								<img src="../../../images/dot.png" align="absmiddle" style="padding-right: 5px;">
-								{!! link_to_route('front.news.detail', $moreNews->title, $moreNews->id) !!}
+								{{--{!! link_to_route('front.news.detail', $moreNews->title, $moreNews->id) !!}--}}
+								<a href="{{ news_detail_path($moreNews) }}" >{{ $moreNews->title }}</a>
 							</li>											
 						@endforeach
 					</ul>

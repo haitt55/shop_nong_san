@@ -8,9 +8,13 @@
 
 namespace App\Models;
 
+use App\Models\BaseModel;
+use Cviebrock\EloquentSluggable\SluggableInterface;
+use Cviebrock\EloquentSluggable\SluggableTrait;
 
-class ProductCategory extends BaseModel
+class ProductCategory extends BaseModel implements SluggableInterface
 {
+    use SluggableTrait;
     /**
      * The database table used by the model.
      *
@@ -40,6 +44,16 @@ class ProductCategory extends BaseModel
     public function childs()
     {
         return $this->hasMany('App\Models\ProductCategory', 'parent_id', 'id');
+    }
+
+    protected $sluggable = [
+        'build_from' => 'name',
+        'save_to'    => 'slug',
+    ];
+
+    public static function findBySlug($slug)
+    {
+        return static::whereSlug($slug)->firstOrFail();
     }
 
     public function products() {

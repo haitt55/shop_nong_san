@@ -5,7 +5,8 @@
 			@foreach($__homeNews as $news)
 			<li class="dot">
 				<img src="images/dot.png" align="absmiddle" style="padding-right: 5px;">
-				{!! link_to_route('front.news.detail', $news->title, $news->id) !!}
+				{{--{!! link_to_route('front.news.detail', $news->title, $news->id) !!}--}}
+				<a href="{{ news_detail_path($news) }}" >{{ $news->title }}</a>
 			</li>
 			@endforeach
 		</ul>

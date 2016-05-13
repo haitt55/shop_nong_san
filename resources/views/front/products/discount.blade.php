@@ -1,10 +1,10 @@
 @extends('front.layouts.master')
 
-@section('title', '')
+@section('title', 'Khuyến mãi')
 
-@section('keywords', $product->meta_keyword)
+@section('keywords', 'Khuyến mãi')
 
-@section('description', $product->meta_description)
+@section('description', 'Khuyến mãi')
 
 @section('content')
 	@include('front.layouts.sliderleft')
@@ -15,8 +15,8 @@
 				@if(count($productDiscounts))
 					@foreach ($productDiscounts as $key => $product)
 					<div id="sphomele">
-						<h1 class="h1tensp">{!! link_to_route('front.products.detail', $product->name, $product->id) !!}</h1>
-						<a href="{!! route('front.products.detail', $product->id) !!}">
+						<h1 class="h1tensp"><a href="{{ product_detail_path($product) }}" >{{ $product->name }}</a></h1>
+						<a href="{!! product_detail_path($product) !!}">
 							<img src="{!! $product->images->first() ? $product->images->first()->path : '' !!}" class="imgsphomele" onerror="loadErrorImage(this,'/images/noimg.png');"  />
 						</a>
 						<div id='deal'>
@@ -32,7 +32,8 @@
 						<div id="nutchitiethome">
 							<span class="nutchitiethometext">
 								<span class="nutchitiethometext">
-									{!! link_to_route('front.products.detail', 'Chi tiết', $product->id) !!}
+									{{--{!! link_to_route('front.products.detail', 'Chi tiết', $product->id) !!}--}}
+									<a href="{{ product_detail_path($product) }}" >Chi tiết</a>
 								</span>
 							</span>
 						</div>		

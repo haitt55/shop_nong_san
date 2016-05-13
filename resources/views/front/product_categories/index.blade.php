@@ -10,15 +10,16 @@
 	@include('front.layouts.sliderleft')
 	<div id="contentwrapper">
 		<div id="homecontent">
-			@include('front.layouts.linktitlesp', ['linkRoute' => route('front.categories.index'), 'name' => $category->name])
+			@include('front.layouts.linktitlesp', ['linkRoute' => category_detail_path($category), 'name' => $category->name])
 			<div id="contenthonesp">
 			@if(count($products) > 0)
 				@foreach($products as $product)
 				<div id="sphomele">
 					<h1 class="h1tensp">
-						{!! link_to_route('front.products.detail', $product->name, $product->id) !!}
+						{{--{!! link_to_route('front.products.detail', $product->name, $product->id) !!}--}}
+						<a href="{{ product_detail_path($product) }}" >{{ $product->name }}</a>
 					</h1>
-					<a href="{!! route('front.products.detail', $product->id) !!}">
+					<a href="{!! product_detail_path($product) !!}">
 						<img src="{!! $product->images->first() ? $product->images->first()->path : '' !!}" class="imgsphomele" onerror="loadErrorImage(this,'/images/noimg.png');"  />
 					</a>
 					<div id="h1giasphomele">
@@ -30,7 +31,8 @@
 					<div id="nutchitiethome">
 						<span class="nutchitiethometext">
 							<span class="nutchitiethometext">
-								{!! link_to_route('front.products.detail', 'Chi tiết', $product->id) !!}
+								{{--{!! link_to_route('front.products.detail', 'Chi tiết', $product->id) !!}--}}
+								<a href="{{ product_detail_path($product) }}" >Chi tiết</a>
 							</span>
 						</span>
 					</div>		

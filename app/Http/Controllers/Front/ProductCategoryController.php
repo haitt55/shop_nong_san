@@ -28,10 +28,10 @@ class ProductCategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index($slug)
     {
-        $products = $this->productRepository->getListProductByCategory($id);
-        $category = $this->categoryRepository->findOrFail($id);
+        $category = $this->categoryRepository->findBySlug($slug);
+        $products = $this->productRepository->getListProductByCategory($category->id);
 
         return view('front.product_categories.index')->with(['products' => $products, 'category' => $category]);
     }

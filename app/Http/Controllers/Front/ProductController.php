@@ -27,9 +27,9 @@ class ProductController extends Controller
         return view('front.products.index')->with(['categories' => $categories]);
     }
 
-    public function getProductDetail($id)
+    public function getProductDetail($slug)
     {
-    	$product = $this->productRepository->findOrFail($id);
+    	$product = $this->productRepository->findBySlug($slug);
     	$listProducts = $this->productRepository->getListProductByCategory($product->category_id);
 
     	return view('front.products.detail')->with(['product' => $product, 'listProducts' => $listProducts]);

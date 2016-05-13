@@ -34,9 +34,9 @@ class NewsController extends Controller
         return view('front.news.index', compact('arrNews'));
     }
 
-    public function getDetail($id)
+    public function getDetail($slug)
     {
-        $news = $this->newsRepository->findOrFail($id);
+        $news = $this->newsRepository->findBySlug($slug);
         $news->views += 1;
         $news->save();
         $arrNews = $this->newsRepository->getNewsByCategory($news->category_id);

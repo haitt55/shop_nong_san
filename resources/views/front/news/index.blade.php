@@ -26,7 +26,8 @@
 								</div>
 								<div id="contentofimg">
 									<h1 class="titlenewsdsimg">
-										{!! link_to_route('front.news.detail', $news->title, $news->id) !!}
+										{{--{!! link_to_route('front.news.detail', $news->title, $news->id) !!}--}}
+										<a href="{{ news_detail_path($news) }}" >{{ $news->title }}</a>
 									</h1>
 									<h2 class="contetnewsdsimg"></h2>
 								</div>

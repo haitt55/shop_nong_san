@@ -44,6 +44,18 @@ function article_path(App\Models\Article $article)
     return '/articles/' . $article->slug . '.html';
 }
 
+function product_detail_path(App\Models\Product $product) {
+    return '/san-pham/' . $product->slug;
+}
+
+function news_detail_path(App\Models\News $news) {
+    return '/tin-tuc/' . $news->slug;
+}
+
+function category_detail_path(App\Models\ProductCategory $productCategory) {
+    return '/danh-muc/' . $productCategory->slug;
+}
+
 function string_limit($str, $limit = 100, $end = '...')
 {
     if (mb_strwidth($str, 'UTF-8') <= $limit) {

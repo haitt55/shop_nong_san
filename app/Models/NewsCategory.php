@@ -8,9 +8,13 @@
 
 namespace App\Models;
 
+use App\Models\BaseModel;
+use Cviebrock\EloquentSluggable\SluggableInterface;
+use Cviebrock\EloquentSluggable\SluggableTrait;
 
-class NewsCategory extends BaseModel
+class NewsCategory extends BaseModel implements SluggableInterface
 {
+    use SluggableTrait;
     /**
      * The database table used by the model.
      *
@@ -31,6 +35,16 @@ class NewsCategory extends BaseModel
      * @var array
      */
     protected $hidden = [];
+
+    protected $sluggable = [
+        'build_from' => 'name',
+        'save_to'    => 'slug',
+    ];
+
+    public static function findBySlug($slug)
+    {
+        return static::whereSlug($slug)->firstOrFail();
+    }
 
     public function parent()
     {
