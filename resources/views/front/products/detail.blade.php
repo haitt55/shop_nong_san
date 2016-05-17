@@ -125,7 +125,7 @@
 									<a class="addthis_counter addthis_pill_style"></a>
 									</div>
 									<script type="text/javascript">var addthis_config = {"data_track_addressbar":false};</script>
-									<script type="text/javascript" src="../../../../s7.addthis.com/js/300/addthis_widget.js#pubid=livefuz"></script>
+									<script type="text/javascript" src="/s7.addthis.com/js/300/addthis_widget.js#pubid=livefuz"></script>
 									<!-- AddThis Button END --></td>			
 							</tr>
 						</table>
@@ -162,6 +162,7 @@
 								<span class="nutchitiethometext">
 									<span class="nutchitiethometext">
 										<a href="{{ product_detail_path($eachProduct) }}" >Chi tiết</a>
+										<!-- {!! link_to_route('front.products.detail', 'Chi tiết', $eachProduct->id) !!} -->
 									</span>
 								</span>
 							</div>	
