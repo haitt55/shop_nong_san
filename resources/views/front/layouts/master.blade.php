@@ -94,9 +94,9 @@
 			onCleanup:function(){ alert('onCleanup: colorbox has begun the close process'); },
 			onClosed:function(){ alert('onClosed: colorbox has completely closed'); }
 		});
-		
+
 		//Example of preserving a JavaScript event for inline calls.
-		$("#click").click(function(){ 
+		$("#click").click(function(){
 			$('#click').css({"background-color":"#f00", "color":"#fff", "cursor":"inherit"}).text("Open this window again and this message will still be here.");
 			return false;
 		});
@@ -131,7 +131,7 @@ var interval;
 function showImage(index){
     if(index < $('#bigPic img').length){
     	var indexImage = $('#bigPic img')[index]
-        if(currentImage){   
+        if(currentImage){
         	if(currentImage != indexImage ){
                 $(currentImage).css('z-index',2);
                 clearTimeout(myTimer);
@@ -154,7 +154,7 @@ function showNext(){
     var next = currentIndex < (len-1) ? currentIndex + 1 : 0;
     showImage(next);
 }
- 
+
 var myTimer;
 
 $(document).ready(function() {
@@ -176,7 +176,7 @@ $(document).ready(function() {
   js = d.createElement(s); js.id = id;
   js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.6&appId=988562257863005";
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script> 
+}(document, 'script', 'facebook-jssdk'));</script>
 </head>
 
 <body>
@@ -184,26 +184,26 @@ $(document).ready(function() {
 	<div id="headerfull">
 		<div id="headerwide">
 	<div id="header">
-		<div id="logo"><!--<img width="980" height="140" src="images/thu 14.jpg" border="0">  --><object width="980" height="140" data="/images/logo.jpg"></object></div> 
+		<div id="logo"><!--<img width="980" height="140" src="images/thu 14.jpg" border="0">  --><img width="980" height="140" data="/images/logo.jpeg"></object></div>
 		<div id="logoright">
-				
+
 		</div>
 	</div>
 </div>
 <div id="overslideshow">
 	<div id="icontrangchu"><a href="/"><img align="absmiddle"  src="/images/icontrangchu.png" border="0"></a></div>
-	<div id="menu">	
+	<div id="menu">
 		<ul id="nav">
 			@if(!is_null(App\Models\IntroducePolicy::find(11)))
 			<li><a href="{{ policiesl_path(App\Models\IntroducePolicy::find(11)) }}" >Giới thiệu</a></li>
-			@endif      
-			<li>{!! link_to_route('front.products.index', 'Sản phẩm') !!}</li>   
-			<li><a href="{!! route('front.products.discount') !!}">Khuyến mại<span class="sodeal">{!! count($__productDiscounts) !!}</span></a></li> 
+			@endif
+			<li>{!! link_to_route('front.products.index', 'Sản phẩm') !!}</li>
+			<li><a href="{!! route('front.products.discount') !!}">Khuyến mại<span class="sodeal">{!! count($__productDiscounts) !!}</span></a></li>
 			@if(!is_null(App\Models\IntroducePolicy::find(9)))
 			<li><a href="{{ policiesl_path(App\Models\IntroducePolicy::find(9)) }}" >Giao hàng</a></li>
-			@endif        
+			@endif
 			@if(!is_null(App\Models\IntroducePolicy::find(6)))
-			<li><a href="{{ policiesl_path(App\Models\IntroducePolicy::find(10)) }}" >Thanh toán</a></li>       
+			<li><a href="{{ policiesl_path(App\Models\IntroducePolicy::find(10)) }}" >Thanh toán</a></li>
 			@endif
 		</ul>
 	</div>
@@ -281,7 +281,7 @@ $(document).ready(function() {
 	</div>
 </div>	</div>
 </div>
-<div style="display:none !important;">	
+<div style="display:none !important;">
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
